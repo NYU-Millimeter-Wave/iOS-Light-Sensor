@@ -1,15 +1,15 @@
 //
-//  CameraTestingTests.swift
-//  CameraTestingTests
+//  Light_Power_MeterTests.swift
+//  Light Power MeterTests
 //
-//  Created by Cole Smith on 1/11/16.
+//  Created by Cole Smith on 6/7/16.
 //  Copyright © 2016 Cole Smith. All rights reserved.
 //
 
 import XCTest
-@testable import CameraTesting
+@testable import Light_Power_Meter
 
-class CameraTestingTests: XCTestCase {
+class Light_Power_MeterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

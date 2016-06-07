@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
+		49E038381D073A67007A4C56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* ViewController.swift */; };
+		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
+		49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383C1D073A67007A4C56 /* Assets.xcassets */; };
+		49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */; };
+		49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */; };
+		49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49E038471D073A67007A4C56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E0382A1D073A67007A4C56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E038311D073A67007A4C56;
+			remoteInfo = "Light Power Meter";
+		};
+		49E038521D073A67007A4C56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E0382A1D073A67007A4C56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E038311D073A67007A4C56;
+			remoteInfo = "Light Power Meter";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		49E038321D073A67007A4C56 /* Light Power Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Power Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		49E038371D073A67007A4C56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49E0383A1D073A67007A4C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49E0383C1D073A67007A4C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49E0383F1D073A67007A4C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49E038411D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterTests.swift; sourceTree = "<group>"; };
+		49E0384C1D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterUITests.swift; sourceTree = "<group>"; };
+		49E038571D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49E0382F1D073A67007A4C56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E038431D073A67007A4C56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E0384E1D073A67007A4C56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49E038291D073A67007A4C56 = {
+			isa = PBXGroup;
+			children = (
+				49E038341D073A67007A4C56 /* Light Power Meter */,
+				49E038491D073A67007A4C56 /* Light Power MeterTests */,
+				49E038541D073A67007A4C56 /* Light Power MeterUITests */,
+				49E038331D073A67007A4C56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49E038331D073A67007A4C56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49E038321D073A67007A4C56 /* Light Power Meter.app */,
+				49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */,
+				49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49E038341D073A67007A4C56 /* Light Power Meter */ = {
+			isa = PBXGroup;
+			children = (
+				49E038351D073A67007A4C56 /* AppDelegate.swift */,
+				49E038371D073A67007A4C56 /* ViewController.swift */,
+				49E038391D073A67007A4C56 /* Main.storyboard */,
+				49E0383C1D073A67007A4C56 /* Assets.xcassets */,
+				49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */,
+				49E038411D073A67007A4C56 /* Info.plist */,
+			);
+			path = "Light Power Meter";
+			sourceTree = "<group>";
+		};
+		49E038491D073A67007A4C56 /* Light Power MeterTests */ = {
+			isa = PBXGroup;
+			children = (
+				49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */,
+				49E0384C1D073A67007A4C56 /* Info.plist */,
+			);
+			path = "Light Power MeterTests";
+			sourceTree = "<group>";
+		};
+		49E038541D073A67007A4C56 /* Light Power MeterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */,
+				49E038571D073A67007A4C56 /* Info.plist */,
+			);
+			path = "Light Power MeterUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49E038311D073A67007A4C56 /* Light Power Meter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E0385A1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power Meter" */;
+			buildPhases = (
+				49E0382E1D073A67007A4C56 /* Sources */,
+				49E0382F1D073A67007A4C56 /* Frameworks */,
+				49E038301D073A67007A4C56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Light Power Meter";
+			productName = "Light Power Meter";
+			productReference = 49E038321D073A67007A4C56 /* Light Power Meter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		49E038451D073A67007A4C56 /* Light Power MeterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E0385D1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterTests" */;
+			buildPhases = (
+				49E038421D073A67007A4C56 /* Sources */,
+				49E038431D073A67007A4C56 /* Frameworks */,
+				49E038441D073A67007A4C56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49E038481D073A67007A4C56 /* PBXTargetDependency */,
+			);
+			name = "Light Power MeterTests";
+			productName = "Light Power MeterTests";
+			productReference = 49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		49E038501D073A67007A4C56 /* Light Power MeterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E038601D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterUITests" */;
+			buildPhases = (
+				49E0384D1D073A67007A4C56 /* Sources */,
+				49E0384E1D073A67007A4C56 /* Frameworks */,
+				49E0384F1D073A67007A4C56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49E038531D073A67007A4C56 /* PBXTargetDependency */,
+			);
+			name = "Light Power MeterUITests";
+			productName = "Light Power MeterUITests";
+			productReference = 49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49E0382A1D073A67007A4C56 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Cole Smith";
+				TargetAttributes = {
+					49E038311D073A67007A4C56 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					49E038451D073A67007A4C56 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 49E038311D073A67007A4C56;
+					};
+					49E038501D073A67007A4C56 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 49E038311D073A67007A4C56;
+					};
+				};
+			};
+			buildConfigurationList = 49E0382D1D073A67007A4C56 /* Build configuration list for PBXProject "Light Power Meter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49E038291D073A67007A4C56;
+			productRefGroup = 49E038331D073A67007A4C56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49E038311D073A67007A4C56 /* Light Power Meter */,
+				49E038451D073A67007A4C56 /* Light Power MeterTests */,
+				49E038501D073A67007A4C56 /* Light Power MeterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49E038301D073A67007A4C56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */,
+				49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */,
+				49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E038441D073A67007A4C56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E0384F1D073A67007A4C56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49E0382E1D073A67007A4C56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E038381D073A67007A4C56 /* ViewController.swift in Sources */,
+				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E038421D073A67007A4C56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E0384D1D073A67007A4C56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49E038481D073A67007A4C56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E038311D073A67007A4C56 /* Light Power Meter */;
+			targetProxy = 49E038471D073A67007A4C56 /* PBXContainerItemProxy */;
+		};
+		49E038531D073A67007A4C56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E038311D073A67007A4C56 /* Light Power Meter */;
+			targetProxy = 49E038521D073A67007A4C56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		49E038391D073A67007A4C56 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49E0383A1D073A67007A4C56 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49E0383F1D073A67007A4C56 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49E038581D073A67007A4C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		49E038591D073A67007A4C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49E0385B1D073A67007A4C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Light Power Meter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-Meter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		49E0385C1D073A67007A4C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Light Power Meter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-Meter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		49E0385E1D073A67007A4C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Light Power MeterTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Light Power Meter.app/Light Power Meter";
+			};
+			name = Debug;
+		};
+		49E0385F1D073A67007A4C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Light Power MeterTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Light Power Meter.app/Light Power Meter";
+			};
+			name = Release;
+		};
+		49E038611D073A67007A4C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Light Power MeterUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Light Power Meter";
+			};
+			name = Debug;
+		};
+		49E038621D073A67007A4C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Light Power MeterUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Light Power Meter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49E0382D1D073A67007A4C56 /* Build configuration list for PBXProject "Light Power Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E038581D073A67007A4C56 /* Debug */,
+				49E038591D073A67007A4C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E0385A1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E0385B1D073A67007A4C56 /* Debug */,
+				49E0385C1D073A67007A4C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		49E0385D1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E0385E1D073A67007A4C56 /* Debug */,
+				49E0385F1D073A67007A4C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		49E038601D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E038611D073A67007A4C56 /* Debug */,
+				49E038621D073A67007A4C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49E0382A1D073A67007A4C56 /* Project object */;
+}

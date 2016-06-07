@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  CameraTesting
+//  Light Power Meter
 //
-//  Created by Cole Smith on 1/11/16.
+//  Created by Cole Smith on 6/7/16.
 //  Copyright © 2016 Cole Smith. All rights reserved.
 //
 
