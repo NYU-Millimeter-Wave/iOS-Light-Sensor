@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491468C21D076E2100440DC3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 491468BF1D076E2100440DC3 /* beep.wav */; };
+		491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C01D076E2100440DC3 /* CameraCapture.swift */; };
+		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
 		4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
 		4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		491468BF1D076E2100440DC3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		491468C01D076E2100440DC3 /* CameraCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
+		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
 		4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Light Power Meter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -94,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		491468C51D076E4E00440DC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				491468BF1D076E2100440DC3 /* beep.wav */,
+			);
+			name = Resources;
+			path = "Light Power Meter";
+			sourceTree = "<group>";
+		};
 		4986DB211D073C6A004F2893 /* HueSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				49E038341D073A67007A4C56 /* Light Power Meter */,
+				491468C51D076E4E00440DC3 /* Resources */,
 				4986DB211D073C6A004F2893 /* HueSDK */,
 				49E038491D073A67007A4C56 /* Light Power MeterTests */,
 				49E038541D073A67007A4C56 /* Light Power MeterUITests */,
@@ -137,6 +153,8 @@
 			children = (
 				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
+				491468C01D076E2100440DC3 /* CameraCapture.swift */,
+				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
 				49E038371D073A67007A4C56 /* ViewController.swift */,
 				49E038391D073A67007A4C56 /* Main.storyboard */,
 				49E0383C1D073A67007A4C56 /* Assets.xcassets */,
@@ -268,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491468C21D076E2100440DC3 /* beep.wav in Resources */,
 				49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */,
 				49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */,
 				4986DB201D073C63004F2893 /* Lumberjack in Resources */,
@@ -297,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */,
+				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
 				4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */,
 				4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */,
+				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
 				4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */,
 				4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */,
 				4986DB301D075D87004F2893 /* DDLog.m in Sources */,
@@ -452,9 +473,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Light",
-					Power,
-					Meter,
+					"${SRCROOT}/**",
+					"$(PROJECT_DIR)/Light\\ Power\\ Meter",
 				);
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "Light Power Meter/Info.plist";
@@ -476,9 +496,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Light",
-					Power,
-					Meter,
+					"${SRCROOT}/**",
+					"$(PROJECT_DIR)/Light\\ Power\\ Meter",
 				);
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "Light Power Meter/Info.plist";
