@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Test Philips SDK
+        let testSDK: PHHueSDK = PHHueSDK.init()
+        testSDK.enableLogging(true)
+        testSDK.startUpSDK()
+        
         return true
     }
 
