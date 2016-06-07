@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */; };
+		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
+		4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */; };
+		4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB291D075D87004F2893 /* DDASLLogger.m */; };
+		4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB2A1D075D87004F2893 /* DDFileLogger.m */; };
+		4986DB301D075D87004F2893 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB2B1D075D87004F2893 /* DDLog.m */; };
+		4986DB311D075D87004F2893 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB2C1D075D87004F2893 /* DDTTYLogger.m */; };
+		4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */; };
+		4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
 		49E038381D073A67007A4C56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* ViewController.swift */; };
 		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
@@ -34,6 +43,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
+		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
+		4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Light Power Meter-Bridging-Header.h"; sourceTree = "<group>"; };
+		4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Lumberjack/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		4986DB291D075D87004F2893 /* DDASLLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Lumberjack/DDASLLogger.m; sourceTree = "<group>"; };
+		4986DB2A1D075D87004F2893 /* DDFileLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Lumberjack/DDFileLogger.m; sourceTree = "<group>"; };
+		4986DB2B1D075D87004F2893 /* DDLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Lumberjack/DDLog.m; sourceTree = "<group>"; };
+		4986DB2C1D075D87004F2893 /* DDTTYLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
+		4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ContextFilterLogFormatter.m; path = Lumberjack/Extensions/ContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		49E038321D073A67007A4C56 /* Light Power Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Power Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E038371D073A67007A4C56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +94,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4986DB211D073C6A004F2893 /* HueSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */,
+				4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */,
+				4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */,
+				4986DB291D075D87004F2893 /* DDASLLogger.m */,
+				4986DB2A1D075D87004F2893 /* DDFileLogger.m */,
+				4986DB2B1D075D87004F2893 /* DDLog.m */,
+				4986DB2C1D075D87004F2893 /* DDTTYLogger.m */,
+				4986DB1F1D073C63004F2893 /* Lumberjack */,
+				4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */,
+			);
+			name = HueSDK;
+			path = "Light Power Meter";
+			sourceTree = "<group>";
+		};
 		49E038291D073A67007A4C56 = {
 			isa = PBXGroup;
 			children = (
 				49E038341D073A67007A4C56 /* Light Power Meter */,
+				4986DB211D073C6A004F2893 /* HueSDK */,
 				49E038491D073A67007A4C56 /* Light Power MeterTests */,
 				49E038541D073A67007A4C56 /* Light Power MeterUITests */,
 				49E038331D073A67007A4C56 /* Products */,
@@ -97,6 +135,7 @@
 		49E038341D073A67007A4C56 /* Light Power Meter */ = {
 			isa = PBXGroup;
 			children = (
+				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
 				49E038371D073A67007A4C56 /* ViewController.swift */,
 				49E038391D073A67007A4C56 /* Main.storyboard */,
@@ -231,6 +270,7 @@
 			files = (
 				49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */,
 				49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */,
+				4986DB201D073C63004F2893 /* Lumberjack in Resources */,
 				49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */,
+				4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */,
+				4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */,
+				4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */,
+				4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */,
+				4986DB301D075D87004F2893 /* DDLog.m in Sources */,
+				4986DB311D075D87004F2893 /* DDTTYLogger.m in Sources */,
 				49E038381D073A67007A4C56 /* ViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
 			);
@@ -352,6 +399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -390,6 +438,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -398,22 +447,47 @@
 		49E0385B1D073A67007A4C56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Light",
+					Power,
+					Meter,
+				);
+				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "Light Power Meter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-Meter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Light Power Meter/Light Power Meter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
 		49E0385C1D073A67007A4C56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Light",
+					Power,
+					Meter,
+				);
+				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "Light Power Meter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-Meter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Light Power Meter/Light Power Meter-Bridging-Header.h";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -482,6 +556,7 @@
 				49E0385C1D073A67007A4C56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49E0385D1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +565,7 @@
 				49E0385F1D073A67007A4C56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49E038601D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +574,7 @@
 				49E038621D073A67007A4C56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
