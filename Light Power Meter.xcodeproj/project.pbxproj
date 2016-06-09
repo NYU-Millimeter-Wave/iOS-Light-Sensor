@@ -10,6 +10,7 @@
 		491468C21D076E2100440DC3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 491468BF1D076E2100440DC3 /* beep.wav */; };
 		491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C01D076E2100440DC3 /* CameraCapture.swift */; };
 		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
+		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
 		4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
 		4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */; };
@@ -26,6 +27,7 @@
 		49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */; };
 		49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */; };
 		49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */; };
+		7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		491468BF1D076E2100440DC3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		491468C01D076E2100440DC3 /* CameraCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
 		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		49454BEB1D09B24A002C8328 /* LightControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlManager.swift; sourceTree = "<group>"; };
 		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
 		4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Light Power Meter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -72,6 +75,9 @@
 		49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterUITests.swift; sourceTree = "<group>"; };
 		49E038571D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.debug.xcconfig"; sourceTree = "<group>"; };
+		6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.release.xcconfig"; sourceTree = "<group>"; };
+		D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Light_Power_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */,
+				7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +142,8 @@
 				49E038491D073A67007A4C56 /* Light Power MeterTests */,
 				49E038541D073A67007A4C56 /* Light Power MeterUITests */,
 				49E038331D073A67007A4C56 /* Products */,
+				A1C137333A6BF3F5D747D70E /* Pods */,
+				4D0FE30D51509D9CF24A45B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +162,7 @@
 			children = (
 				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
+				49454BEB1D09B24A002C8328 /* LightControlManager.swift */,
 				491468C01D076E2100440DC3 /* CameraCapture.swift */,
 				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
 				49E038371D073A67007A4C56 /* ViewController.swift */,
@@ -182,6 +192,23 @@
 			path = "Light Power MeterUITests";
 			sourceTree = "<group>";
 		};
+		4D0FE30D51509D9CF24A45B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1C137333A6BF3F5D747D70E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */,
+				6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49E0385A1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power Meter" */;
 			buildPhases = (
+				1718F2AB906B5F847ABA2EDE /* [CP] Check Pods Manifest.lock */,
 				49E0382E1D073A67007A4C56 /* Sources */,
 				49E0382F1D073A67007A4C56 /* Frameworks */,
 				49E038301D073A67007A4C56 /* Resources */,
+				2B8383EB0F77440CB56F0C3D /* [CP] Embed Pods Frameworks */,
+				64296A7BC412B4A57B0F2E61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,6 +340,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1718F2AB906B5F847ABA2EDE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2B8383EB0F77440CB56F0C3D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64296A7BC412B4A57B0F2E61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		49E0382E1D073A67007A4C56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -323,6 +401,7 @@
 				4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */,
 				4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */,
 				4986DB301D075D87004F2893 /* DDLog.m in Sources */,
+				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
 				4986DB311D075D87004F2893 /* DDTTYLogger.m in Sources */,
 				49E038381D073A67007A4C56 /* ViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
@@ -467,6 +546,7 @@
 		};
 		49E0385B1D073A67007A4C56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -490,6 +570,7 @@
 		};
 		49E0385C1D073A67007A4C56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
