@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Test Philips SDK
-        let testSDK: PHHueSDK = PHHueSDK.init()
-        testSDK.enableLogging(true)
-        testSDK.startUpSDK()
+//        let testSDK: PHHueSDK = PHHueSDK.init()
+//        testSDK.enableLogging(true)
+//        testSDK.startUpSDK()
         
-        // Init Light Control Manager
-        //let lightControl = LightControlManager.sharedManager
+        // Slide Menu Controller Setup
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! CalibrationViewController
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("Menu") as! MenuViewController
+        let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController)
+//        slideMenuController.delegate = mainViewController
+        self.window?.rootViewController = mainViewController
+        self.window?.makeKeyAndVisible()
+        
         
         
         return true

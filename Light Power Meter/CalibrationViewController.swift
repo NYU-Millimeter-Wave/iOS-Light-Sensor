@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalibrationViewController.swift
 //  CameraTesting
 //
 //  Created by Cole Smith on 1/11/16.
@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import SlideMenuControllerSwift
 
-class ViewController: UIViewController {
+class CalibrationViewController: SlideMenuController {
 
     @IBOutlet weak var preview: UIView!
     @IBOutlet weak var colorView: UIView!
@@ -33,9 +34,22 @@ class ViewController: UIViewController {
         // Reticle
         self.view.addSubview(cc.generateReticle(self.view, preview: preview))
     }
+    
+//    override func awakeFromNib() {
+//        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Main") {
+//            self.mainViewController = controller
+//        }
+//        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Menu") {
+//            self.leftViewController = controller
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func menuPressed(sender: AnyObject) {
+        self.slideMenuController()?.openLeft()
     }
     
     @IBAction func capturePressed(sender: AnyObject) {

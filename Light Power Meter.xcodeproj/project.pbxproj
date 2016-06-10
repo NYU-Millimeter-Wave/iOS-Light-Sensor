@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490455BA1D0B0961003E289C /* LightControlViewController.swift */; };
+		490455BD1D0B2249003E289C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490455BC1D0B2249003E289C /* MenuViewController.swift */; };
 		491468C21D076E2100440DC3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 491468BF1D076E2100440DC3 /* beep.wav */; };
 		491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C01D076E2100440DC3 /* CameraCapture.swift */; };
 		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
@@ -22,7 +23,7 @@
 		4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */; };
 		4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
-		49E038381D073A67007A4C56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* ViewController.swift */; };
+		49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* CalibrationViewController.swift */; };
 		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
 		49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383C1D073A67007A4C56 /* Assets.xcassets */; };
 		49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		490455BA1D0B0961003E289C /* LightControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlViewController.swift; sourceTree = "<group>"; };
+		490455BC1D0B2249003E289C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		491468BF1D076E2100440DC3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		491468C01D076E2100440DC3 /* CameraCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
 		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
@@ -66,7 +68,7 @@
 		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		49E038321D073A67007A4C56 /* Light Power Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Power Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		49E038371D073A67007A4C56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49E038371D073A67007A4C56 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
 		49E0383A1D073A67007A4C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49E0383C1D073A67007A4C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E0383F1D073A67007A4C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -164,11 +166,12 @@
 			children = (
 				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
+				490455BC1D0B2249003E289C /* MenuViewController.swift */,
 				49454BEB1D09B24A002C8328 /* LightControlManager.swift */,
 				491468C01D076E2100440DC3 /* CameraCapture.swift */,
 				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
 				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
-				49E038371D073A67007A4C56 /* ViewController.swift */,
+				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
 				49E038391D073A67007A4C56 /* Main.storyboard */,
 				49E0383C1D073A67007A4C56 /* Assets.xcassets */,
 				49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */,
@@ -399,6 +402,7 @@
 				4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */,
 				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
+				490455BD1D0B2249003E289C /* MenuViewController.swift in Sources */,
 				4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */,
 				4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
@@ -407,7 +411,7 @@
 				4986DB301D075D87004F2893 /* DDLog.m in Sources */,
 				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
 				4986DB311D075D87004F2893 /* DDTTYLogger.m in Sources */,
-				49E038381D073A67007A4C56 /* ViewController.swift in Sources */,
+				49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

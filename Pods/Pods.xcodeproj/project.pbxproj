@@ -7,87 +7,118 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0940AC7FB2C6C0D99D7FACA6C921F462 /* Pods-Light Power Meter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0B9B62D7B664BE6E47C7F6FEC2D396 /* Pods-Light Power Meter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */; };
-		16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */; };
-		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */; };
-		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */; };
-		34F90CC298D56ED941FA618FDAC7146F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */; };
-		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C763FD5409006D69EDB82815E4A61 /* Manager.swift */; };
-		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */; };
-		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */; };
-		5CEDE9B2E169EFCEE044AED106B183ED /* Pods-Light Power Meter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E0D273048522A1B9EDE68D85B2775B /* Pods-Light Power Meter-dummy.m */; };
-		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */; };
-		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */; };
-		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */; };
+		095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5D38D46EB191B837F4B8F426CC1EA1 /* Error.swift */; };
+		16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E47440F91DA0778FD83059598762FB /* Timeline.swift */; };
+		1F0495B0E06C261EF09858769B299A7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		271590086F2FC7F46A48B89AADA668A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A07B89A5B0876E5C41A2A875090CB /* Validation.swift */; };
+		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C535723CA971236E540CF8108F74F0 /* NetworkReachabilityManager.swift */; };
+		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B8F5DEBA8E540D6BB489FCDEE69E0 /* ResponseSerialization.swift */; };
+		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A913F645370D37039CCD5AC12C7EE0 /* Manager.swift */; };
+		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F6ED3C422E474F8E5C1E3A91EA9A70 /* Upload.swift */; };
+		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40971C011E22EAFCDB8A9D6D02086541 /* Download.swift */; };
+		5FA728E0FDA9DF9C59E596E57810C249 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 392AE0E8A36D385C10787F01C290EF96 /* Info.plist */; };
+		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327BB7CBB68C2823D9BD8857BA36AF56 /* Response.swift */; };
+		6D9A0EC642751A93C3C298F06F8C92AB /* SlideMenuControllerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F3BF0217DBA230B6335F43D221B721E /* SlideMenuControllerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79B0708C04F397D94E2599C9AEBAA48A /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56524B02277512D333DA2C1820669AD9 /* SlideMenuController.swift */; };
+		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A311460B90ACDFE1094B3095D61F4 /* ServerTrustPolicy.swift */; };
+		8E24C5E8687B680D9C26104CE59E6B97 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 90DA744E71BA87E6D3BDD0FC9CCFE344 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9F765C7EC9FBC723CE9874070CECD4 /* Alamofire.swift */; };
 		91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */; };
-		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */; };
-		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */; };
-		BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */; };
-		C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */; };
-		C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */; };
-		EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */; };
+		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF3F8AE14946ECB235DFBA0703CC461 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D7DF9A9C4D0E4296F32BFFA93F54F48 /* SlideMenuControllerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D071850127C5FBB8A7216DAA4BE769 /* SlideMenuControllerSwift-dummy.m */; };
+		AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513634EFBE98AEBEAAC0A31A04C0EBF1 /* Result.swift */; };
+		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A8C038F3CDB6885F62640B78C3F8E3 /* Alamofire-dummy.m */; };
+		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39D1F851C464E64234EC35C8053074 /* Stream.swift */; };
+		BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E163B35CD35E28F0DA1A11FF0147C4 /* Notifications.swift */; };
+		C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AC9AF025D7859AB36FDD4D636F241A /* ParameterEncoding.swift */; };
+		C4A343D33AB5FA069A8ED74C7DCD35CB /* Pods-Light Power Meter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E0D273048522A1B9EDE68D85B2775B /* Pods-Light Power Meter-dummy.m */; };
+		C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494AD8D1E979C87D2D158886D0B59779 /* MultipartFormData.swift */; };
+		E9F397D7328570EA061A4BE61F4FEC34 /* Pods-Light Power Meter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0B9B62D7B664BE6E47C7F6FEC2D396 /* Pods-Light Power Meter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD137F2B956441BFE561772B8504557E /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		57E9462F1B04046519D3F6C52D995FBD /* PBXContainerItemProxy */ = {
+		69AFEC3774E3BE8B4281CD97CF9E23CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
 			remoteInfo = Alamofire;
 		};
+		B23E78B11AA1360D35BD80A3DDA9842A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A6951452A7BF320EA14CE83FDA51AD3;
+			remoteInfo = SlideMenuControllerSwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
-		0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		0DF3F8AE14946ECB235DFBA0703CC461 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		0F0B9B62D7B664BE6E47C7F6FEC2D396 /* Pods-Light Power Meter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Light Power Meter-umbrella.h"; sourceTree = "<group>"; };
-		101C763FD5409006D69EDB82815E4A61 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
 		1932E4FDA8A4B449F439E3FB594D2DFF /* Pods-Light Power Meter-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Light Power Meter-acknowledgements.plist"; sourceTree = "<group>"; };
-		1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		1F3BF0217DBA230B6335F43D221B721E /* SlideMenuControllerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SlideMenuControllerSwift-umbrella.h"; sourceTree = "<group>"; };
+		211B5B90F5F8348BFE44AFECAF814710 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E20CCB7B07A3C76C8F40FABB8286AD /* Pods-Light Power Meter-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Light Power Meter-resources.sh"; sourceTree = "<group>"; };
-		2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		29FF7E9BFCEC1D5E75649DD711964B4A /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		327BB7CBB68C2823D9BD8857BA36AF56 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		391D4F3D59C5D99E9C103A8C25E7BCE2 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		392AE0E8A36D385C10787F01C290EF96 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
+		40971C011E22EAFCDB8A9D6D02086541 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
+		41E8500AB953039ED480046025BE098F /* Pods_Light_Power_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Light_Power_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E47440F91DA0778FD83059598762FB /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		494AD8D1E979C87D2D158886D0B59779 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		4B36A11457864D563228AAC1FD66BDFD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
-		5175E677ADC3F810A4FB10B104C4332B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		5C5763A83A1E028B6C4A073221CB764F /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		4B9F765C7EC9FBC723CE9874070CECD4 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		513634EFBE98AEBEAAC0A31A04C0EBF1 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		55D071850127C5FBB8A7216DAA4BE769 /* SlideMenuControllerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SlideMenuControllerSwift-dummy.m"; sourceTree = "<group>"; };
+		56524B02277512D333DA2C1820669AD9 /* SlideMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
+		56E163B35CD35E28F0DA1A11FF0147C4 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		659A07B89A5B0876E5C41A2A875090CB /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		701B9EE1F27B9782B774C4B28843F626 /* Pods-Light Power Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Light Power Meter.debug.xcconfig"; sourceTree = "<group>"; };
-		798FCFAFFB25BA6CD2286CE8ED790806 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		77AA3FFAE2FE1A3C02A4C3225BEC5EB5 /* SlideMenuControllerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SlideMenuControllerSwift.xcconfig; sourceTree = "<group>"; };
+		7813580BC7F130D68DBA774231E7CB11 /* SlideMenuControllerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SlideMenuControllerSwift.modulemap; sourceTree = "<group>"; };
+		7B02B192DDAC7091D901714B729C6EEC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85F6ED3C422E474F8E5C1E3A91EA9A70 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
 		880968FD07D5D4E4AD7536F7EB5E31D7 /* Pods-Light Power Meter-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Light Power Meter-frameworks.sh"; sourceTree = "<group>"; };
 		8893951518CE2F4BA923D7C7485C6A5B /* Pods-Light Power Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Light Power Meter.release.xcconfig"; sourceTree = "<group>"; };
-		8FFF564423DBE209836D47626963E9D4 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		897E37D1A2B35799C5EE88804A121FD9 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		90DA744E71BA87E6D3BDD0FC9CCFE344 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
+		918A311460B90ACDFE1094B3095D61F4 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		93A960F61396D6114603A1AA417E768D /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		B5A8C038F3CDB6885F62640B78C3F8E3 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		BB06E3EB3A529421EB7D02E7599D544F /* Pods-Light Power Meter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Light Power Meter.modulemap"; sourceTree = "<group>"; };
+		BB39D1F851C464E64234EC35C8053074 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
+		BD137F2B956441BFE561772B8504557E /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D0E1D3F5D568334533FAF0367F823A75 /* Pods-Light Power Meter-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Light Power Meter-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		EE1346E0C82A6F1FC22240EA989B7698 /* Pods_Light_Power_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Light_Power_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD5D38D46EB191B837F4B8F426CC1EA1 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		E0AC9AF025D7859AB36FDD4D636F241A /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		E1A913F645370D37039CCD5AC12C7EE0 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
+		E69F533B017D54DE7D7630EEAA4C93F1 /* SlideMenuControllerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SlideMenuControllerSwift-prefix.pch"; sourceTree = "<group>"; };
 		F1E0D273048522A1B9EDE68D85B2775B /* Pods-Light Power Meter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Light Power Meter-dummy.m"; sourceTree = "<group>"; };
-		F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
-		F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		F3492208D0B31B63C1AE0288C1E7CCA6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C535723CA971236E540CF8108F74F0 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		FA1B8F5DEBA8E540D6BB489FCDEE69E0 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		49C2657E6D1B6BBD62EA5593298B3BC8 /* Frameworks */ = {
+		008360B9FE6302C066F9E2BE36479CF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34F90CC298D56ED941FA618FDAC7146F /* Foundation.framework in Frameworks */,
+				1F0495B0E06C261EF09858769B299A7A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3498B001701DBAE96EFD287621DB6A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				271590086F2FC7F46A48B89AADA668A9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +133,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11B97E815377D61DE0C859001E964652 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D762F3221B1B90172CFFEE5345936AC /* Alamofire */,
+				DAC2893926D05244562A1EC8C64F8041 /* SlideMenuControllerSwift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3101FC73DA4A75D039943F0E7E5D9865 /* Pods-Light Power Meter */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,20 +160,26 @@
 			path = "Target Support Files/Pods-Light Power Meter";
 			sourceTree = "<group>";
 		};
-		35F128EB69B6F7FB7DA93BBF6C130FAE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6E519FC8760483F5D136181B2EBCBDEB /* Alamofire */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		4F55DD7DDF5161B06BC7DEEA4190628D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B02B192DDAC7091D901714B729C6EEC /* Info.plist */,
+				7813580BC7F130D68DBA774231E7CB11 /* SlideMenuControllerSwift.modulemap */,
+				77AA3FFAE2FE1A3C02A4C3225BEC5EB5 /* SlideMenuControllerSwift.xcconfig */,
+				55D071850127C5FBB8A7216DAA4BE769 /* SlideMenuControllerSwift-dummy.m */,
+				E69F533B017D54DE7D7630EEAA4C93F1 /* SlideMenuControllerSwift-prefix.pch */,
+				1F3BF0217DBA230B6335F43D221B721E /* SlideMenuControllerSwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SlideMenuControllerSwift";
 			sourceTree = "<group>";
 		};
 		5D3F9C1BC88C9D846A75C943B5F83B44 /* Targets Support Files */ = {
@@ -144,63 +190,50 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		68F6D4CBC8B6CDE1D634D9F379F37168 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5C5763A83A1E028B6C4A073221CB764F /* Alamofire.modulemap */,
-				A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */,
-				9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */,
-				8FFF564423DBE209836D47626963E9D4 /* Alamofire-prefix.pch */,
-				AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */,
-				5175E677ADC3F810A4FB10B104C4332B /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
-		6E519FC8760483F5D136181B2EBCBDEB /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */,
-				50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */,
-				6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */,
-				101C763FD5409006D69EDB82815E4A61 /* Manager.swift */,
-				5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */,
-				F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */,
-				79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */,
-				AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */,
-				1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */,
-				DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */,
-				2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */,
-				4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */,
-				4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */,
-				F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */,
-				0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */,
-				09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */,
-				658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */,
-				68F6D4CBC8B6CDE1D634D9F379F37168 /* Support Files */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
-		724E46C0B7E617F8548EE5A689D5C1BF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				798FCFAFFB25BA6CD2286CE8ED790806 /* Alamofire.framework */,
-				EE1346E0C82A6F1FC22240EA989B7698 /* Pods_Light_Power_Meter.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				35F128EB69B6F7FB7DA93BBF6C130FAE /* Pods */,
-				724E46C0B7E617F8548EE5A689D5C1BF /* Products */,
+				11B97E815377D61DE0C859001E964652 /* Pods */,
+				B99DB34E928B1062C250A4852D9A505C /* Products */,
 				5D3F9C1BC88C9D846A75C943B5F83B44 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8D762F3221B1B90172CFFEE5345936AC /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				4B9F765C7EC9FBC723CE9874070CECD4 /* Alamofire.swift */,
+				40971C011E22EAFCDB8A9D6D02086541 /* Download.swift */,
+				DD5D38D46EB191B837F4B8F426CC1EA1 /* Error.swift */,
+				E1A913F645370D37039CCD5AC12C7EE0 /* Manager.swift */,
+				494AD8D1E979C87D2D158886D0B59779 /* MultipartFormData.swift */,
+				F9C535723CA971236E540CF8108F74F0 /* NetworkReachabilityManager.swift */,
+				56E163B35CD35E28F0DA1A11FF0147C4 /* Notifications.swift */,
+				E0AC9AF025D7859AB36FDD4D636F241A /* ParameterEncoding.swift */,
+				BD137F2B956441BFE561772B8504557E /* Request.swift */,
+				327BB7CBB68C2823D9BD8857BA36AF56 /* Response.swift */,
+				FA1B8F5DEBA8E540D6BB489FCDEE69E0 /* ResponseSerialization.swift */,
+				513634EFBE98AEBEAAC0A31A04C0EBF1 /* Result.swift */,
+				918A311460B90ACDFE1094B3095D61F4 /* ServerTrustPolicy.swift */,
+				BB39D1F851C464E64234EC35C8053074 /* Stream.swift */,
+				48E47440F91DA0778FD83059598762FB /* Timeline.swift */,
+				85F6ED3C422E474F8E5C1E3A91EA9A70 /* Upload.swift */,
+				659A07B89A5B0876E5C41A2A875090CB /* Validation.swift */,
+				F88B500C91277035EC6D2A4665FEEF7A /* Support Files */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		B99DB34E928B1062C250A4852D9A505C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3492208D0B31B63C1AE0288C1E7CCA6 /* Alamofire.framework */,
+				41E8500AB953039ED480046025BE098F /* Pods_Light_Power_Meter.framework */,
+				29FF7E9BFCEC1D5E75649DD711964B4A /* SlideMenuControllerSwift.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -211,14 +244,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DAC2893926D05244562A1EC8C64F8041 /* SlideMenuControllerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				392AE0E8A36D385C10787F01C290EF96 /* Info.plist */,
+				56524B02277512D333DA2C1820669AD9 /* SlideMenuController.swift */,
+				90DA744E71BA87E6D3BDD0FC9CCFE344 /* SlideMenuControllerSwift.h */,
+				4F55DD7DDF5161B06BC7DEEA4190628D /* Support Files */,
+			);
+			path = SlideMenuControllerSwift;
+			sourceTree = "<group>";
+		};
+		F88B500C91277035EC6D2A4665FEEF7A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				93A960F61396D6114603A1AA417E768D /* Alamofire.modulemap */,
+				897E37D1A2B35799C5EE88804A121FD9 /* Alamofire.xcconfig */,
+				B5A8C038F3CDB6885F62640B78C3F8E3 /* Alamofire-dummy.m */,
+				391D4F3D59C5D99E9C103A8C25E7BCE2 /* Alamofire-prefix.pch */,
+				0DF3F8AE14946ECB235DFBA0703CC461 /* Alamofire-umbrella.h */,
+				211B5B90F5F8348BFE44AFECAF814710 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		774B9017F0768C4D1D80550AD04B0FF4 /* Headers */ = {
+		2BFD273D4EDAC809C7E75C46CDB4EF7F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0940AC7FB2C6C0D99D7FACA6C921F462 /* Pods-Light Power Meter-umbrella.h in Headers */,
+				6D9A0EC642751A93C3C298F06F8C92AB /* SlideMenuControllerSwift-umbrella.h in Headers */,
+				8E24C5E8687B680D9C26104CE59E6B97 /* SlideMenuControllerSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAF9D56435ED584ADFA477D1BAA66EBE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9F397D7328570EA061A4BE61F4FEC34 /* Pods-Light Power Meter-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +300,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3A6951452A7BF320EA14CE83FDA51AD3 /* SlideMenuControllerSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BCF1EA871FF91F43BC1F32BDC8A96AE /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwift" */;
+			buildPhases = (
+				E5335D47C28921AF366568D36D1BB461 /* Sources */,
+				A3498B001701DBAE96EFD287621DB6A6 /* Frameworks */,
+				2BFD273D4EDAC809C7E75C46CDB4EF7F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SlideMenuControllerSwift;
+			productName = SlideMenuControllerSwift;
+			productReference = 29FF7E9BFCEC1D5E75649DD711964B4A /* SlideMenuControllerSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6DD3DD4C062BA30DA206E0CFCD40B5B4 /* Pods-Light Power Meter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C33F7EFC6052839A1C24CEAFFCC390C /* Build configuration list for PBXNativeTarget "Pods-Light Power Meter" */;
+			buildPhases = (
+				EE0CA92D940E8A3CC032B3F50869FEF9 /* Sources */,
+				008360B9FE6302C066F9E2BE36479CF9 /* Frameworks */,
+				CAF9D56435ED584ADFA477D1BAA66EBE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7BF6F64F0AE2FB59CF40E5515299B9A /* PBXTargetDependency */,
+				73A9BBEBE04836BDEBE7DD104378CF16 /* PBXTargetDependency */,
+			);
+			name = "Pods-Light Power Meter";
+			productName = "Pods-Light Power Meter";
+			productReference = 41E8500AB953039ED480046025BE098F /* Pods_Light_Power_Meter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */;
@@ -247,25 +350,7 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 798FCFAFFB25BA6CD2286CE8ED790806 /* Alamofire.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B1A5DEB53CE9D42AB707248BA3540456 /* Pods-Light Power Meter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32DC2749494F2894F43545DFBDB9C136 /* Build configuration list for PBXNativeTarget "Pods-Light Power Meter" */;
-			buildPhases = (
-				E4552468B54DE9710E82CB7FC16DA1AC /* Sources */,
-				49C2657E6D1B6BBD62EA5593298B3BC8 /* Frameworks */,
-				774B9017F0768C4D1D80550AD04B0FF4 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B418F66409CF0E2A9DB4AC5A26A1D025 /* PBXTargetDependency */,
-			);
-			name = "Pods-Light Power Meter";
-			productName = "Pods-Light Power Meter";
-			productReference = EE1346E0C82A6F1FC22240EA989B7698 /* Pods_Light_Power_Meter.framework */;
+			productReference = F3492208D0B31B63C1AE0288C1E7CCA6 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -285,12 +370,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 724E46C0B7E617F8548EE5A689D5C1BF /* Products */;
+			productRefGroup = B99DB34E928B1062C250A4852D9A505C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */,
-				B1A5DEB53CE9D42AB707248BA3540456 /* Pods-Light Power Meter */,
+				6DD3DD4C062BA30DA206E0CFCD40B5B4 /* Pods-Light Power Meter */,
+				3A6951452A7BF320EA14CE83FDA51AD3 /* SlideMenuControllerSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -321,22 +407,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4552468B54DE9710E82CB7FC16DA1AC /* Sources */ = {
+		E5335D47C28921AF366568D36D1BB461 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CEDE9B2E169EFCEE044AED106B183ED /* Pods-Light Power Meter-dummy.m in Sources */,
+				5FA728E0FDA9DF9C59E596E57810C249 /* Info.plist in Sources */,
+				79B0708C04F397D94E2599C9AEBAA48A /* SlideMenuController.swift in Sources */,
+				9D7DF9A9C4D0E4296F32BFFA93F54F48 /* SlideMenuControllerSwift-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0CA92D940E8A3CC032B3F50869FEF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4A343D33AB5FA069A8ED74C7DCD35CB /* Pods-Light Power Meter-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B418F66409CF0E2A9DB4AC5A26A1D025 /* PBXTargetDependency */ = {
+		73A9BBEBE04836BDEBE7DD104378CF16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SlideMenuControllerSwift;
+			target = 3A6951452A7BF320EA14CE83FDA51AD3 /* SlideMenuControllerSwift */;
+			targetProxy = B23E78B11AA1360D35BD80A3DDA9842A /* PBXContainerItemProxy */;
+		};
+		C7BF6F64F0AE2FB59CF40E5515299B9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = 57E9462F1B04046519D3F6C52D995FBD /* PBXContainerItemProxy */;
+			targetProxy = 69AFEC3774E3BE8B4281CD97CF9E23CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -383,7 +485,68 @@
 			};
 			name = Debug;
 		};
-		5AC1D3C15E0E16489D73A165A464DD74 /* Release */ = {
+		340B11F86E371FC38528DDD934153A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77AA3FFAE2FE1A3C02A4C3225BEC5EB5 /* SlideMenuControllerSwift.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SlideMenuControllerSwift/SlideMenuControllerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SlideMenuControllerSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SlideMenuControllerSwift/SlideMenuControllerSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SlideMenuControllerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AD39645FCC5461276C0D7C44DCDA5F3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77AA3FFAE2FE1A3C02A4C3225BEC5EB5 /* SlideMenuControllerSwift.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SlideMenuControllerSwift/SlideMenuControllerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SlideMenuControllerSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SlideMenuControllerSwift/SlideMenuControllerSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SlideMenuControllerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B9DF5C0990E774547B333C73029BEE2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8893951518CE2F4BA923D7C7485C6A5B /* Pods-Light Power Meter.release.xcconfig */;
 			buildSettings = {
@@ -417,44 +580,9 @@
 			};
 			name = Release;
 		};
-		AC70822D07FDA8A24C0EA4125E77777B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 701B9EE1F27B9782B774C4B28843F626 /* Pods-Light Power Meter.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Light Power Meter/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Light_Power_Meter;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		BB4A574A3A2CC1B31631653DEA21E77D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */;
+			baseConfigurationReference = 897E37D1A2B35799C5EE88804A121FD9 /* Alamofire.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -521,9 +649,44 @@
 			};
 			name = Release;
 		};
+		DEA442D217993D260A77FA5A168753DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 701B9EE1F27B9782B774C4B28843F626 /* Pods-Light Power Meter.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Light Power Meter/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Light_Power_Meter;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		DECFA5AF182C7272E41DD00A7E8A55AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */;
+			baseConfigurationReference = 897E37D1A2B35799C5EE88804A121FD9 /* Alamofire.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -563,20 +726,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32DC2749494F2894F43545DFBDB9C136 /* Build configuration list for PBXNativeTarget "Pods-Light Power Meter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AC70822D07FDA8A24C0EA4125E77777B /* Debug */,
-				5AC1D3C15E0E16489D73A165A464DD74 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB4A574A3A2CC1B31631653DEA21E77D /* Debug */,
 				DECFA5AF182C7272E41DD00A7E8A55AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C33F7EFC6052839A1C24CEAFFCC390C /* Build configuration list for PBXNativeTarget "Pods-Light Power Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEA442D217993D260A77FA5A168753DE /* Debug */,
+				B9DF5C0990E774547B333C73029BEE2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BCF1EA871FF91F43BC1F32BDC8A96AE /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				340B11F86E371FC38528DDD934153A29 /* Debug */,
+				AD39645FCC5461276C0D7C44DCDA5F3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
