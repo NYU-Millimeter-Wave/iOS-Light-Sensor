@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         testSDK.startUpSDK()
         
         // Init Light Control Manager
-        let lightControl = LightControlManager.sharedManager
+        //let lightControl = LightControlManager.sharedManager
         
         
         return true
