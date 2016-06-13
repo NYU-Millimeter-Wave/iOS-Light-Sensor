@@ -31,7 +31,6 @@ class LightControlViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.lightManager.resetAllLights()
     }
     
     // MARK: - View Handlers

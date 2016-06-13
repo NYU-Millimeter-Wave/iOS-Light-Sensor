@@ -79,9 +79,9 @@ class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     Starts the capture session and mounts the capture device
     
-    - Parameter currentView :   The UIView to display the camera preview
+    - Parameter currentView : The UIView to display the camera preview
     
-    - Returns: nil
+    - Returns: `nil`
     
     */
     func startSession(currentView: UIView) {
@@ -99,7 +99,7 @@ class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
                     self.captureSession.addOutput(self.stillImageOutput)
                     self.captureSession.addOutput(self.videoDataOutput)
                     
-                } else { print("Output(s) not added") }
+                } else { print("[ ERR ]Output(s) not added") }
                 
                 if self.captureSession.sessionPreset != AVCaptureSessionPresetPhoto {
                     try! self.captureDevice!.lockForConfiguration()
@@ -193,7 +193,7 @@ class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
      - Parameter sampleBuffer   :   CMSampleBuffer
      - Parameter connection     :   AVCaptureConnection
      
-     - Returns: nil
+     - Returns: `nil`
      
      */
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
@@ -212,7 +212,7 @@ class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     Starts the audio beacon that beeps relative to the detected power level
     
-    - Returns: nil
+    - Returns: `nil`
     
     */
     func startBeacon() {

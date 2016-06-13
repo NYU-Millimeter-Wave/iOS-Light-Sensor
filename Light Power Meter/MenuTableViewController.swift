@@ -37,7 +37,7 @@ class MenuTableViewController: UITableViewController {
         case 2:
             self.slideMenuController()?.changeMainViewController(self.lightsVC, close: true)
         default:
-            print("Unexpected error in menu")
+            print("[ ERR ] Unexpected error in SideMenuController")
         }
     }
     

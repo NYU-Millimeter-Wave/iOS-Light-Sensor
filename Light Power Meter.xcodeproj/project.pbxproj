@@ -302,6 +302,7 @@
 				TargetAttributes = {
 					49E038311D073A67007A4C56 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 626TEZTB77;
 					};
 					49E038451D073A67007A4C56 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -572,9 +573,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/**",
@@ -596,9 +597,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/**",

@@ -37,7 +37,7 @@ class LightControlManager: NSObject {
     
     private override init() {
         super.init()
-        print("Light Control Manager Init")
+        print("[ INF ] Light Control Manager Init")
     }
     
     // MARK: - Philips Hue Utility Methods
@@ -47,14 +47,14 @@ class LightControlManager: NSObject {
      Sends a POST request to the IP address with bridgeUser to turn
      on the light specified (light 1 - 3)
      
-     - Parameter lightNumber: The light to turn on or off
-     - Parameter lightOn: `true` turns the light on, and `false` turns it off
+     - Parameter lightNumber    : The light to turn on or off
+     - Parameter lightOn        : `true` turns the light on, and `false` turns it off
      
      - Returns: `nil`
      
      */
     func setLightOn(lightNumber: Int, lightOn: Bool) {
-        print("Setting light \(lightNumber) to \(lightOn)")
+        print("[ INF ]Setting light \(lightNumber) to \(lightOn)")
         
         let url: String = "http://\(bridgeIP)/api/\(bridgeUser)/lights/\(lightNumber)/state"
         Alamofire.request(.PUT, url, parameters: ["on": lightOn], encoding: .JSON)
@@ -63,14 +63,14 @@ class LightControlManager: NSObject {
     /**
      
      Sends a POT request to the IP address with brdigeUser to set the brightness of a ligth
-     - Parameter lightNumber: The light to change properties of
-     - Parameter brightness: Brightness of bulb value (0 - 255)
+     - Parameter lightNumber    : The light to change properties of
+     - Parameter brightness     : Brightness of bulb value (0 - 255)
      
      - Returns: `nil`
      
      */
     func setLightBrightness(lightNumber: Int, brightness: Int) {
-        print("Setting light \(lightNumber) to brightness \(brightness)")
+        print("[ INF ] Setting light \(lightNumber) to brightness \(brightness)")
         
         let url: String = "http://\(bridgeIP)/api/\(bridgeUser)/lights/\(lightNumber)/state"
         Alamofire.request(.PUT, url, parameters: ["bri":brightness], encoding: .JSON)
@@ -81,16 +81,16 @@ class LightControlManager: NSObject {
      Sends a POST request to the specified light to change its color or brightness.
      Also turns the light on if it's off.
      
-     - Parameter lightNumber: The light to change properties of
-     - Parameter saturation: Color saturation value (0 - 255)
-     - Parameter brightness: Brightness of bulb value (0 - 255)
-     - Parameter hue: Hue value of light (0 - 10000)
+     - Parameter lightNumber    : The light to change properties of
+     - Parameter saturation     : Color saturation value (0 - 255)
+     - Parameter brightness     : Brightness of bulb value (0 - 255)
+     - Parameter hue            : Hue value of light (0 - 10000)
      
      - Returns: `nil`
      
      */
     func setLight(lightNumber: Int, saturation: Int, brightness: Int, hue: Int) {
-        print("Setting light \(lightNumber) to -- sat: \(saturation) bri: \(brightness) hue: \(hue)")
+        print("[ INF ] Setting light \(lightNumber) to -- sat: \(saturation) bri: \(brightness) hue: \(hue)")
         
         let url: String = "http://\(bridgeIP)/api/\(bridgeUser)/lights/\(lightNumber)/state"
         Alamofire.request(.PUT, url, parameters: ["on": true, "sat": saturation, "bri": brightness, "hue": hue], encoding: .JSON)
