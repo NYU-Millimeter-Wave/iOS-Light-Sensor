@@ -12,6 +12,12 @@
 		491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C01D076E2100440DC3 /* CameraCapture.swift */; };
 		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
 		4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */; };
+		494114C81D0F3B7C0000E7EB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114C71D0F3B7C0000E7EB /* CoreMedia.framework */; };
+		494114CA1D0F3B820000E7EB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114C91D0F3B820000E7EB /* CoreVideo.framework */; };
+		494114CC1D0F3B880000E7EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114CB1D0F3B880000E7EB /* OpenGLES.framework */; };
+		494114CE1D0F3B900000E7EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114CD1D0F3B900000E7EB /* AVFoundation.framework */; };
+		494114D01D0F3B970000E7EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114CF1D0F3B970000E7EB /* QuartzCore.framework */; };
+		494114D21D0F3C840000E7EB /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114D11D0F3C840000E7EB /* GPUImage.framework */; };
 		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
 		4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
@@ -55,6 +61,12 @@
 		491468C01D076E2100440DC3 /* CameraCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
 		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		494114C71D0F3B7C0000E7EB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		494114C91D0F3B820000E7EB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		494114CB1D0F3B880000E7EB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		494114CD1D0F3B900000E7EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		494114CF1D0F3B970000E7EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		494114D11D0F3C840000E7EB /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Light_Power_Meter-afzhatkhcqvhzvcippmuzwwgrnuu/Build/Products/Debug-iphonesimulator/GPUImage/GPUImage.framework"; sourceTree = "<group>"; };
 		49454BEB1D09B24A002C8328 /* LightControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlManager.swift; sourceTree = "<group>"; };
 		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
@@ -89,6 +101,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494114D21D0F3C840000E7EB /* GPUImage.framework in Frameworks */,
+				494114D01D0F3B970000E7EB /* QuartzCore.framework in Frameworks */,
+				494114CE1D0F3B900000E7EB /* AVFoundation.framework in Frameworks */,
+				494114CC1D0F3B880000E7EB /* OpenGLES.framework in Frameworks */,
+				494114CA1D0F3B820000E7EB /* CoreVideo.framework in Frameworks */,
+				494114C81D0F3B7C0000E7EB /* CoreMedia.framework in Frameworks */,
 				4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */,
 				7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */,
 			);
@@ -217,6 +235,12 @@
 		4D0FE30D51509D9CF24A45B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				494114D11D0F3C840000E7EB /* GPUImage.framework */,
+				494114CF1D0F3B970000E7EB /* QuartzCore.framework */,
+				494114CD1D0F3B900000E7EB /* AVFoundation.framework */,
+				494114CB1D0F3B880000E7EB /* OpenGLES.framework */,
+				494114C91D0F3B820000E7EB /* CoreVideo.framework */,
+				494114C71D0F3B7C0000E7EB /* CoreMedia.framework */,
 				D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */,
 			);
 			name = Frameworks;

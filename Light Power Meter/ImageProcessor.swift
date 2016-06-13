@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import GPUImage
 
 class ImageProcessor: NSObject {
     
@@ -17,5 +18,16 @@ class ImageProcessor: NSObject {
     }
     
     func syncronizeTargetColor(targetColor: UIColor) {}
+    
+    func filterInputStream() {
+        let videoCamera     : GPUImageVideoCamera = GPUImageVideoCamera(
+            sessionPreset   : AVCaptureSessionPreset640x480,
+            cameraPosition  : AVCaptureDevicePosition.Back)
+        videoCamera.outputImageOrientation = UIInterfaceOrientation.Portrait
+        
+//        let customFilter: GPUImageFilter = GPUImageFilter(
+        
+        
+    }
     
 }
