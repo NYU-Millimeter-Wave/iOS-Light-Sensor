@@ -18,21 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Test Philips SDK
-//        let testSDK: PHHueSDK = PHHueSDK.init()
-//        testSDK.enableLogging(true)
-//        testSDK.startUpSDK()
-        
         // Slide Menu Controller Setup
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! CalibrationViewController
-        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("Menu") as! MenuViewController
-        let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController)
-//        slideMenuController.delegate = mainViewController
-        self.window?.rootViewController = mainViewController
+        
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("Calibration") as! CalibrationViewController
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("Menu") as! MenuTableViewController
+        
+        let navController = UINavigationController(rootViewController: mainViewController)
+        
+        let slideMenuController = SlideMenuController(mainViewController: navController, leftMenuViewController: leftViewController)
+        
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
+        
+        self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
-        
-        
         
         return true
     }

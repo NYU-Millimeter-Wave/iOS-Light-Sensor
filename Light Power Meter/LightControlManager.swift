@@ -28,6 +28,11 @@ class LightControlManager: NSObject {
     
     // MARK: - Color Constants
     
+    static let purple = 56100
+    static let yellow = 12750
+    static let red =    0
+    static let saturationConstant = 255
+    
     // MARK: - Initalizers
     
     private override init() {

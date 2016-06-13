@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490455BA1D0B0961003E289C /* LightControlViewController.swift */; };
-		490455BD1D0B2249003E289C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490455BC1D0B2249003E289C /* MenuViewController.swift */; };
 		491468C21D076E2100440DC3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 491468BF1D076E2100440DC3 /* beep.wav */; };
 		491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C01D076E2100440DC3 /* CameraCapture.swift */; };
 		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
+		4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */; };
 		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
 		4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
@@ -51,10 +51,10 @@
 
 /* Begin PBXFileReference section */
 		490455BA1D0B0961003E289C /* LightControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlViewController.swift; sourceTree = "<group>"; };
-		490455BC1D0B2249003E289C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		491468BF1D076E2100440DC3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		491468C01D076E2100440DC3 /* CameraCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
 		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		49454BEB1D09B24A002C8328 /* LightControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlManager.swift; sourceTree = "<group>"; };
 		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
@@ -120,6 +120,26 @@
 			path = "Light Power Meter";
 			sourceTree = "<group>";
 		};
+		4926FF871D0F1CE7007DC2E2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */,
+				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
+				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4926FF881D0F1CF7007DC2E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49454BEB1D09B24A002C8328 /* LightControlManager.swift */,
+				491468C01D076E2100440DC3 /* CameraCapture.swift */,
+				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		4986DB211D073C6A004F2893 /* HueSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,12 +186,8 @@
 			children = (
 				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
-				490455BC1D0B2249003E289C /* MenuViewController.swift */,
-				49454BEB1D09B24A002C8328 /* LightControlManager.swift */,
-				491468C01D076E2100440DC3 /* CameraCapture.swift */,
-				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
-				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
-				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
+				4926FF881D0F1CF7007DC2E2 /* Controllers */,
+				4926FF871D0F1CE7007DC2E2 /* View Controllers */,
 				49E038391D073A67007A4C56 /* Main.storyboard */,
 				49E0383C1D073A67007A4C56 /* Assets.xcassets */,
 				49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */,
@@ -401,8 +417,8 @@
 			files = (
 				4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */,
 				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
+				4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
-				490455BD1D0B2249003E289C /* MenuViewController.swift in Sources */,
 				4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */,
 				4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 class LightControlViewController: UIViewController {
 
@@ -21,10 +22,10 @@ class LightControlViewController: UIViewController {
     
     let lightManager = LightControlManager.sharedManager
     
-    let purple = 56100
-    let yellow = 12750
-    let red =    0
-    let saturationConstant = 255
+    let purple = LightControlManager.purple
+    let yellow = LightControlManager.yellow
+    let red =    LightControlManager.red
+    let saturationConstant = LightControlManager.saturationConstant
     
     // MARK: - Initalizers
     
@@ -37,15 +38,18 @@ class LightControlViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Navigation Bar
+        let navBar = self.navigationController?.navigationBar
+        navBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navBar?.shadowImage = UIImage()
+        navBar?.backgroundColor = UIColor.clearColor()
+        navBar?.translucent = true
+        
         // Set all lights to default position
         for i in 1...3 {
             lightManager.setLightOn(i, lightOn: false)
             //lightManager.setLight(i, saturation: saturationConstant, brightness: 100, hue: 10000)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     // MARK: - Event Handlers
@@ -88,15 +92,7 @@ class LightControlViewController: UIViewController {
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func menuPressed(sender: AnyObject) {
+        self.slideMenuController()?.openLeft()
     }
-    */
-
 }

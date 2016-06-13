@@ -10,20 +10,27 @@ import UIKit
 import AVFoundation
 import SlideMenuControllerSwift
 
-class CalibrationViewController: SlideMenuController {
+class CalibrationViewController: UIViewController {
 
     @IBOutlet weak var preview: UIView!
     @IBOutlet weak var colorView: UIView!
     
     let cc = CameraCapture()
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cc.startSession(preview)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
+        
+        // Navigation Bar
+        let navBar = self.navigationController?.navigationBar
+        navBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navBar?.shadowImage = UIImage()
+        navBar?.backgroundColor = UIColor.clearColor()
+        navBar?.translucent = true
         
         // Preview Layer
         preview.layer.cornerRadius = (self.preview.frame.size.width / 2)
@@ -33,15 +40,20 @@ class CalibrationViewController: SlideMenuController {
         
         // Reticle
         self.view.addSubview(cc.generateReticle(self.view, preview: preview))
+        
     }
     
-//    override func awakeFromNib() {
-//        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Main") {
-//            self.mainViewController = controller
-//        }
-//        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Menu") {
-//            self.leftViewController = controller
-//        }
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(true)
+//        
+//        // Preview Layer
+//        preview.layer.cornerRadius = (self.preview.frame.size.width / 2)
+//        preview.layer.masksToBounds = false
+//        preview.clipsToBounds = true
+//        preview.backgroundColor = UIColor.darkGrayColor()
+//        
+//        // Reticle
+//        self.view.addSubview(cc.generateReticle(self.view, preview: preview))
 //    }
 
     override func didReceiveMemoryWarning() {
