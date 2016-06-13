@@ -31,6 +31,7 @@ class LightControlViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.lightManager.resetAllLights()
     }
     
     // MARK: - View Handlers
@@ -44,18 +45,13 @@ class LightControlViewController: UIViewController {
         navBar?.shadowImage = UIImage()
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
-        
-        // Set all lights to default position
-        for i in 1...3 {
-            lightManager.setLightOn(i, lightOn: false)
-            //lightManager.setLight(i, saturation: saturationConstant, brightness: 100, hue: 10000)
-        }
     }
     
     // MARK: - Event Handlers
     
     @IBAction func switchFlipped(sender: AnyObject) {
         self.lightManager.setLightOn((sender.tag + 1), lightOn: (switches[sender.tag].on))
+        self.sliders[sender.tag].enabled = switches[sender.tag].on
     }
     
     @IBAction func sliderDidChangeValue(sender: AnyObject) {
