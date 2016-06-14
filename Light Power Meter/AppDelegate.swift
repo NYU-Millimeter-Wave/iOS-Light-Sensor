@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         
-        self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
+//        self.window?.rootViewController = slideMenuController
+//        self.window?.makeKeyAndVisible()
         
         return true
     }

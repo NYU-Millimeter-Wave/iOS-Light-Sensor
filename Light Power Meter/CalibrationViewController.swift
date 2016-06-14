@@ -42,19 +42,6 @@ class CalibrationViewController: UIViewController {
         self.view.addSubview(cc.generateReticle(self.view, preview: preview))
         
     }
-    
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(true)
-//        
-//        // Preview Layer
-//        preview.layer.cornerRadius = (self.preview.frame.size.width / 2)
-//        preview.layer.masksToBounds = false
-//        preview.clipsToBounds = true
-//        preview.backgroundColor = UIColor.darkGrayColor()
-//        
-//        // Reticle
-//        self.view.addSubview(cc.generateReticle(self.view, preview: preview))
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

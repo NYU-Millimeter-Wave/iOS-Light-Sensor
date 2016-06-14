@@ -35,6 +35,7 @@
 		49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */; };
 		49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */; };
 		49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */; };
+		49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */; };
 		7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterUITests.swift; sourceTree = "<group>"; };
 		49E038571D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDetectionViewController.swift; sourceTree = "<group>"; };
 		5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.release.xcconfig"; sourceTree = "<group>"; };
 		D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Light_Power_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */,
 				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
 				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
+				49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
 				4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */,
 				4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */,
+				49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
 				4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */,
 				4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */,
