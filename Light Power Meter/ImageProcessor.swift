@@ -12,31 +12,39 @@ import GPUImage
 
 class ImageProcessor: NSObject {
     
-    var detectionFilter: GPUImageSobelEdgeDetectionFilter!
+    // MARK: - Singleton Declaration
+    static let sharedProcessor = ImageProcessor()
     
-    override init() {
+    // MARK: - Class Properties
+    
+    var targetColor: UIColor?
+    private var targetColorVector : GPUVector3?
+    
+    // MARK: - Processing Filters
+    
+    var videoCamera:            GPUImageVideoCamera?
+    var filterLume:             GPUImageLuminanceThresholdFilter?
+    var filterDetect:           GPUImageSobelEdgeDetectionFilter?
+    var filterClosing:          GPUImageRGBClosingFilter?
+    var filterColorThreshhold:  GPUImageFilter?
+    var filterColorPosition:    GPUImageFilter?
+    
+    // MARK: - Initalizers
+    
+    private override init() {
         super.init()
         
     }
     
-    func syncronizeTargetColor(targetColor: UIColor) {}
+    // MARK: - Filter Processing Methods
     
-    func filterInputStream(frame: CGRect, preview: UIView) {
-        let videoCamera     : GPUImageVideoCamera = GPUImageVideoCamera(
-            sessionPreset   : AVCaptureSessionPreset640x480,
-            cameraPosition  : AVCaptureDevicePosition.Back)
-        videoCamera.outputImageOrientation = UIInterfaceOrientation.Portrait
-        
-        detectionFilter = GPUImageSobelEdgeDetectionFilter()
-        
-        videoCamera.addTarget(detectionFilter)
-        detectionFilter.addTarget(preview as! GPUImageView)
-        videoCamera.startCameraCapture()
+    func syncronizeTargetColor(targetColor: UIColor) {
     }
     
-    func tuneFilter(texelW: CGFloat?, texelH: CGFloat?, edge: CGFloat?) {
-        if let texelW = texelW { detectionFilter.texelWidth = texelW }
-        if let texelH = texelH { detectionFilter.texelHeight = texelH }
-        if let edge = edge { detectionFilter.edgeStrength = edge }
+    func filterInputStream(preview: UIView) {
+    }
+    
+    func tuneFilter(closingPixelRadius: UInt?, colorSensitivity: Float?, lumeThreshold: Float?, edgeTolerance: Float?) {
+        
     }
 }

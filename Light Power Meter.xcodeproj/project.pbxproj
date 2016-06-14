@@ -19,15 +19,7 @@
 		494114D01D0F3B970000E7EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114CF1D0F3B970000E7EB /* QuartzCore.framework */; };
 		494114D21D0F3C840000E7EB /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114D11D0F3C840000E7EB /* GPUImage.framework */; };
 		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
-		4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
-		4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */; };
-		4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB291D075D87004F2893 /* DDASLLogger.m */; };
-		4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB2A1D075D87004F2893 /* DDFileLogger.m */; };
-		4986DB301D075D87004F2893 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB2B1D075D87004F2893 /* DDLog.m */; };
-		4986DB311D075D87004F2893 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB2C1D075D87004F2893 /* DDTTYLogger.m */; };
-		4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */; };
-		4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
 		49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* CalibrationViewController.swift */; };
 		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
@@ -36,6 +28,9 @@
 		49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */; };
 		49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */; };
 		49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */; };
+		49F9BA751D108E05001AD84A /* PositionColor.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA731D108E05001AD84A /* PositionColor.fsh */; };
+		49F9BA761D108E05001AD84A /* Threshold.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA741D108E05001AD84A /* Threshold.fsh */; };
+		49F9BA791D109733001AD84A /* FIlterTuningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA781D109733001AD84A /* FIlterTuningViewController.swift */; };
 		7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +88,9 @@
 		49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterUITests.swift; sourceTree = "<group>"; };
 		49E038571D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDetectionViewController.swift; sourceTree = "<group>"; };
+		49F9BA731D108E05001AD84A /* PositionColor.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PositionColor.fsh; sourceTree = "<group>"; };
+		49F9BA741D108E05001AD84A /* Threshold.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Threshold.fsh; sourceTree = "<group>"; };
+		49F9BA781D109733001AD84A /* FIlterTuningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIlterTuningViewController.swift; sourceTree = "<group>"; };
 		5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.release.xcconfig"; sourceTree = "<group>"; };
 		D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Light_Power_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +107,6 @@
 				494114CC1D0F3B880000E7EB /* OpenGLES.framework in Frameworks */,
 				494114CA1D0F3B820000E7EB /* CoreVideo.framework in Frameworks */,
 				494114C81D0F3B7C0000E7EB /* CoreMedia.framework in Frameworks */,
-				4986DB1E1D073C51004F2893 /* HueSDK_iOS.framework in Frameworks */,
 				7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +131,7 @@
 		491468C51D076E4E00440DC3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49F9BA771D108E19001AD84A /* Shaders */,
 				491468BF1D076E2100440DC3 /* beep.wav */,
 			);
 			name = Resources;
@@ -147,6 +145,7 @@
 				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
 				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
 				49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */,
+				49F9BA781D109733001AD84A /* FIlterTuningViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -233,6 +232,15 @@
 				49E038571D073A67007A4C56 /* Info.plist */,
 			);
 			path = "Light Power MeterUITests";
+			sourceTree = "<group>";
+		};
+		49F9BA771D108E19001AD84A /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				49F9BA731D108E05001AD84A /* PositionColor.fsh */,
+				49F9BA741D108E05001AD84A /* Threshold.fsh */,
+			);
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 		4D0FE30D51509D9CF24A45B4 /* Frameworks */ = {
@@ -368,6 +376,8 @@
 			files = (
 				491468C21D076E2100440DC3 /* beep.wav in Resources */,
 				49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */,
+				49F9BA761D108E05001AD84A /* Threshold.fsh in Resources */,
+				49F9BA751D108E05001AD84A /* PositionColor.fsh in Resources */,
 				49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */,
 				4986DB201D073C63004F2893 /* Lumberjack in Resources */,
 				49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */,
@@ -443,19 +453,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4986DB341D075DAD004F2893 /* ContextFilterLogFormatter.m in Sources */,
 				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
 				4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
-				4986DB351D075DAD004F2893 /* DispatchQueueLogFormatter.m in Sources */,
-				4986DB2D1D075D87004F2893 /* DDAbstractDatabaseLogger.m in Sources */,
 				49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
-				4986DB2E1D075D87004F2893 /* DDASLLogger.m in Sources */,
-				4986DB2F1D075D87004F2893 /* DDFileLogger.m in Sources */,
-				4986DB301D075D87004F2893 /* DDLog.m in Sources */,
+				49F9BA791D109733001AD84A /* FIlterTuningViewController.swift in Sources */,
 				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
-				4986DB311D075D87004F2893 /* DDTTYLogger.m in Sources */,
 				49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
 			);

@@ -14,52 +14,69 @@ class TestDetectionViewController: UIViewController {
     @IBOutlet weak var preview: UIView?
     @IBOutlet var sliders: [UISlider]!
     
-    var imageProcessor: ImageProcessor?
-    
-    var videoCamera:  GPUImageVideoCamera?
-    var filterLume:   GPUImageLuminanceThresholdFilter?
-    var filterDetect: GPUImageSobelEdgeDetectionFilter?
+    var videoCamera:            GPUImageVideoCamera?
+    var filterLume:             GPUImageLuminanceThresholdFilter?
+    var filterDetect:           GPUImageSobelEdgeDetectionFilter?
+    var filterClosing:          GPUImageRGBClosingFilter?
+    var filterColorThreshhold:  GPUImageFilter?
+    var filterColorPosition:    GPUImageFilter?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        imageProcessor = ImageProcessor()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let proc = imageProcessor {
-//            proc.filterInputStream(preview.frame, preview: preview)
-//        }
-        
+        // Invoke Video Camera
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
         videoCamera!.outputImageOrientation = .Portrait;
         
+        // Setup closing filter
+        filterClosing = GPUImageRGBClosingFilter()
+        
+        // Setup selective color filter
+        var thresholdSensitivity: GLfloat = 0.5
+        var thresholdColor: GPUVector3!
+        
+        filterColorThreshhold = GPUImageFilter(fragmentShaderFromFile: "Threshold")
+        filterColorThreshhold?.setFloat(thresholdSensitivity, forUniformName: "threshold")
+        filterColorThreshhold?.setFloatVec3(thresholdColor, forUniformName: "inputColor")
+        
+        filterColorPosition = GPUImageFilter(fragmentShaderFromFile: "PositionColor")
+        filterColorPosition?.setFloat(thresholdSensitivity, forUniformName: "threshold")
+        filterColorPosition?.setFloatVec3(thresholdColor, forUniformName: "inputColor")
+        
+        // Setup lume filtering
         filterLume = GPUImageLuminanceThresholdFilter()
         filterLume?.threshold = 0.99
         
+        // Setup edge detection
         filterDetect = GPUImageSobelEdgeDetectionFilter()
-//        filterDetect?.texelHeight = 0.005
-//        filterDetect?.texelWidth = 0.005
         
-        videoCamera?.addTarget(filterLume)
+        // Link filters
+        videoCamera?.addTarget(filterClosing)
+        filterClosing?.addTarget(filterLume)
         filterLume?.addTarget(filterDetect)
         filterDetect?.addTarget(self.preview as! GPUImageView)
-//        videoCamera?.addTarget(filterDetect)
-//        filterDetect?.addTarget(self.preview as! GPUImageView)
+
+        // Filter testing
         
+//        videoCamera?.addTarget(testfilter)
+//        testfilter.addTarget(self.preview as! GPUImageView)
+        
+        // Begin video capture
         videoCamera?.startCameraCapture()
     }
     
     @IBAction func sliderChanged(sender: AnyObject) {
         switch sender.tag {
-        case 0:
-            filterLume?.threshold = CGFloat(self.sliders[0].value)
-            print(self.sliders[0].value)
+//        case 0:
+//            testfilter.erosion = CGFloat(self.sliders[0].value)
 //        case 1:
-//            filterDetect?.green = CGFloat(self.sliders[1].value)
+//            testfilter.green = CGFloat(self.sliders[1].value)
 //        case 2:
-//            filterDetect?.edgeStrength = CGFloat(self.sliders[2].value)
+//            testfilter = CGFloat(self.sliders[2].value)
         default:
             print("[ ERR ]")
         }
