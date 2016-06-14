@@ -36,8 +36,8 @@ class TestDetectionViewController: UIViewController {
         filterClosing = GPUImageRGBClosingFilter()
         
         // Setup selective color filter
-        var thresholdSensitivity: GLfloat = 0.5
-        var thresholdColor: GPUVector3!
+        let thresholdSensitivity: GLfloat = 0.1
+        let thresholdColor: GPUVector3 = GPUVector3(one: 1, two: 1, three: 1)
         
         filterColorThreshhold = GPUImageFilter(fragmentShaderFromFile: "Threshold")
         filterColorThreshhold?.setFloat(thresholdSensitivity, forUniformName: "threshold")
@@ -59,11 +59,6 @@ class TestDetectionViewController: UIViewController {
         filterClosing?.addTarget(filterLume)
         filterLume?.addTarget(filterDetect)
         filterDetect?.addTarget(self.preview as! GPUImageView)
-
-        // Filter testing
-        
-//        videoCamera?.addTarget(testfilter)
-//        testfilter.addTarget(self.preview as! GPUImageView)
         
         // Begin video capture
         videoCamera?.startCameraCapture()

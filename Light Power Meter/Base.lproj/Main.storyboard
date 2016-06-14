@@ -34,6 +34,58 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6bn-YF-4h5">
+                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bn-YF-4h5" id="rD3-ao-flJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ power meter ]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91S-68-4TM">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="117" id="VEV-Uz-Rl8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="VEV-Uz-Rl8"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="VEV-Uz-Rl8"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="91S-68-4TM" firstAttribute="leading" secondItem="rD3-ao-flJ" secondAttribute="leadingMargin" id="34s-PO-6lk"/>
+                                                <constraint firstItem="91S-68-4TM" firstAttribute="centerY" secondItem="rD3-ao-flJ" secondAttribute="centerY" id="5Tq-gG-Nyf"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="91S-68-4TM"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="34s-PO-6lk"/>
+                                                    <exclude reference="5Tq-gG-Nyf"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="91S-68-4TM"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="34s-PO-6lk"/>
+                                                    <include reference="5Tq-gG-Nyf"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.50690581369999999" green="0.50690581369999999" blue="0.50690581369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="g8u-hX-fuj">
                                         <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -145,7 +197,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ test edge detection ]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1m-Wd-H7h">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ filter tuning ]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1m-Wd-H7h">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="170" id="YU9-RR-dxX"/>
@@ -512,10 +564,10 @@
             </objects>
             <point key="canvasLocation" x="3325.5" y="373.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Filter Tuning View Controller-->
         <scene sceneID="7th-9Q-msb">
             <objects>
-                <viewController storyboardIdentifier="FilterTuning" id="iyw-Q7-8Me" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterTuning" id="iyw-Q7-8Me" customClass="FilterTuningViewController" customModule="Light_Power_Meter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YQ8-Dt-tnG"/>
                         <viewControllerLayoutGuide type="bottom" id="RAt-Nl-Pdg"/>
@@ -595,6 +647,9 @@
                                         <include reference="bgk-Eq-kEi"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="slilderChanged:" destination="iyw-Q7-8Me" eventType="valueChanged" id="cMO-fy-eki"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2u-Gg-cxh">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -641,7 +696,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.98999999999999999" minValue="0.90000000000000002" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IU6-Lt-3mL">
+                            <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.98999999999999999" minValue="0.90000000000000002" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IU6-Lt-3mL">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -657,6 +712,9 @@
                                         <include reference="PZc-Tb-qlt"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="slilderChanged:" destination="iyw-Q7-8Me" eventType="valueChanged" id="TE0-cm-LHw"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-cy-oEd">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -683,7 +741,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxn-Jh-B6X">
+                            <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxn-Jh-B6X">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -699,6 +757,9 @@
                                         <include reference="RoD-x7-RDj"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="slilderChanged:" destination="iyw-Q7-8Me" eventType="valueChanged" id="b3Z-aD-gd7"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuT-13-SLu">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -945,6 +1006,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="stepper" destination="Qlb-Hj-64K" id="MAr-CV-vYr"/>
+                        <outletCollection property="sliders" destination="zIU-zh-q4r" collectionClass="NSMutableArray" id="6Sf-Vf-de8"/>
+                        <outletCollection property="sliders" destination="IU6-Lt-3mL" collectionClass="NSMutableArray" id="Qjn-KV-GyI"/>
+                        <outletCollection property="sliders" destination="jxn-Jh-B6X" collectionClass="NSMutableArray" id="H2P-Ua-7BA"/>
+                        <outletCollection property="labels" destination="S2u-Gg-cxh" collectionClass="NSMutableArray" id="6yi-q6-4iu"/>
+                        <outletCollection property="labels" destination="U6z-qZ-myC" collectionClass="NSMutableArray" id="Jj6-y9-P7v"/>
+                        <outletCollection property="labels" destination="Hz0-cy-oEd" collectionClass="NSMutableArray" id="2dX-UL-WVf"/>
+                        <outletCollection property="labels" destination="xuT-13-SLu" collectionClass="NSMutableArray" id="2Zq-wa-msf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owo-Mu-DQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

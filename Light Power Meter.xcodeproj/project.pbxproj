@@ -30,7 +30,7 @@
 		49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */; };
 		49F9BA751D108E05001AD84A /* PositionColor.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA731D108E05001AD84A /* PositionColor.fsh */; };
 		49F9BA761D108E05001AD84A /* Threshold.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA741D108E05001AD84A /* Threshold.fsh */; };
-		49F9BA791D109733001AD84A /* FIlterTuningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA781D109733001AD84A /* FIlterTuningViewController.swift */; };
+		49F9BA7B1D10A31E001AD84A /* FilterTuningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */; };
 		7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 		49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDetectionViewController.swift; sourceTree = "<group>"; };
 		49F9BA731D108E05001AD84A /* PositionColor.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PositionColor.fsh; sourceTree = "<group>"; };
 		49F9BA741D108E05001AD84A /* Threshold.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Threshold.fsh; sourceTree = "<group>"; };
-		49F9BA781D109733001AD84A /* FIlterTuningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIlterTuningViewController.swift; sourceTree = "<group>"; };
+		49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTuningViewController.swift; sourceTree = "<group>"; };
 		5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.release.xcconfig"; sourceTree = "<group>"; };
 		D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Light_Power_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +145,7 @@
 				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
 				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
 				49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */,
-				49F9BA781D109733001AD84A /* FIlterTuningViewController.swift */,
+				49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -458,10 +458,10 @@
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
 				49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
-				49F9BA791D109733001AD84A /* FIlterTuningViewController.swift in Sources */,
 				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
 				49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
+				49F9BA7B1D10A31E001AD84A /* FilterTuningViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
