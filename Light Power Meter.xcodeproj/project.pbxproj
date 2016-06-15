@@ -20,6 +20,7 @@
 		494114D21D0F3C840000E7EB /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114D11D0F3C840000E7EB /* GPUImage.framework */; };
 		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
+		499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
 		49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* CalibrationViewController.swift */; };
 		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
@@ -27,7 +28,6 @@
 		49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */; };
 		49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */; };
 		49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */; };
-		49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */; };
 		49F9BA751D108E05001AD84A /* PositionColor.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA731D108E05001AD84A /* PositionColor.fsh */; };
 		49F9BA761D108E05001AD84A /* Threshold.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA741D108E05001AD84A /* Threshold.fsh */; };
 		49F9BA7B1D10A31E001AD84A /* FilterTuningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */; };
@@ -74,6 +74,7 @@
 		4986DB2C1D075D87004F2893 /* DDTTYLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
 		4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ContextFilterLogFormatter.m; path = Lumberjack/Extensions/ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerMeterViewController.swift; sourceTree = "<group>"; };
 		49E038321D073A67007A4C56 /* Light Power Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Power Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E038371D073A67007A4C56 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterUITests.swift; sourceTree = "<group>"; };
 		49E038571D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDetectionViewController.swift; sourceTree = "<group>"; };
 		49F9BA731D108E05001AD84A /* PositionColor.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PositionColor.fsh; sourceTree = "<group>"; };
 		49F9BA741D108E05001AD84A /* Threshold.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Threshold.fsh; sourceTree = "<group>"; };
 		49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTuningViewController.swift; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 				4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */,
 				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
 				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
-				49F9BA6D1D104986001AD84A /* TestDetectionViewController.swift */,
 				49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */,
+				499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -453,10 +453,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */,
 				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
 				4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
-				49F9BA6E1D104986001AD84A /* TestDetectionViewController.swift in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
 				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
 				49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */,

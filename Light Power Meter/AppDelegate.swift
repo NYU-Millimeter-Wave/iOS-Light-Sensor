@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Slide Menu Controller Setup
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("Calibration") as! CalibrationViewController
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("PowerMeter") as! PowerMeterViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("Menu") as! MenuTableViewController
         
         let navController = UINavigationController(rootViewController: mainViewController)
@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         
-//        self.window?.rootViewController = slideMenuController
-//        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
         
         return true
     }

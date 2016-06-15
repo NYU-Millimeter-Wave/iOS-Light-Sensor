@@ -17,19 +17,44 @@ class ImageProcessor: NSObject {
     
     // MARK: - Class Properties
     
-    var thresholdSensitivity: GLfloat?
-    var targetColorVector : GPUVector3?
-    var lumeThreshold: Float?
-    var edgeTolerance: Float?
+    var thresholdSensitivity: GLfloat? {
+        didSet { loadThresholdSensitivity() }
+    }
+    var targetColorVector : GPUVector3? {
+        didSet { loadTargetColorVector() }
+    }
+    var lumeThreshold: Float? {
+        didSet {
+            if let lume = lumeThreshold {
+                filterLume?.threshold = CGFloat(lume)
+            }
+        }
+    }
+    var edgeTolerance: Float? {
+        didSet {
+            if let edge = edgeTolerance {
+                filterDetect?.edgeStrength = CGFloat(edge)
+            }
+        }
+    }
+    var closingPixelRadius: UInt? {
+        didSet {
+            if let rad = closingPixelRadius {
+                filterClosing = GPUImageRGBClosingFilter(radius: rad)
+            }
+        }
+    }
+    
+    private var videoCameraReference: GPUImageVideoCamera?
     
     // MARK: - Processing Filters
     
-    var videoCamera:            GPUImageVideoCamera?
-    var filterLume:             GPUImageLuminanceThresholdFilter?
-    var filterDetect:           GPUImageSobelEdgeDetectionFilter?
-    var filterClosing:          GPUImageRGBClosingFilter?
-    var filterColorThreshold:  GPUImageFilter?
-    var filterColorPosition:    GPUImageFilter?
+    private var videoCamera:            GPUImageVideoCamera?
+    private var filterLume:             GPUImageLuminanceThresholdFilter?
+    private var filterDetect:           GPUImageSobelEdgeDetectionFilter?
+    private var filterClosing:          GPUImageRGBClosingFilter?
+    private var filterColorThreshold:   GPUImageFilter?
+    private var filterColorPosition:    GPUImageFilter?
     
     // MARK: - Initalizers
     
@@ -52,20 +77,9 @@ class ImageProcessor: NSObject {
         
         // Setup selective color filter
         filterColorThreshold = GPUImageFilter(fragmentShaderFromFile: "Threshold")
-        if let sen = thresholdSensitivity {
-            filterColorThreshold?.setFloat(sen, forUniformName: "threshold")
-        }
-        if let color = targetColorVector {
-            filterColorThreshold?.setFloatVec3(color, forUniformName: "inputColor")
-        }
-        
         filterColorPosition = GPUImageFilter(fragmentShaderFromFile: "PositionColor")
-        if let sen = thresholdSensitivity {
-            filterColorPosition?.setFloat(sen, forUniformName: "threshold")
-        }
-        if let color = targetColorVector {
-            filterColorPosition?.setFloatVec3(color, forUniformName: "inputColor")
-        }
+        loadThresholdSensitivity()
+        loadTargetColorVector()
         
         // Setup edge detection
         filterDetect = GPUImageSobelEdgeDetectionFilter()
@@ -86,8 +100,8 @@ class ImageProcessor: NSObject {
     func filterInputStream(preview: GPUImageView) {
         
         // Invoke Video Camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
-        videoCamera!.outputImageOrientation = .Portrait
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetHigh, cameraPosition: .Back)
+        videoCamera?.outputImageOrientation = .Portrait
         
         // Link filters
         videoCamera?.addTarget(filterClosing)
@@ -95,7 +109,59 @@ class ImageProcessor: NSObject {
         filterLume?.addTarget(filterDetect)
         filterDetect?.addTarget(preview)
         
+        self.videoCameraReference = videoCamera
+        
         // Begin video capture
         videoCamera?.startCameraCapture()
+    }
+    
+    /**
+     
+     Displays the unfiltered video view
+     
+    - Parameter preview: The view to display the unfiltered image stream
+     
+     - Returns: `nil`
+     
+     */
+    func displayRawInputStream(preview: GPUImageView) {
+        // Invoke Video Camera
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetHigh, cameraPosition: .Back)
+        videoCamera?.outputImageOrientation = .Portrait
+        
+        videoCamera?.addTarget(preview)
+        self.videoCameraReference = videoCamera
+        
+        // Begin video capture
+        videoCamera?.startCameraCapture()
+    }
+    
+    /**
+     
+     Stops capturing of video
+     
+     - Returns: `nil`
+     
+     */
+    func stopCapture() {
+        self.videoCameraReference?.stopCameraCapture()
+    }
+    
+    private func loadThresholdSensitivity() {
+        if let sen = thresholdSensitivity {
+            filterColorThreshold?.setFloat(sen, forUniformName: "threshold")
+        }
+        if let sen = thresholdSensitivity {
+            filterColorPosition?.setFloat(sen, forUniformName: "threshold")
+        }
+    }
+    
+    private func loadTargetColorVector() {
+        if let color = targetColorVector {
+            filterColorThreshold?.setFloatVec3(color, forUniformName: "inputColor")
+        }
+        if let color = targetColorVector {
+            filterColorPosition?.setFloatVec3(color, forUniformName: "inputColor")
+        }
     }
 }

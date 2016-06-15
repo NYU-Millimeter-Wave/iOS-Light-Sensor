@@ -54,7 +54,7 @@ class LightControlManager: NSObject {
      
      */
     func setLightOn(lightNumber: Int, lightOn: Bool) {
-        print("[ INF ]Setting light \(lightNumber) to \(lightOn)")
+        //print("[ INF ]Setting light \(lightNumber) to \(lightOn)")
         
         let url: String = "http://\(bridgeIP)/api/\(bridgeUser)/lights/\(lightNumber)/state"
         Alamofire.request(.PUT, url, parameters: ["on": lightOn], encoding: .JSON)
@@ -70,7 +70,7 @@ class LightControlManager: NSObject {
      
      */
     func setLightBrightness(lightNumber: Int, brightness: Int) {
-        print("[ INF ] Setting light \(lightNumber) to brightness \(brightness)")
+        //print("[ INF ] Setting light \(lightNumber) to brightness \(brightness)")
         
         let url: String = "http://\(bridgeIP)/api/\(bridgeUser)/lights/\(lightNumber)/state"
         Alamofire.request(.PUT, url, parameters: ["bri":brightness], encoding: .JSON)
@@ -90,7 +90,7 @@ class LightControlManager: NSObject {
      
      */
     func setLight(lightNumber: Int, saturation: Int, brightness: Int, hue: Int) {
-        print("[ INF ] Setting light \(lightNumber) to -- sat: \(saturation) bri: \(brightness) hue: \(hue)")
+        //print("[ INF ] Setting light \(lightNumber) to -- sat: \(saturation) bri: \(brightness) hue: \(hue)")
         
         let url: String = "http://\(bridgeIP)/api/\(bridgeUser)/lights/\(lightNumber)/state"
         Alamofire.request(.PUT, url, parameters: ["on": true, "sat": saturation, "bri": brightness, "hue": hue], encoding: .JSON)
