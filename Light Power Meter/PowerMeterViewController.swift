@@ -43,7 +43,9 @@ class PowerMeterViewController: UIViewController {
             label.layer.cornerRadius = 40
             label.layer.masksToBounds = true
         }
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         ip.filterInputStream(self.preview)
     }
     
