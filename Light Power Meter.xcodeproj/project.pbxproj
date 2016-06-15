@@ -75,7 +75,7 @@
 		4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ContextFilterLogFormatter.m; path = Lumberjack/Extensions/ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerMeterViewController.swift; sourceTree = "<group>"; };
-		49E038321D073A67007A4C56 /* Light Power Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Power Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E038321D073A67007A4C56 /* LPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E038371D073A67007A4C56 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
 		49E0383A1D073A67007A4C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		49E038331D073A67007A4C56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49E038321D073A67007A4C56 /* Light Power Meter.app */,
+				49E038321D073A67007A4C56 /* LPM.app */,
 				49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */,
 				49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */,
 			);
@@ -286,7 +286,7 @@
 			);
 			name = "Light Power Meter";
 			productName = "Light Power Meter";
-			productReference = 49E038321D073A67007A4C56 /* Light Power Meter.app */;
+			productReference = 49E038321D073A67007A4C56 /* LPM.app */;
 			productType = "com.apple.product-type.application";
 		};
 		49E038451D073A67007A4C56 /* Light Power MeterTests */ = {
@@ -618,7 +618,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-Meter";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LPM;
 				SWIFT_OBJC_BRIDGING_HEADER = "Light Power Meter/Light Power Meter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -642,7 +642,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-Meter";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LPM;
 				SWIFT_OBJC_BRIDGING_HEADER = "Light Power Meter/Light Power Meter-Bridging-Header.h";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
