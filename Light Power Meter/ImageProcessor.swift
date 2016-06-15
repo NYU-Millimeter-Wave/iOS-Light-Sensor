@@ -17,6 +17,14 @@ class ImageProcessor: NSObject {
     
     // MARK: - Class Properties
     
+    // Color Constants
+    
+    var red:    UIColor?
+    var yellow: UIColor?
+    var purple: UIColor?
+    
+    // Tuning Parameters
+    
     var thresholdSensitivity: GLfloat? {
         didSet { loadThresholdSensitivity() }
     }
@@ -45,7 +53,7 @@ class ImageProcessor: NSObject {
         }
     }
     
-    private var videoCameraReference: GPUImageVideoCamera?
+    var videoCameraReference: GPUImageVideoCamera?
     
     // MARK: - Processing Filters
     
@@ -60,6 +68,8 @@ class ImageProcessor: NSObject {
     
     private override init() {
         super.init()
+        
+        print("[ INF ] Image Processor Init")
         
         // Default Values
         thresholdSensitivity = 0.5
@@ -134,6 +144,9 @@ class ImageProcessor: NSObject {
         
         // Begin video capture
         videoCamera?.startCameraCapture()
+    }
+    
+    func getImageByteData() {
     }
     
     /**
