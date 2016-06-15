@@ -80,12 +80,12 @@
                                 <exclude reference="zeQ-Gr-i2Q"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="U18-bR-iqJ"/>
                                 <exclude reference="HDV-T9-1bp"/>
                                 <exclude reference="JFk-sR-7Lu"/>
                                 <exclude reference="Xa0-1O-wdF"/>
                                 <exclude reference="kEB-Kj-uLs"/>
                                 <exclude reference="hdp-r3-ise"/>
-                                <exclude reference="U18-bR-iqJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -94,12 +94,12 @@
                                 <include reference="zeQ-Gr-i2Q"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="U18-bR-iqJ"/>
                                 <include reference="HDV-T9-1bp"/>
                                 <include reference="JFk-sR-7Lu"/>
                                 <include reference="Xa0-1O-wdF"/>
                                 <include reference="kEB-Kj-uLs"/>
                                 <include reference="hdp-r3-ise"/>
-                                <include reference="U18-bR-iqJ"/>
                             </mask>
                         </variation>
                     </view>
