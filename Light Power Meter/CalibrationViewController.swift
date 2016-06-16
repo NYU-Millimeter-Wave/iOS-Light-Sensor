@@ -63,7 +63,8 @@ class CalibrationViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        let capturedColor: UIColor = self.ip.getColorFromPoint(CGPointMake(self.ip.pixelSize.width / 2, self.ip.pixelSize.height / 2))
+        let centerPoint = CGPointMake(self.ip.pixelSize.width / 2, self.ip.pixelSize.height / 2)
+        let capturedColor: UIColor = self.ip.getColorFromPoint(centerPoint)
         buttons[sender.tag].backgroundColor = capturedColor
         switch sender.tag {
         case 0:

@@ -148,7 +148,7 @@ class ImageProcessor: NSObject {
         // Setup raw output
         videoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: pixelSize, resultsInBGRAFormat: true)
         videoCamera?.addTarget(videoCameraRawDataOutput)
-        
+
         // Link filters
         videoCamera?.addTarget(filterClosing)
         filterClosing?.addTarget(filterColorThreshold)
