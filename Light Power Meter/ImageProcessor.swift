@@ -19,24 +19,38 @@ class ImageProcessor: NSObject {
     
     // Color Constants
     
+    /// Target color of red
     var red:    UIColor?
+    
+    /// Target color of yellow
     var yellow: UIColor?
+    
+    /// Target color of purple
     var purple: UIColor?
     
     // Pixel Size Constant
     
-    // This size is for AVCaptureSessionPresetHigh for the iPhone 6s(+)
-    // using the back-facing camera
+    /**
+     
+     The pixel size of AVCaptureSessionPresetHigh for the iPhone 6s(+)
+     using the back-facing camera
+     
+     */
     let pixelSize = CGSizeMake(1920.0, 1080.0)
     
     // Tuning Parameters
     
+    /// Sensitivity value for color detection
     var thresholdSensitivity: GLfloat? {
         didSet { loadThresholdSensitivity() }
     }
+    
+    /// Tarrget color vector for color deteciton
     var targetColorVector : GPUVector3? {
         didSet { loadTargetColorVector() }
     }
+    
+    /// Lume threshold for light intensity detection
     var lumeThreshold: Float? {
         didSet {
             if let lume = lumeThreshold {
@@ -44,6 +58,8 @@ class ImageProcessor: NSObject {
             }
         }
     }
+    
+    /// Edge tolerance for Sobel Edge Detection
     var edgeTolerance: Float? {
         didSet {
             if let edge = edgeTolerance {
@@ -51,6 +67,8 @@ class ImageProcessor: NSObject {
             }
         }
     }
+    
+    /// Radius value of Closing filter
     var closingPixelRadius: UInt? {
         didSet {
             if let rad = closingPixelRadius {
@@ -60,7 +78,11 @@ class ImageProcessor: NSObject {
     }
     
     // Video
+    
+    /// Captures the video stream from the back-facing camera
     var videoCamera: GPUImageVideoCamera?
+    
+    /// Represents the raw byte data from the camera
     var videoCameraRawDataOutput: GPUImageRawDataOutput?
     
     // MARK: - Processing Filters
