@@ -13,13 +13,16 @@ class PowerMeterViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet var labels: [UILabel]!
     @IBOutlet weak var preview: GPUImageView!
+    @IBOutlet var buttons: [UIButton]!
     
     // MARK: - Class Properties
     
     let ip = ImageProcessor.sharedProcessor
     lazy var filterInput: Bool = true
+    
+    var currentButton: Int?
+    var prevButton: Int?
     
     // MARK: - Initalizers
     
@@ -39,25 +42,50 @@ class PowerMeterViewController: UIViewController {
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
         
-        for label in labels {
-            label.layer.cornerRadius = 40
-            label.layer.masksToBounds = true
+        for button in buttons {
+            button.layer.cornerRadius = 40
+            button.layer.masksToBounds = true
         }
     }
     
     override func viewWillAppear(animated: Bool) {
-        labels[0].backgroundColor = self.ip.red
-        labels[1].backgroundColor = self.ip.yellow
-        labels[2].backgroundColor = self.ip.purple
+        buttons[0].backgroundColor = self.ip.red
+        buttons[1].backgroundColor = self.ip.yellow
+        buttons[2].backgroundColor = self.ip.purple
         
         ip.filterInputStream(self.preview)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         ip.stopCapture()
     }
     
     // MARK: - Actions
+    
+    @IBAction func buttonPressed(sender: AnyObject) {
+        buttons[sender.tag].setTitle("TRACK", forState: .Normal)
+        for button in buttons {
+            if button.tag != sender.tag {
+                button.setTitle("•", forState: .Normal)
+            }
+        }
+        switch sender.tag {
+        case 0:
+            if let red = ip.red {
+                ip.setTargetColorWithUIColor(red)
+            }
+        case 1:
+            if let yellow = ip.yellow {
+                ip.setTargetColorWithUIColor(yellow)
+            }
+        case 2:
+            if let purple = ip.purple {
+                ip.setTargetColorWithUIColor(purple)
+            }
+        default:
+            print("[ ERR ]")
+        }
+    }
     
     @IBAction func filterPressed(sender: AnyObject) {
         filterInput = !filterInput

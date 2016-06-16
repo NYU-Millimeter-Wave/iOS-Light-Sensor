@@ -15,7 +15,6 @@ class CalibrationViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var preview: UIView!
     @IBOutlet var buttons: [UIButton]!
     
     // MARK: - Class Properties
@@ -47,8 +46,6 @@ class CalibrationViewController: UIViewController {
         
         // Reticle
         self.view.addSubview(ip.generateReticle(self.view.frame))
-//        self.view.addSubview(ip.generateReticle(self.view, preview: preview))
-        
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -151,7 +151,8 @@ class ImageProcessor: NSObject {
         
         // Link filters
         videoCamera?.addTarget(filterClosing)
-        filterClosing?.addTarget(filterLume)
+        filterClosing?.addTarget(filterColorThreshold)
+        filterColorThreshold?.addTarget(filterLume)
         filterLume?.addTarget(filterDetect)
         filterDetect?.addTarget(preview)
         
@@ -205,6 +206,23 @@ class ImageProcessor: NSObject {
             print("Video steam not initialized, no color output")
             return UIColor.blackColor()
         }
+    }
+    
+    /**
+     
+     Sets the color vector given a UIColor
+     
+     - Parameter color: Color to set
+     
+     - Returns: `nil`
+     
+     */
+    func setTargetColorWithUIColor(color: UIColor) {
+        let convertedColor = CIColor(CGColor: color.CGColor)
+        targetColorVector?.one = GLfloat(convertedColor.red)
+        targetColorVector?.two = GLfloat(convertedColor.green)
+        targetColorVector?.three = GLfloat(convertedColor.blue)
+        loadTargetColorVector()
     }
     
     /**
