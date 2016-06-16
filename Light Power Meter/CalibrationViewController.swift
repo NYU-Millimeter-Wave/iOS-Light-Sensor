@@ -20,7 +20,6 @@ class CalibrationViewController: UIViewController {
     
     // MARK: - Class Properties
     
-    let cc = CameraCapture()
     let ip = ImageProcessor.sharedProcessor
     
     // MARK: - Initializers
@@ -46,16 +45,9 @@ class CalibrationViewController: UIViewController {
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
         
-//        // Preview Layer
-//        preview.layer.cornerRadius = (self.preview.frame.size.width / 2)
-//        preview.layer.masksToBounds = false
-//        preview.clipsToBounds = true
-//        preview.backgroundColor = UIColor.darkGrayColor()
-        
         // Reticle
-        self.view.addSubview(cc.generateReticle(self.view, preview: preview))
-        
-//        cc.startSession(preview)
+        self.view.addSubview(ip.generateReticle(self.view.frame))
+//        self.view.addSubview(ip.generateReticle(self.view, preview: preview))
         
     }
     
@@ -74,44 +66,17 @@ class CalibrationViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
+        let capturedColor: UIColor = self.ip.getColorFromPoint(CGPointMake(self.ip.pixelSize.width / 2, self.ip.pixelSize.height / 2))
+        buttons[sender.tag].backgroundColor = capturedColor
         switch sender.tag {
         case 0:
-            buttons[0].backgroundColor = self.getColorAtPoint(self.ip.videoCameraReference!)
+            self.ip.red = capturedColor
+        case 1:
+            self.ip.yellow = capturedColor
+        case 2:
+            self.ip.purple = capturedColor
         default:
             print("[ ERR ]")
         }
     }
-    
-    // TODO: FIX THE BYTE INCOME ITS ALWAYS BLACK
-    
-    func getColorAtPoint(videoCamera: GPUImageVideoCamera) -> UIColor {
-        
-        let centerX = (self.view.bounds.width / 2)
-        let centerY = (self.view.bounds.height / 2)
-        let imageSize = CGSize(width: self.view.bounds.width, height: self.view.bounds.height)
-        
-        let byteData = GPUImageRawDataOutput(imageSize: imageSize, resultsInBGRAFormat: false)
-        videoCamera.addTarget(byteData)
-        
-        let rawColor = byteData.colorAtLocation(CGPoint(x:centerX, y: centerY))
-        
-        let red = CGFloat(rawColor.red)
-        let green = CGFloat(rawColor.green)
-        let blue = CGFloat(rawColor.blue)
-        
-        return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
-    }
-    
-    func test() {
-        let rawColor = GPUImageRawDataOutput()
-    }
-
-//    @IBAction func capturePressed(sender: AnyObject) {
-//        var targetColor: UIColor?
-//        cc.getCalibrationColor() {
-//            (color: UIColor) in
-//            targetColor = color
-//            self.view.backgroundColor = color
-//        }
-//    }
 }

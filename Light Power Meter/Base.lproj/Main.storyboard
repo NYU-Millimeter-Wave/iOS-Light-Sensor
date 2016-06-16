@@ -324,7 +324,7 @@
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoC-Ou-cQA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dm-ys-yL7">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dm-ys-yL7">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.8721452421" green="1" blue="0.5671781602" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -351,7 +351,7 @@
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MxW-96-l1e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-Qs-a8g">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-Qs-a8g">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.93563959279999998" green="0.63154619229999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -413,11 +413,11 @@
                                 <exclude reference="tBf-Qs-a8g"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7MH-gh-WGN"/>
+                                <exclude reference="nX7-fS-s44"/>
+                                <exclude reference="NS0-0a-HBp"/>
                                 <exclude reference="1RQ-Cj-Moh"/>
                                 <exclude reference="EqI-Yg-mga"/>
-                                <exclude reference="nX7-fS-s44"/>
-                                <exclude reference="7MH-gh-WGN"/>
-                                <exclude reference="NS0-0a-HBp"/>
                                 <exclude reference="9Ny-DK-P2d"/>
                                 <exclude reference="Stf-GR-Acq"/>
                                 <exclude reference="ppg-MG-HcI"/>
@@ -430,13 +430,13 @@
                                 <include reference="tBf-Qs-a8g"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7MH-gh-WGN"/>
+                                <include reference="nX7-fS-s44"/>
+                                <include reference="NS0-0a-HBp"/>
                                 <include reference="1RQ-Cj-Moh"/>
                                 <include reference="EqI-Yg-mga"/>
                                 <exclude reference="eIH-fn-vth"/>
                                 <exclude reference="uAs-lq-vz9"/>
-                                <include reference="nX7-fS-s44"/>
-                                <include reference="7MH-gh-WGN"/>
-                                <include reference="NS0-0a-HBp"/>
                                 <include reference="9Ny-DK-P2d"/>
                                 <exclude reference="A5m-jY-VC8"/>
                                 <include reference="Stf-GR-Acq"/>
@@ -487,7 +487,7 @@
                                     <constraint firstAttribute="height" constant="80" id="XAR-1B-TP3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" red="0.42214768759999999" green="0.42214768759999999" blue="0.42214768759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.41999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">

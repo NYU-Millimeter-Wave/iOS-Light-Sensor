@@ -23,6 +23,12 @@ class ImageProcessor: NSObject {
     var yellow: UIColor?
     var purple: UIColor?
     
+    // Pixel Size Constant
+    
+    // This size is for AVCaptureSessionPresetHigh for the iPhone 6s(+)
+    // using the back-facing camera
+    let pixelSize = CGSizeMake(1920.0, 1080.0)
+    
     // Tuning Parameters
     
     var thresholdSensitivity: GLfloat? {
@@ -53,11 +59,11 @@ class ImageProcessor: NSObject {
         }
     }
     
-    var videoCameraReference: GPUImageVideoCamera?
+    // Video
+    var videoCamera: GPUImageVideoCamera?
+    var videoCameraRawDataOutput: GPUImageRawDataOutput?
     
     // MARK: - Processing Filters
-    
-    private var videoCamera:            GPUImageVideoCamera?
     private var filterLume:             GPUImageLuminanceThresholdFilter?
     private var filterDetect:           GPUImageSobelEdgeDetectionFilter?
     private var filterClosing:          GPUImageRGBClosingFilter?
@@ -75,6 +81,10 @@ class ImageProcessor: NSObject {
         thresholdSensitivity = 0.5
         targetColorVector = GPUVector3(one: 1, two: 1, three: 1)
         lumeThreshold = 0.99
+        
+        red =     UIColor(red: 1.0, green: 130 / 255.0, blue: 116 / 255.0, alpha: 1.0)
+        yellow =  UIColor(red: 238 / 255.0, green: 1.0, blue: 166.0 / 255.0, alpha: 1.0)
+        purple =  UIColor(red: 239 / 255.0, green: 161 / 255.0, blue: 1.0, alpha: 1.0)
         
         // Setup closing filter
         filterClosing = GPUImageRGBClosingFilter()
@@ -113,13 +123,15 @@ class ImageProcessor: NSObject {
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetHigh, cameraPosition: .Back)
         videoCamera?.outputImageOrientation = .Portrait
         
+        // Setup raw output
+        videoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: pixelSize, resultsInBGRAFormat: true)
+        videoCamera?.addTarget(videoCameraRawDataOutput)
+        
         // Link filters
         videoCamera?.addTarget(filterClosing)
         filterClosing?.addTarget(filterLume)
         filterLume?.addTarget(filterDetect)
         filterDetect?.addTarget(preview)
-        
-        self.videoCameraReference = videoCamera
         
         // Begin video capture
         videoCamera?.startCameraCapture()
@@ -131,7 +143,7 @@ class ImageProcessor: NSObject {
      
     - Parameter preview: The view to display the unfiltered image stream
      
-     - Returns: `nil`
+    - Returns: `nil`
      
      */
     func displayRawInputStream(preview: GPUImageView) {
@@ -139,14 +151,55 @@ class ImageProcessor: NSObject {
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetHigh, cameraPosition: .Back)
         videoCamera?.outputImageOrientation = .Portrait
         
+        // Setup raw output
+        videoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: pixelSize, resultsInBGRAFormat: true)
+        
+        videoCamera?.addTarget(videoCameraRawDataOutput)
         videoCamera?.addTarget(preview)
-        self.videoCameraReference = videoCamera
         
         // Begin video capture
         videoCamera?.startCameraCapture()
     }
     
-    func getImageByteData() {
+    /**
+     
+     Gets the color value as `UIColor` of the pixel specified
+     for the current video capture stream. Will return black if
+     no color is found or the capture session is inactive
+     
+     - Parameter point: The point at which to get the target color
+     
+     - Returns: `UIColor`
+     
+     */
+    func getColorFromPoint(point: CGPoint) -> UIColor {
+        if let color = videoCameraRawDataOutput?.colorAtLocation(point) {
+            let red: CGFloat = CGFloat(color.red)
+            let green: CGFloat = CGFloat(color.green)
+            let blue: CGFloat = CGFloat(color.blue)
+            let alpha: CGFloat = CGFloat(color.alpha)
+            return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: alpha / 255.0)
+        } else {
+            print("Video steam not initialized, no color output")
+            return UIColor.blackColor()
+        }
+    }
+    
+    /**
+     
+     Creates a reticle for the video preview for color selection
+     
+     - Parameter parentView :   The view that the preview lies within
+     - Parameter preview    :   The view that displays the live video preview
+     
+     - Returns: `Recticle`  :   a Reticle object ready to add
+     
+     */
+    func generateReticle(previewFrame: CGRect) ->  Reticle {
+        let scale = previewFrame.width * 0.025
+        let centerX = (previewFrame.width / 2)
+        let centerY = (previewFrame.height / 2)
+        return Reticle(origin: CGPoint(x:centerX, y: centerY), size: scale)
     }
     
     /**
@@ -157,8 +210,10 @@ class ImageProcessor: NSObject {
      
      */
     func stopCapture() {
-        self.videoCameraReference?.stopCameraCapture()
+        self.videoCamera?.stopCameraCapture()
     }
+    
+    // MARK: - Private Methods
     
     private func loadThresholdSensitivity() {
         if let sen = thresholdSensitivity {
@@ -176,5 +231,32 @@ class ImageProcessor: NSObject {
         if let color = targetColorVector {
             filterColorPosition?.setFloatVec3(color, forUniformName: "inputColor")
         }
+    }
+}
+
+/**
+ 
+ Generates a small circle in the middle of the given frame
+ so that the user can pin-point the target color (our light source)
+ 
+ */
+class Reticle: UIView {
+    var reticleRect: CGRect!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init(origin: CGPoint, size: CGFloat) {
+        super.init(frame: CGRectMake(0.0, 0.0, size, size))
+        self.center = origin
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
+    override func drawRect(rect: CGRect) {
+        let reticle = UIBezierPath(ovalInRect: rect)
+        UIColor.whiteColor().colorWithAlphaComponent(0.5).setFill()
+        reticle.fill()
     }
 }

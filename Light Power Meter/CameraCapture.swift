@@ -6,6 +6,16 @@
 //  Copyright © 2016 Cole Smith - New York Univeristy. All rights reserved.
 //
 
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////                                                       /////
+/////                  CLASS DEPRECATED                     /////
+/////                                                       /////
+/////      -----------use ImageProcessor------------        /////
+/////                                                       /////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
 import UIKit
 import AVFoundation
 
@@ -43,7 +53,8 @@ class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     // MARK: - Initalizers
     
-    override init() {
+    // Private to castrate class: DEPRECATED
+    private override init() {
         super.init()
 
         captureSession.sessionPreset = capturePreset
@@ -254,29 +265,4 @@ class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     }
 }
 
-/**
 
- Generates a small circle in the middle of the given frame
- so that the user can pin-point the target color (our light source)
-
-*/
-class Reticle: UIView {
-    var reticleRect: CGRect!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    init(origin: CGPoint, size: CGFloat) {
-        super.init(frame: CGRectMake(0.0, 0.0, size, size))
-        self.center = origin
-        self.backgroundColor = UIColor.clearColor()
-    }
-    
-    override func drawRect(rect: CGRect) {
-        let reticle = UIBezierPath(ovalInRect: rect)
-        UIColor.whiteColor().colorWithAlphaComponent(0.5).setFill()
-        reticle.fill()
-    }
-}

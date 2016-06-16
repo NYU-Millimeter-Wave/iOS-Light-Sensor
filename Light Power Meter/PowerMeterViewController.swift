@@ -46,6 +46,10 @@ class PowerMeterViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        labels[0].backgroundColor = self.ip.red
+        labels[1].backgroundColor = self.ip.yellow
+        labels[2].backgroundColor = self.ip.purple
+        
         ip.filterInputStream(self.preview)
     }
     

@@ -22,9 +22,9 @@ class LightControlViewController: UIViewController {
     
     let lightManager = LightControlManager.sharedManager
     
-    let purple = LightControlManager.purple
-    let yellow = LightControlManager.yellow
     let red =    LightControlManager.red
+    let yellow = LightControlManager.yellow
+    let purple = LightControlManager.purple
     let saturationConstant = LightControlManager.saturationConstant
     
     // MARK: - Initalizers

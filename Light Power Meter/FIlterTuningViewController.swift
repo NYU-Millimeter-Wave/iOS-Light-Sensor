@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import GPUImage
 
 class FilterTuningViewController: UIViewController {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var preview: GPUImageView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var sliders: [UISlider]!
@@ -60,9 +62,20 @@ class FilterTuningViewController: UIViewController {
             labels[0].text = "\(rad)"
         }
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        ip.filterInputStream(self.preview)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        ip.stopCapture()
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func stepperChanged(sender: AnyObject) {
         self.ip.closingPixelRadius = UInt(stepper.value)
+        labels[0].text = "\(UInt(stepper.value))"
     }
     
     @IBAction func menuPressed(sender: AnyObject) {
@@ -73,10 +86,13 @@ class FilterTuningViewController: UIViewController {
         switch sender.tag {
         case 0:
             self.ip.thresholdSensitivity = sliders[0].value
+            labels[1].text = String.localizedStringWithFormat("%.2f", sliders[0].value)
         case 1:
             self.ip.lumeThreshold = sliders[1].value
+            labels[2].text = String.localizedStringWithFormat("%.2f", sliders[1].value)
         case 2:
             self.ip.edgeTolerance = sliders[2].value
+            labels[3].text = String.localizedStringWithFormat("%.2f", sliders[2].value)
         default:
             print("[ ERR ]")
         }
