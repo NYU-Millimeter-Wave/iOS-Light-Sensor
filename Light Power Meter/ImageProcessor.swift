@@ -36,7 +36,7 @@ class ImageProcessor: NSObject {
      using the back-facing camera
      
      */
-    let pixelSize = CGSizeMake(1920.0, 1080.0)
+    let pixelSize = CGSizeMake(640.0, 480.0)
     
     // Tuning Parameters
     
@@ -85,12 +85,18 @@ class ImageProcessor: NSObject {
     /// Represents the raw byte data from the camera
     var videoCameraRawDataOutput: GPUImageRawDataOutput?
     
+    var unfilteredVideoCameraRawOutput: GPUImageRawDataOutput?
+    
     // MARK: - Processing Filters
     private var filterLume:             GPUImageLuminanceThresholdFilter?
     private var filterDetect:           GPUImageSobelEdgeDetectionFilter?
     private var filterClosing:          GPUImageRGBClosingFilter?
     private var filterColorThreshold:   GPUImageFilter?
     private var filterColorPosition:    GPUImageFilter?
+    
+    // Tracking
+    var trackingReticle: Reticle?
+    var centroid: CGPoint?
     
     // MARK: - Initalizers
     
@@ -142,19 +148,24 @@ class ImageProcessor: NSObject {
     func filterInputStream(preview: GPUImageView) {
         
         // Invoke Video Camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetHigh, cameraPosition: .Back)
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
         videoCamera?.outputImageOrientation = .Portrait
         
         // Setup raw output
         videoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: pixelSize, resultsInBGRAFormat: true)
-        videoCamera?.addTarget(videoCameraRawDataOutput)
-
+        unfilteredVideoCameraRawOutput = GPUImageRawDataOutput(imageSize: pixelSize, resultsInBGRAFormat: true)
+        videoCamera?.addTarget(unfilteredVideoCameraRawOutput)
+        
+        // Setup Contrast Increase to binarize image
+        let filterConstrast = GPUImageContrastFilter()
+        filterConstrast.contrast = 4.0
+        
         // Link filters
         videoCamera?.addTarget(filterClosing)
-        filterClosing?.addTarget(filterColorThreshold)
-        filterColorThreshold?.addTarget(filterLume)
-        filterLume?.addTarget(filterDetect)
-        filterDetect?.addTarget(preview)
+        filterClosing?.addTarget(filterLume)
+        filterLume?.addTarget(filterConstrast)
+        filterConstrast.addTarget(preview)
+        filterConstrast.addTarget(videoCameraRawDataOutput)
         
         // Begin video capture
         videoCamera?.startCameraCapture()
@@ -171,7 +182,7 @@ class ImageProcessor: NSObject {
      */
     func displayRawInputStream(preview: GPUImageView) {
         // Invoke Video Camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetHigh, cameraPosition: .Back)
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
         videoCamera?.outputImageOrientation = .Portrait
         
         // Setup raw output
@@ -240,6 +251,10 @@ class ImageProcessor: NSObject {
         let centerX = (previewFrame.width / 2)
         let centerY = (previewFrame.height / 2)
         return Reticle(origin: CGPoint(x:centerX, y: centerY), size: scale)
+//        var point = self.calculateCentroidFromRawPixelData()
+//        point.x = point.x * previewFrame.size.width
+//        point.y = point.y * previewFrame.size.height
+//        return Reticle(origin: point, size: scale)
     }
     
     /**
@@ -271,6 +286,115 @@ class ImageProcessor: NSObject {
         if let color = targetColorVector {
             filterColorPosition?.setFloatVec3(color, forUniformName: "inputColor")
         }
+    }
+    
+//    private func calculateCentroidFromRawPixelData() -> CGPoint {
+//        var currentXTotal: CGFloat = 0.0
+//        var currentYTotal: CGFloat = 0.0
+//        var currentPixelTotal: CGFloat = 0.0
+//        
+//        let pixels = videoCameraRawDataOutput!.rawBytesForImage
+//        
+//        for currentPixel:Int in 0...Int(pixelSize.width * pixelSize.height) {
+//            currentXTotal     += CGFloat( pixels[(currentPixel * 4)] ) / 255.0
+//            currentYTotal     += CGFloat( pixels[(currentPixel * 4) + 1] ) / 255.0
+//            currentPixelTotal += CGFloat( pixels[(currentPixel * 4) + 3] ) / 255.0
+//        }
+//        
+//        let point = CGPointMake((1.0 - currentYTotal / currentPixelTotal), (currentXTotal / currentPixelTotal))
+//        
+//        print(point.x)
+//        print(point.y)
+//        
+//        return point
+//    }
+    
+    /**
+     
+     Uses the filtered stream to compare regions of interest with
+     the target color. It calculates a delta of the real color to the target
+     color and compares this value against a tolerance. Values below the tolerance
+     will be comitted to the return image, which should only contain target color.
+     
+     Runtime: ~0.30 Seconds
+     Complexity: O(n^2)
+     
+     - Parameter tolerance: The amount of drift between each color channel (0-255)
+     
+     - Returns: `UIImage`
+     
+     */
+    func colorFiltering(tolerance: CGFloat) -> UIImage {
+        let maskedImage: GPUImageRawDataOutput = self.videoCameraRawDataOutput!
+        let rawImage: GPUImageRawDataOutput = self.unfilteredVideoCameraRawOutput!
+        
+        let imageWidth: Int = Int(pixelSize.width)
+        let imageHeight: Int = Int(pixelSize.height)
+        
+        let whiteTolerance: CGFloat = 1.0
+        let colorTolerance: CGFloat = tolerance
+        
+        let size: CGSize = CGSizeMake(pixelSize.width, pixelSize.height)
+        
+        // Start creating UIImage
+        UIGraphicsBeginImageContext(size)
+        
+        // Set inital fill color to black
+        UIColor.blackColor().setFill()
+        
+        // Frame Lock
+        maskedImage.lockFramebufferForReading()
+        rawImage.lockFramebufferForReading()
+        
+        // Interate through entire frame
+        for w in 0...imageWidth {
+            for h in 0...imageHeight {
+                
+                // Color of masked byte array
+                let pixelColor = self.videoCameraRawDataOutput!.colorAtLocation(CGPointMake(CGFloat(w), CGFloat(h)))
+                let r = CGFloat(pixelColor.red)
+                let g = CGFloat(pixelColor.green)
+                let b = CGFloat(pixelColor.blue)
+                
+                // Check if pixel color is white and check its actual color
+                if r >= whiteTolerance && g >= whiteTolerance && b >= whiteTolerance {
+
+                    // Color of actual, unfiltered image
+                    let rpxcolor = self.unfilteredVideoCameraRawOutput!.colorAtLocation(CGPointMake(CGFloat(w), CGFloat(h)))
+                    let rr = CGFloat(rpxcolor.red)
+                    let rg = CGFloat(rpxcolor.green)
+                    let rb = CGFloat(rpxcolor.blue)
+                    
+                    // Calculate delta of target and actual color
+                    let deltaR = abs(rr - CGFloat(self.targetColorVector!.one))
+                    let deltaG = abs(rg - CGFloat(self.targetColorVector!.two))
+                    let deltaB = abs(rb - CGFloat(self.targetColorVector!.three))
+                    
+                    // Compare real color against target color
+                    if deltaR <= colorTolerance && deltaG <= colorTolerance && deltaB <= colorTolerance {
+                        
+                        // Set the draw context to this color
+                        UIColor(red: rr/255.0, green: rg/255.0, blue: rb/255.0, alpha: 1.0).setFill()
+                        UIRectFill(CGRectMake(CGFloat(w), CGFloat(h), 1, 1))
+                    }
+                } else{
+                    
+                    // White region was not target color,
+                    UIColor.blackColor().setFill()
+                    UIRectFill(CGRectMake(CGFloat(w), CGFloat(h), 1, 1))
+                }
+            }
+        }
+        
+        // Unlock
+        maskedImage.unlockFramebufferAfterReading()
+        rawImage.unlockFramebufferAfterReading()
+        
+        // Create the final image
+        let imageFinal = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return imageFinal
     }
 }
 

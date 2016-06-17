@@ -21,9 +21,6 @@ class PowerMeterViewController: UIViewController {
     let ip = ImageProcessor.sharedProcessor
     lazy var filterInput: Bool = true
     
-    var currentButton: Int?
-    var prevButton: Int?
-    
     // MARK: - Initalizers
     
     required init?(coder aDecoder: NSCoder) {
