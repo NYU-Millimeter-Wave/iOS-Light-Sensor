@@ -13,13 +13,14 @@ class PowerMeterViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var preview: GPUImageView!
+    @IBOutlet weak var preview: UIView!
     @IBOutlet var buttons: [UIButton]!
     
     // MARK: - Class Properties
     
     let ip = ImageProcessor.sharedProcessor
     lazy var filterInput: Bool = true
+    var timer: NSTimer!
     
     // MARK: - Initalizers
     
@@ -50,11 +51,17 @@ class PowerMeterViewController: UIViewController {
         buttons[1].backgroundColor = self.ip.yellow
         buttons[2].backgroundColor = self.ip.purple
         
-        ip.filterInputStream(self.preview)
+        ip.filterInputStream(self.view as! GPUImageView)
+
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(PowerMeterViewController.updateView), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(animated: Bool) {
         ip.stopCapture()
+    }
+    
+    func updateView() {
+        self.preview.backgroundColor = UIColor(patternImage: self.ip.colorFiltering(5.0))
     }
     
     // MARK: - Actions
@@ -88,9 +95,9 @@ class PowerMeterViewController: UIViewController {
         filterInput = !filterInput
         ip.stopCapture()
         if filterInput {
-            ip.filterInputStream(self.preview)
+//            ip.filterInputStream(self.preview)
         } else {
-            ip.displayRawInputStream(self.preview)
+//            ip.displayRawInputStream(self.preview)
         }
     }
     

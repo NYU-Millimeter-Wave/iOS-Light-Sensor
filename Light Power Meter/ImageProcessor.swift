@@ -94,9 +94,15 @@ class ImageProcessor: NSObject {
     private var filterColorThreshold:   GPUImageFilter?
     private var filterColorPosition:    GPUImageFilter?
     
-    // Tracking
-    var trackingReticle: Reticle?
-    var centroid: CGPoint?
+    private var filterMask: GPUImageMaskFilter?
+    
+    private var asyncIntervalColorFilteringTimerSignal: Bool?
+    
+//    var asyncColorFilteringOutput: UIImage?
+    
+//    // Tracking
+//    var trackingReticle: Reticle?
+//    var centroid: CGPoint?
     
     // MARK: - Initalizers
     
@@ -166,6 +172,36 @@ class ImageProcessor: NSObject {
         filterLume?.addTarget(filterConstrast)
         filterConstrast.addTarget(preview)
         filterConstrast.addTarget(videoCameraRawDataOutput)
+        
+//        [FullGpuImage addTarget:maskingFilter];
+//        [FullGpuImage processImage];
+//        
+//        [maskingFilter useNextFrameForImageCapture];
+//        
+//        [maskGpuImage addTarget:maskingFilter];
+//        [maskGpuImage processImage];
+
+//        filterMask = GPUImageMaskFilter()
+//        
+//        videoCamera?.addTarget(filterClosing)
+//        filterClosing?.addTarget(filterLume)
+//        filterLume?.addTarget(filterConstrast)
+//        filterConstrast.addTarget(filterMask)
+//        
+//        videoCamera?.addTarget(filterMask)
+//        filterMask?.addTarget(preview)
+        
+//        let blend = GPUImageColorBlendFilter()
+//        let invert = GPUImageColorInvertFilter()
+//        
+//        blend.useNextFrameForImageCapture()
+//        
+//        videoCamera?.addTarget(invert)
+//        invert.addTarget(blend)
+//        videoCamera?.addTarget(blend)
+//        
+//        blend.addTarget(preview)
+        
         
         // Begin video capture
         videoCamera?.startCameraCapture()
@@ -288,26 +324,26 @@ class ImageProcessor: NSObject {
         }
     }
     
-//    private func calculateCentroidFromRawPixelData() -> CGPoint {
-//        var currentXTotal: CGFloat = 0.0
-//        var currentYTotal: CGFloat = 0.0
-//        var currentPixelTotal: CGFloat = 0.0
-//        
-//        let pixels = videoCameraRawDataOutput!.rawBytesForImage
-//        
-//        for currentPixel:Int in 0...Int(pixelSize.width * pixelSize.height) {
-//            currentXTotal     += CGFloat( pixels[(currentPixel * 4)] ) / 255.0
-//            currentYTotal     += CGFloat( pixels[(currentPixel * 4) + 1] ) / 255.0
-//            currentPixelTotal += CGFloat( pixels[(currentPixel * 4) + 3] ) / 255.0
-//        }
-//        
-//        let point = CGPointMake((1.0 - currentYTotal / currentPixelTotal), (currentXTotal / currentPixelTotal))
-//        
-//        print(point.x)
-//        print(point.y)
-//        
-//        return point
-//    }
+    private func calculateCentroidFromRawPixelData() -> CGPoint {
+        var currentXTotal: CGFloat = 0.0
+        var currentYTotal: CGFloat = 0.0
+        var currentPixelTotal: CGFloat = 0.0
+        
+        let pixels = videoCameraRawDataOutput!.rawBytesForImage
+        
+        for currentPixel:Int in 0...Int(pixelSize.width * pixelSize.height) {
+            currentXTotal     += CGFloat( pixels[(currentPixel * 4)] ) / 255.0
+            currentYTotal     += CGFloat( pixels[(currentPixel * 4) + 1] ) / 255.0
+            currentPixelTotal += CGFloat( pixels[(currentPixel * 4) + 3] ) / 255.0
+        }
+        
+        let point = CGPointMake((1.0 - currentYTotal / currentPixelTotal), (currentXTotal / currentPixelTotal))
+        
+        print(point.x)
+        print(point.y)
+        
+        return point
+    }
     
     /**
      
@@ -396,6 +432,21 @@ class ImageProcessor: NSObject {
         
         return imageFinal
     }
+    
+//    func startAsyncIntervalColorFiltering(interval: NSTimeInterval, tolerance: CGFloat) {
+//        if videoCamera != nil {
+//            self.asyncColorFilteringOutput = UIImage()
+//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//                self.asyncIntervalColorFilteringTimerSignal = true
+//                while self.asyncIntervalColorFilteringTimerSignal == true {
+//                    print("bip")
+//                    self.asyncColorFilteringOutput = self.colorFiltering(tolerance)
+//                    NSThread.sleepForTimeInterval(interval)
+//                }
+//            }
+//        }
+//    }
 }
 
 /**
