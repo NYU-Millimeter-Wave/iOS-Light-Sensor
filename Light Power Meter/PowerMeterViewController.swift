@@ -52,16 +52,10 @@ class PowerMeterViewController: UIViewController {
         buttons[2].backgroundColor = self.ip.purple
         
         ip.filterInputStream(self.view as! GPUImageView)
-
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(PowerMeterViewController.updateView), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(animated: Bool) {
         ip.stopCapture()
-    }
-    
-    func updateView() {
-        self.preview.backgroundColor = UIColor(patternImage: self.ip.colorFiltering(5.0))
     }
     
     // MARK: - Actions
@@ -76,15 +70,15 @@ class PowerMeterViewController: UIViewController {
         switch sender.tag {
         case 0:
             if let red = ip.red {
-                ip.setTargetColorWithUIColor(red)
+                ip.targetColorVector = ip.convertUIColorToColorVector(red)
             }
         case 1:
             if let yellow = ip.yellow {
-                ip.setTargetColorWithUIColor(yellow)
+                ip.targetColorVector = ip.convertUIColorToColorVector(yellow)
             }
         case 2:
             if let purple = ip.purple {
-                ip.setTargetColorWithUIColor(purple)
+                ip.targetColorVector = ip.convertUIColorToColorVector(purple)
             }
         default:
             print("[ ERR ]")
@@ -95,9 +89,9 @@ class PowerMeterViewController: UIViewController {
         filterInput = !filterInput
         ip.stopCapture()
         if filterInput {
-//            ip.filterInputStream(self.preview)
+            ip.filterInputStream(self.view as! GPUImageView)
         } else {
-//            ip.displayRawInputStream(self.preview)
+            ip.displayRawInputStream(self.view as! GPUImageView)
         }
     }
     
