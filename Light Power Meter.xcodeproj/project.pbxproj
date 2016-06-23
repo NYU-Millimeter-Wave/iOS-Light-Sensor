@@ -19,6 +19,10 @@
 		494114D01D0F3B970000E7EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114CF1D0F3B970000E7EB /* QuartzCore.framework */; };
 		494114D21D0F3C840000E7EB /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114D11D0F3C840000E7EB /* GPUImage.framework */; };
 		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
+		498549021D1C2F3C008D88E9 /* ExperimentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */; };
+		498549041D1C2F59008D88E9 /* Experiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549031D1C2F59008D88E9 /* Experiment.swift */; };
+		498549061D1C2F71008D88E9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549051D1C2F71008D88E9 /* DataManager.swift */; };
+		498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549071D1C313C008D88E9 /* ExperimentViewController.swift */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
 		499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
@@ -64,6 +68,10 @@
 		494114CF1D0F3B970000E7EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		494114D11D0F3C840000E7EB /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Light_Power_Meter-afzhatkhcqvhzvcippmuzwwgrnuu/Build/Products/Debug-iphonesimulator/GPUImage/GPUImage.framework"; sourceTree = "<group>"; };
 		49454BEB1D09B24A002C8328 /* LightControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlManager.swift; sourceTree = "<group>"; };
+		498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentsTableViewController.swift; sourceTree = "<group>"; };
+		498549031D1C2F59008D88E9 /* Experiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experiment.swift; sourceTree = "<group>"; };
+		498549051D1C2F71008D88E9 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		498549071D1C313C008D88E9 /* ExperimentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentViewController.swift; sourceTree = "<group>"; };
 		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
 		4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Light Power Meter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -146,6 +154,8 @@
 				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
 				49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */,
 				499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */,
+				498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */,
+				498549071D1C313C008D88E9 /* ExperimentViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -156,6 +166,7 @@
 				49454BEB1D09B24A002C8328 /* LightControlManager.swift */,
 				491468C01D076E2100440DC3 /* CameraCapture.swift */,
 				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
+				498549051D1C2F71008D88E9 /* DataManager.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +217,7 @@
 			children = (
 				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
+				498549031D1C2F59008D88E9 /* Experiment.swift */,
 				4926FF881D0F1CF7007DC2E2 /* Controllers */,
 				4926FF871D0F1CE7007DC2E2 /* View Controllers */,
 				49E038391D073A67007A4C56 /* Main.storyboard */,
@@ -454,11 +466,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */,
+				498549061D1C2F71008D88E9 /* DataManager.swift in Sources */,
 				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
+				498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */,
 				4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
+				498549021D1C2F3C008D88E9 /* ExperimentsTableViewController.swift in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
 				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
+				498549041D1C2F59008D88E9 /* Experiment.swift in Sources */,
 				49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
 				49F9BA7B1D10A31E001AD84A /* FilterTuningViewController.swift in Sources */,

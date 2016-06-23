@@ -17,6 +17,7 @@ class MenuTableViewController: UITableViewController {
     var calibrationVC: UIViewController!
     var lightsVC: UIViewController!
     var filterTuningVC: UIViewController!
+    var experimentsTableVC: UIViewController!
     
     // MARK: - Initializers
     
@@ -42,6 +43,11 @@ class MenuTableViewController: UITableViewController {
         
         self.filterTuningVC = storyboard.instantiateViewControllerWithIdentifier("FilterTuning") as! FilterTuningViewController
         self.filterTuningVC = UINavigationController(rootViewController: filterTuningVC)
+        
+        self.experimentsTableVC = storyboard.instantiateViewControllerWithIdentifier("experimentsVC") as! ExperimentsTableViewController
+        self.experimentsTableVC = UINavigationController(rootViewController: experimentsTableVC)
+        
+        
     }
     
     // MARK: - Table View Data Source
@@ -56,6 +62,8 @@ class MenuTableViewController: UITableViewController {
             self.slideMenuController()?.changeMainViewController(self.lightsVC, close: true)
         case 4:
             self.slideMenuController()?.changeMainViewController(self.filterTuningVC, close: true)
+        case 5:
+            self.slideMenuController()?.changeMainViewController(self.experimentsTableVC, close: true)
         default:
             print("[ ERR ] Unexpected error in SideMenuController")
         }
