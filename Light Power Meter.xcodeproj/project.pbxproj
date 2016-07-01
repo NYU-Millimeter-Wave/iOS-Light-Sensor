@@ -25,6 +25,7 @@
 		498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549071D1C313C008D88E9 /* ExperimentViewController.swift */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
 		499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */; };
+		49CB50411D26CF7500C27551 /* SocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB50401D26CF7500C27551 /* SocketListener.swift */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
 		49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* CalibrationViewController.swift */; };
 		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
@@ -83,6 +84,7 @@
 		4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ContextFilterLogFormatter.m; path = Lumberjack/Extensions/ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerMeterViewController.swift; sourceTree = "<group>"; };
+		49CB50401D26CF7500C27551 /* SocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketListener.swift; sourceTree = "<group>"; };
 		49E038321D073A67007A4C56 /* LPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E038371D073A67007A4C56 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				491468C01D076E2100440DC3 /* CameraCapture.swift */,
 				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
 				498549051D1C2F71008D88E9 /* DataManager.swift */,
+				49CB50401D26CF7500C27551 /* SocketListener.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				498549041D1C2F59008D88E9 /* Experiment.swift in Sources */,
 				49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */,
 				49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */,
+				49CB50411D26CF7500C27551 /* SocketListener.swift in Sources */,
 				49F9BA7B1D10A31E001AD84A /* FilterTuningViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

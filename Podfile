@@ -6,4 +6,5 @@ target 'Light Power Meter' do
     pod 'Alamofire', '~> 3.4'
 	pod 'SlideMenuControllerSwift'
 	pod 'GPUImage'
+    pod 'SwiftWebSocket'
 end

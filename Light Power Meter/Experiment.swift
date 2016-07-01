@@ -13,7 +13,7 @@ class Experiment: NSObject {
     // MARK: - Class Properties
     
     var title: String?
-    
+    var photoBuffer: [UIImage]?
     
     // Here will go our experiment variables
     
@@ -21,10 +21,16 @@ class Experiment: NSObject {
     
     init(title: String) {
         super.init()
+        
         self.title = title
+        self.photoBuffer = []
     }
     
     override convenience init() {
         self.init(title: "New Experiment")
     }
+    
+    // MARK: - Experiment Methods
+    
+    func beginExperiment() {}
 }

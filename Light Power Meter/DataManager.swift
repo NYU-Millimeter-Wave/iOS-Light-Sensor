@@ -19,13 +19,33 @@ class DataManager: NSObject {
     
     var experiments: [Experiment]!
     
+    var deviceID: Int!
+    var deviceIP: String!
+    
+    var syncronizedTime: Int!
+    
+    var socket: SocketListener?
+    
     // MARK: - Initalizers
     
     private override init() {
         super.init()
         
         self.experiments = []
+//        self.deviceID = UIDevice.currentDevice().indentifierFor
     }
     
+    // MARK: - Experiment Methods
+    
+    func startNewExperiment() {}
+    
     // MARK: - Transmission Methods
+    
+    func syncronizeTime() {}
+    
+    func syncronizeCurrentExperiment() {}
+    
+    func syncronizeAllExperiments() {}
+    
+    
 }

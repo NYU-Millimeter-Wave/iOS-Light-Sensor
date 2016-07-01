@@ -2,17 +2,20 @@ PODS:
   - Alamofire (3.4.0)
   - GPUImage (0.1.7)
   - SlideMenuControllerSwift (2.2.0)
+  - SwiftWebSocket (2.6.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - GPUImage
   - SlideMenuControllerSwift
+  - SwiftWebSocket
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   SlideMenuControllerSwift: 16dac00b1aaad153e64fffb5d6969ab31ad88372
+  SwiftWebSocket: 2bb9dda75c87f64eaf9768131141857ca8611aac
 
-PODFILE CHECKSUM: ccc816f06fce553bd2de27d9fc89988ef041e466
+PODFILE CHECKSUM: 9e97ba77c836f27ebb81dcd5a953955e117f0faf
 
 COCOAPODS: 1.0.1

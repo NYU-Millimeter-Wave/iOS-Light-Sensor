@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Init Singletons
+        LightControlManager.sharedManager
+        DataManager.sharedManager
+        
         // Slide Menu Controller Setup
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -32,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
+        
+        // Start Socket Listener
+        let socketListener = SocketListener(url: "127.0.0.1:9000")
+        let dm = DataManager.sharedManager
+        dm.socket = socketListener
         
         return true
     }
