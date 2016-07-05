@@ -125,4 +125,17 @@ class SocketListener: NSObject, WebSocketDelegate {
     func close() {
         self.socket.close()
     }
+    
+    /**
+     
+     Remotely shuts down the socket server and
+     cleanly closes client connection
+     
+     - Returns: `nil`
+     
+     */
+    func remotelyCloseServer() {
+        self.socket.send(text: "SHUTDOWN")
+        self.close()
+    }
 }
