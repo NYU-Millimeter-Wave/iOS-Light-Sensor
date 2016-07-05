@@ -22,9 +22,20 @@ class DataManager: NSObject {
     var deviceID: Int!
     var deviceIP: String!
     
-    var syncronizedTime: Int!
-    
     var socket: SocketListener?
+    
+    var sentTime: CFAbsoluteTime?
+    var timeDelta: Double?
+    var syncronizedTime: Int?
+    var pongReceived: Bool = false {
+        didSet {
+            if self.pongReceived {
+                self.timeDelta = CFAbsoluteTimeGetCurrent() - self.sentTime!
+                print("[ INF ] Time delta: \(self.timeDelta!)")
+                
+            }
+        }
+    }
     
     // MARK: - Initalizers
     
@@ -41,11 +52,29 @@ class DataManager: NSObject {
     
     // MARK: - Transmission Methods
     
-    func syncronizeTime() {}
+    func initalizeSocketConnection(url: String) {
+        if let _ = self.socket {
+            print("[ ERR ] Cannot create socket as one already exists")
+        } else {
+            self.socket = SocketListener(url: url)
+        }
+    }
+    
+    func syncronizeTime() {
+        if let soc = self.socket {
+            if soc.isConnected {
+                print("[ INF ] Syncronizing time with server...")
+                self.sentTime = CFAbsoluteTimeGetCurrent()
+                soc.sendPing()
+            } else {
+                print("[ ERR ] Cannot sync time, socket not connected")
+            }
+        } else {
+            print("[ ERR ] Cannot sync time, socket not connected")
+        }
+    }
     
     func syncronizeCurrentExperiment() {}
     
     func syncronizeAllExperiments() {}
-    
-    
 }

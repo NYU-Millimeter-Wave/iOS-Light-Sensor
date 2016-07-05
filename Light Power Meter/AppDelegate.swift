@@ -24,12 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Slide Menu Controller Setup
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("PowerMeter") as! PowerMeterViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("Menu") as! MenuTableViewController
-        
         let navController = UINavigationController(rootViewController: mainViewController)
-        
         let slideMenuController = SlideMenuController(mainViewController: navController, leftMenuViewController: leftViewController)
         
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
@@ -38,9 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // Start Socket Listener
-        let socketListener = SocketListener(url: "127.0.0.1:9000")
         let dm = DataManager.sharedManager
-        dm.socket = socketListener
+        dm.initalizeSocketConnection("ws://127.0.0.1:9000")
         
         return true
     }
@@ -65,6 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        // Terminate Socket Connection
+        let dm = DataManager.sharedManager
+        dm.socket?.close()
     }
 
 

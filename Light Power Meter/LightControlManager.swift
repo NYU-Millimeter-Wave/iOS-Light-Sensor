@@ -62,7 +62,7 @@ class LightControlManager: NSObject {
     
     /**
      
-     Sends a POT request to the IP address with brdigeUser to set the brightness of a ligth
+     Sends a POST request to the IP address with brdigeUser to set the brightness of a ligth
      - Parameter lightNumber    : The light to change properties of
      - Parameter brightness     : Brightness of bulb value (0 - 255)
      
