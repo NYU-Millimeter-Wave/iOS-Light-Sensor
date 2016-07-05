@@ -44,18 +44,10 @@ class SocketListener: NSObject, WebSocketDelegate {
 
     func webSocketMessageText(text: String) {
         print("[ DAT ] Received: \(text)")
-        if text == "#" {
-            print("Received #")
-            self.dm.pongReceived = true
-        }
     }
     
     func webSocketMessageData(data: NSData) {
         print("[ DAT ] Received: \(data)")
-        if data == "#" {
-            print("Received #")
-            self.dm.pongReceived = true
-        }
     }
     
     func webSocketPong() {
