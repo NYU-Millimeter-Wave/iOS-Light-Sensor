@@ -64,7 +64,7 @@ class SocketListener: NSObject, WebSocketDelegate {
         if wasClean {
             print("[ INF ] Socket Closed Cleanly")
         } else {
-            print(" [ ERR ] Socket Closed Uncleanly: \(reason)")
+            print("[ ERR ] Socket Closed Uncleanly: \(reason)")
         }
         
         self.isConnected = false
