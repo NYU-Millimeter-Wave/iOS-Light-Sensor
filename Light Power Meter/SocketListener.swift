@@ -40,6 +40,7 @@ class SocketListener: NSObject, WebSocketDelegate {
         print("[ INF ] Socket Connected")
         self.isConnected = true
         self.dm.syncronizeTime()
+        
     }
 
     func webSocketMessageText(text: String) {

@@ -13,22 +13,19 @@ class MenuTableViewController: UITableViewController {
     
     // MARK: - Class Properties
     
+    let dm = DataManager.sharedManager
+    
     var powerMeterVC: UIViewController!
     var calibrationVC: UIViewController!
     var lightsVC: UIViewController!
     var filterTuningVC: UIViewController!
     var experimentsTableVC: UIViewController!
+    var wirelessVC: UIViewController!
     
     // MARK: - Initializers
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    // MARK: - View Handlers
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -47,7 +44,16 @@ class MenuTableViewController: UITableViewController {
         self.experimentsTableVC = storyboard.instantiateViewControllerWithIdentifier("experimentsVC") as! ExperimentsTableViewController
         self.experimentsTableVC = UINavigationController(rootViewController: experimentsTableVC)
         
+        self.wirelessVC = storyboard.instantiateViewControllerWithIdentifier("wirelessVC") as! WirelessViewController
+        self.wirelessVC = UINavigationController(rootViewController: wirelessVC)
+    }
+
+    // MARK: - View Handlers
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+
     }
     
     // MARK: - Table View Data Source
@@ -64,6 +70,8 @@ class MenuTableViewController: UITableViewController {
             self.slideMenuController()?.changeMainViewController(self.filterTuningVC, close: true)
         case 5:
             self.slideMenuController()?.changeMainViewController(self.experimentsTableVC, close: true)
+        case 7:
+            self.slideMenuController()?.changeMainViewController(self.wirelessVC, close: true)
         default:
             print("[ ERR ] Unexpected error in SideMenuController")
         }

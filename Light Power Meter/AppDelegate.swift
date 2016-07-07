@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Start Socket Listener
         let dm = DataManager.sharedManager
-        dm.initalizeSocketConnection("ws://127.0.0.1:9000")
+        dm.initalizeSocketConnection("ws://172.16.24.202:9000")
         
         return true
     }
