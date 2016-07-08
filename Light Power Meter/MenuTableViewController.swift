@@ -20,7 +20,7 @@ class MenuTableViewController: UITableViewController {
     var lightsVC: UIViewController!
     var filterTuningVC: UIViewController!
     var experimentsTableVC: UIViewController!
-    var wirelessVC: UIViewController!
+    var controlVC: UIViewController!
     
     // MARK: - Initializers
     
@@ -44,8 +44,8 @@ class MenuTableViewController: UITableViewController {
         self.experimentsTableVC = storyboard.instantiateViewControllerWithIdentifier("experimentsVC") as! ExperimentsTableViewController
         self.experimentsTableVC = UINavigationController(rootViewController: experimentsTableVC)
         
-        self.wirelessVC = storyboard.instantiateViewControllerWithIdentifier("wirelessVC") as! WirelessViewController
-        self.wirelessVC = UINavigationController(rootViewController: wirelessVC)
+        self.controlVC = storyboard.instantiateViewControllerWithIdentifier("controlVC") as! ControlViewController
+        self.controlVC = UINavigationController(rootViewController: controlVC)
     }
 
     // MARK: - View Handlers
@@ -70,8 +70,8 @@ class MenuTableViewController: UITableViewController {
             self.slideMenuController()?.changeMainViewController(self.filterTuningVC, close: true)
         case 5:
             self.slideMenuController()?.changeMainViewController(self.experimentsTableVC, close: true)
-        case 7:
-            self.slideMenuController()?.changeMainViewController(self.wirelessVC, close: true)
+        case 6:
+            self.slideMenuController()?.changeMainViewController(self.controlVC, close: true)
         default:
             print("[ ERR ] Unexpected error in SideMenuController")
         }

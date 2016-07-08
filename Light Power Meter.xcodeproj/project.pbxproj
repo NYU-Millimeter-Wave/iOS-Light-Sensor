@@ -26,6 +26,7 @@
 		498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549071D1C313C008D88E9 /* ExperimentViewController.swift */; };
 		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
 		499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */; };
+		499791E61D303A4500F317F6 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499791E51D303A4500F317F6 /* ControlViewController.swift */; };
 		49CB50411D26CF7500C27551 /* SocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB50401D26CF7500C27551 /* SocketListener.swift */; };
 		49E038361D073A67007A4C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038351D073A67007A4C56 /* AppDelegate.swift */; };
 		49E038381D073A67007A4C56 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038371D073A67007A4C56 /* CalibrationViewController.swift */; };
@@ -86,6 +87,7 @@
 		4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ContextFilterLogFormatter.m; path = Lumberjack/Extensions/ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerMeterViewController.swift; sourceTree = "<group>"; };
+		499791E51D303A4500F317F6 /* ControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		49CB50401D26CF7500C27551 /* SocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketListener.swift; sourceTree = "<group>"; };
 		49E038321D073A67007A4C56 /* LPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */,
 				498549071D1C313C008D88E9 /* ExperimentViewController.swift */,
 				4970A6491D2D985F005629BF /* WirelessViewController.swift */,
+				499791E51D303A4500F317F6 /* ControlViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */,
 				4970A64A1D2D985F005629BF /* WirelessViewController.swift in Sources */,
 				4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */,
+				499791E61D303A4500F317F6 /* ControlViewController.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
 				498549021D1C2F3C008D88E9 /* ExperimentsTableViewController.swift in Sources */,
 				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,

@@ -38,12 +38,12 @@ class ImageProcessor: NSObject {
     
     // Tuning Parameters
     
-    /// Sensitivity value for color detection
+    /// Sensitivity value for color detection filter
     var thresholdSensitivity: GLfloat? {
         didSet { loadThresholdSensitivity() }
     }
     
-    /// Tarrget color vector for color deteciton
+    /// Tarrget color vector for color deteciton filter
     var targetColorVector : GPUVector3? {
         didSet { loadTargetColorVector() }
     }
@@ -285,6 +285,112 @@ class ImageProcessor: NSObject {
         return imageFinal
     }
     
+    /**
+     
+     Uses the filtered stream to compare regions of interest with
+     the target color. It calculates a delta of the real color to the target
+     color and compares this value against a tolerance. Values below the tolerance
+     will be comitted to the return image, which should only contain target color.
+     
+     Runtime: ~0.30 Seconds
+     Complexity: O(n^2)
+     
+     - Parameter tolerance: The amount of drift between each color channel (0-255)
+     
+     - Returns: Tuple: `(Rpresent, Ypresent, Ppresent)`
+     
+     */
+    func colorDetection(tolerance: CGFloat) -> (Bool, Bool, Bool) {
+        let maskedImage: GPUImageRawDataOutput = self.videoCameraRawDataOutput!
+        let rawImage: GPUImageRawDataOutput = self.unfilteredVideoCameraRawDataOutput!
+        
+        let imageWidth: Int = Int(pixelSize.width)
+        let imageHeight: Int = Int(pixelSize.height)
+        
+        let whiteTolerance: CGFloat = 1.0
+        let colorTolerance: CGFloat = tolerance
+        
+        var matchedColorScoreR: Int  = 0                 // Number of pixels matching
+        var matchedColorScoreY: Int  = 0                 // Number of pixels matching
+        var matchedColorScoreP: Int  = 0                 // Number of pixels matching
+        let matchedColorMinimum: Int = 0                 // This will need to change
+        
+        let vectorTargetR = self.convertUIColorToColorVector(self.red!)
+        let vectorTargetY = self.convertUIColorToColorVector(self.yellow!)
+        let vectorTargetP = self.convertUIColorToColorVector(self.purple!)
+        
+        // Frame Lock
+        maskedImage.lockFramebufferForReading()
+        rawImage.lockFramebufferForReading()
+        
+        // Interate through entire frame
+        for w in 0...imageWidth {
+            for h in 0...imageHeight {
+                
+                // Color of masked byte array
+                let pixelColor = self.videoCameraRawDataOutput!.colorAtLocation(CGPointMake(CGFloat(w), CGFloat(h)))
+                let r = CGFloat(pixelColor.red)
+                let g = CGFloat(pixelColor.green)
+                let b = CGFloat(pixelColor.blue)
+                
+                // Check if pixel color is white and check its actual color
+                if r >= whiteTolerance && g >= whiteTolerance && b >= whiteTolerance {
+                    
+                    // Color of actual, unfiltered image
+                    let rpxcolor = self.unfilteredVideoCameraRawDataOutput!.colorAtLocation(CGPointMake(CGFloat(w), CGFloat(h)))
+                    let rr = CGFloat(rpxcolor.red)
+                    let rg = CGFloat(rpxcolor.green)
+                    let rb = CGFloat(rpxcolor.blue)
+                    
+                    for (i, color) in [vectorTargetR, vectorTargetY, vectorTargetP].enumerate() {
+                        
+                        // Calculate delta of target and actual color
+                        let deltaR = abs(rr - CGFloat(color.one))
+                        let deltaG = abs(rg - CGFloat(color.two))
+                        let deltaB = abs(rb - CGFloat(color.three))
+                        
+                        // Compare real color against target color
+                        if deltaR <= colorTolerance && deltaG <= colorTolerance && deltaB <= colorTolerance {
+                            switch i {
+                            case 0:
+                                // Found target R
+                                matchedColorScoreR += 1
+                            case 1:
+                                // Found target Y
+                                matchedColorScoreY += 1
+                            case 2:
+                                // Found target P
+                                matchedColorScoreP += 1
+                            default:
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Unlock
+        maskedImage.unlockFramebufferAfterReading()
+        rawImage.unlockFramebufferAfterReading()
+        
+        // Color bools       R      Y      P
+        var returnTuple = (false, false, false)
+        
+        // Compare to minimum
+        if matchedColorScoreR >= matchedColorMinimum {
+            returnTuple.0 = true
+        }
+        if matchedColorScoreY >= matchedColorMinimum {
+            returnTuple.1 = true
+        }
+        if matchedColorScoreP >= matchedColorMinimum {
+            returnTuple.2 = true
+        }
+        
+        return returnTuple
+    }
+
     /**
      
      Stops capturing of video
