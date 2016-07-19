@@ -20,7 +20,7 @@ class FilterTuningViewController: UIViewController {
     
     // MARK: - Class Properties
     
-    let ip = ImageProcessor.sharedProcessor
+    private let ip = ImageProcessor.sharedProcessor
     
     // MARK: - Initalizers
     
@@ -41,8 +41,8 @@ class FilterTuningViewController: UIViewController {
         navBar?.translucent = true
         
         for label in labels {
-            label.layer.cornerRadius = 25
             label.layer.masksToBounds = true
+            label.layer.cornerRadius = label.frame.height
         }
         
         if let sen = ip.thresholdSensitivity {
@@ -50,7 +50,7 @@ class FilterTuningViewController: UIViewController {
             labels[1].text = String.localizedStringWithFormat("%.2f", sen)
         }
         if let lume = ip.lumeThreshold {
-            sliders[1].value = lume
+            sliders[1].value = Float(lume)
             labels[2].text = String.localizedStringWithFormat("%.2f", lume)
         }
         if let edge = ip.edgeTolerance {
@@ -90,6 +90,7 @@ class FilterTuningViewController: UIViewController {
         case 1:
             self.ip.lumeThreshold = sliders[1].value
             labels[2].text = String.localizedStringWithFormat("%.2f", sliders[1].value)
+            print(ip.lumeThreshold)
         case 2:
             self.ip.edgeTolerance = sliders[2].value
             labels[3].text = String.localizedStringWithFormat("%.2f", sliders[2].value)

@@ -35,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // Start Socket Listener
-        let dm = DataManager.sharedManager
-        dm.initalizeSocketConnection("ws://172.16.24.202:9000")
+//        let dm = DataManager.sharedManager
+//        dm.initalizeSocketConnection("ws://172.16.23.148:9000")
         
         return true
     }

@@ -17,7 +17,8 @@ class ExperimentViewController: UIViewController {
 
     // MARK: - Class Properties
     
-    let dm = DataManager.sharedManager
+    private let dm = DataManager.sharedManager
+    
     let experimentAtIndex: Experiment? = nil
     
     // MARK: - View Handlers

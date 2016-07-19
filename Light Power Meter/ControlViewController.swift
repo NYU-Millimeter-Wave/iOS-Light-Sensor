@@ -17,10 +17,9 @@ class ControlViewController: UIViewController {
     
     // MARK: - Class Properties
     
-    let dm = DataManager.sharedManager
+    private let dm = DataManager.sharedManager
     
     var connected:  Bool = false
-    
     var disconnectedIcon: String = "⚪️"
     var connectedIcon:    String = "🔵"
     
@@ -42,6 +41,7 @@ class ControlViewController: UIViewController {
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
         
+        // Check connection every 3 seconds
         self.checkConnected()
         NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(WirelessViewController.checkConnected), userInfo: nil, repeats: true)
     }
@@ -52,7 +52,6 @@ class ControlViewController: UIViewController {
     }
     
     func checkConnected() {
-        // Check Socket Connection
         if let socket = self.dm.socket {
             if socket.isConnected {
                 self.connected = true

@@ -13,6 +13,7 @@ import Alamofire
 class LightControlManager: NSObject {
     
     // MARK: - Singleton Declaration
+    
     static let sharedManager = LightControlManager()
     
     // MARK: - Networking Constants

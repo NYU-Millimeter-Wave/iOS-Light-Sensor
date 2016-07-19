@@ -17,13 +17,16 @@ class DataManager: NSObject {
     
     // MARK: - Class Properties
     
-    var experiments: [Experiment]!
+    // Experiments
+    lazy var experiments: [Experiment] = []
+    var currentExperiment: Experiment?
     
+    // Device Info
     var deviceID: Int!
     var deviceIP: String!
     
+    // Communication & Sync
     var socket: SocketListener?
-    
     var sentTime: CFAbsoluteTime?
     var timeDelta: Double?
     var syncronizedTime: Int?
@@ -32,7 +35,6 @@ class DataManager: NSObject {
             if self.pongReceived {
                 self.timeDelta = CFAbsoluteTimeGetCurrent() - self.sentTime!
                 print("[ INF ] Time delta: \(self.timeDelta!)")
-                
             }
         }
     }
@@ -41,14 +43,7 @@ class DataManager: NSObject {
     
     private override init() {
         super.init()
-        
-        self.experiments = []
-//        self.deviceID = UIDevice.currentDevice().indentifierFor
     }
-    
-    // MARK: - Experiment Methods
-    
-    func startNewExperiment() {}
     
     // MARK: - Transmission Methods
     

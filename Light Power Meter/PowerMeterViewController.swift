@@ -9,18 +9,20 @@
 import UIKit
 import GPUImage
 
+
+
 class PowerMeterViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var preview: UIView!
-    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var meters: [KDCircularProgress]!
     
     // MARK: - Class Properties
     
-    let ip = ImageProcessor.sharedProcessor
-    lazy var filterInput: Bool = true
-    var timer: NSTimer!
+    private let ip = ImageProcessor.sharedProcessor
+    
+    var filterInput: Bool = true
+    var meterRefresh: NSTimer!
     
     // MARK: - Initalizers
     
@@ -40,17 +42,17 @@ class PowerMeterViewController: UIViewController {
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
         
-        for button in buttons {
-            button.layer.cornerRadius = 40
-            button.layer.masksToBounds = true
-        }
+        // Power Meter UI
+        meterRefresh = NSTimer.scheduledTimerWithTimeInterval(
+                       0.1,
+                       target: self,
+                       selector: #selector(PowerMeterViewController.pollPowerMeters),
+                       userInfo: nil,
+                       repeats: true
+        )
     }
     
     override func viewWillAppear(animated: Bool) {
-        buttons[0].backgroundColor = self.ip.red
-        buttons[1].backgroundColor = self.ip.yellow
-        buttons[2].backgroundColor = self.ip.purple
-        
         ip.filterInputStream(self.view as! GPUImageView)
     }
     
@@ -58,32 +60,17 @@ class PowerMeterViewController: UIViewController {
         ip.stopCapture()
     }
     
-    // MARK: - Actions
-    
-    @IBAction func buttonPressed(sender: AnyObject) {
-        buttons[sender.tag].setTitle("TRACK", forState: .Normal)
-        for button in buttons {
-            if button.tag != sender.tag {
-                button.setTitle("•", forState: .Normal)
-            }
-        }
-        switch sender.tag {
-        case 0:
-            if let red = ip.red {
-                ip.targetColorVector = ip.convertUIColorToColorVector(red)
-            }
-        case 1:
-            if let yellow = ip.yellow {
-                ip.targetColorVector = ip.convertUIColorToColorVector(yellow)
-            }
-        case 2:
-            if let purple = ip.purple {
-                ip.targetColorVector = ip.convertUIColorToColorVector(purple)
-            }
-        default:
-            print("[ ERR ]")
-        }
+    func pollPowerMeters() {
+        updatePowerMeters(ip.powerRed, yellow: ip.powerYellow, purple: ip.powerPurple)
     }
+    
+    func updatePowerMeters(red: Double, yellow: Double, purple: Double) {
+        meters[0].angle = red * 360
+        meters[1].angle = yellow * 360
+        meters[2].angle = purple * 360
+    }
+    
+    // MARK: - Actions
     
     @IBAction func filterPressed(sender: AnyObject) {
         filterInput = !filterInput

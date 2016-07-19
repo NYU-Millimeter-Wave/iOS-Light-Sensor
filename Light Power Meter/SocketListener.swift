@@ -15,11 +15,11 @@ class SocketListener: NSObject, WebSocketDelegate {
     
     private let dm = DataManager.sharedManager
     
-    /// Number of messages sent to the socket server
-    var messageCount: Int = 0
-    
     /// Indicates socket connection to server
     var isConnected: Bool = false
+    
+    /// General-use semaphore for server waiting
+    var serverSignal: dispatch_semaphore_t?
     
     private var socket: WebSocket!
     
@@ -27,7 +27,7 @@ class SocketListener: NSObject, WebSocketDelegate {
     
     init(url: String) {
         super.init()
-        print("[ INF ] Opening socket on: \(url)")
+        print("[ DAT ] Opening socket on: \(url)")
         
         // Socket Configuration
         self.socket = WebSocket(url:NSURL(string: url)!)
@@ -37,7 +37,7 @@ class SocketListener: NSObject, WebSocketDelegate {
     // MARK: - Web Socket Delegate Methods
     
     func webSocketOpen() {
-        print("[ INF ] Socket Connected")
+        print("[ DAT ] Socket Connected")
         self.isConnected = true
         self.dm.syncronizeTime()
         
@@ -45,6 +45,13 @@ class SocketListener: NSObject, WebSocketDelegate {
 
     func webSocketMessageText(text: String) {
         print("[ DAT ] Received: \(text)")
+        
+        switch text {
+        case "VSTART", "VREADING", "VREADNOW":
+            dispatch_semaphore_signal(self.serverSignal!)
+        default:
+            break
+        }
     }
     
     func webSocketMessageData(data: NSData) {
@@ -63,7 +70,7 @@ class SocketListener: NSObject, WebSocketDelegate {
     
     func webSocketClose(code: Int, reason: String, wasClean: Bool) {
         if wasClean {
-            print("[ INF ] Socket Closed Cleanly")
+            print("[ DAT ] Socket Closed Cleanly")
         } else {
             print("[ ERR ] Socket Closed Uncleanly: \(reason)")
         }
@@ -72,7 +79,7 @@ class SocketListener: NSObject, WebSocketDelegate {
         self.dm.pongReceived = false
     }
     
-    // MARK: - Transmission Methods
+    // MARK: - Sending Methods
     
     /**
      
@@ -84,7 +91,6 @@ class SocketListener: NSObject, WebSocketDelegate {
      
      */
     func sendString(msg: String) {
-        messageCount += 1
         let msgTimed = "\(NSDate()): \(msg)"
         print("[ DAT ] Socket Sending: \"\(msgTimed)\"")
         self.socket.send(text: msgTimed)
@@ -100,7 +106,6 @@ class SocketListener: NSObject, WebSocketDelegate {
      
      */
     func sendData(data: NSData) {
-        messageCount += 1
         socket.send(data: data)
     }
     
@@ -115,6 +120,47 @@ class SocketListener: NSObject, WebSocketDelegate {
         print("[ DAT ] Pinging Server...")
         self.socket.ping()
     }
+    
+    // MARK: - Control Flow Signal Methods
+    
+    /**
+     
+     Sends Signal to server to begin experiment
+     
+     - Returns: `nil`
+     
+     */
+    func signalStart() {
+        self.socket.send(text: "START")
+        self.serverSignal = dispatch_semaphore_create(0)
+    }
+    
+    /**
+     
+     Sends signal to server to prepare to take
+     a reading from the iPhone
+     
+     - Returns: `nil`
+     
+     */
+    func signalReadingMode() {
+        self.socket.send(text: "READING")
+        self.serverSignal = dispatch_semaphore_create(0)
+    }
+    
+    /**
+     
+     Signals the server to perform the reading
+     
+     - Returns: `nil`
+     
+     */
+    func signalReadNow() {
+        self.socket.send(text: "READNOW")
+        self.serverSignal = dispatch_semaphore_create(0)
+    }
+    
+    // MARK: - Closure Methods
     
     /**
      

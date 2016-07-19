@@ -19,6 +19,7 @@
 		494114D01D0F3B970000E7EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114CF1D0F3B970000E7EB /* QuartzCore.framework */; };
 		494114D21D0F3C840000E7EB /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494114D11D0F3C840000E7EB /* GPUImage.framework */; };
 		49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49454BEB1D09B24A002C8328 /* LightControlManager.swift */; };
+		4967E7DA1D3E728700F6EDD6 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967E7D91D3E728700F6EDD6 /* KDCircularProgress.swift */; };
 		4970A64A1D2D985F005629BF /* WirelessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970A6491D2D985F005629BF /* WirelessViewController.swift */; };
 		498549021D1C2F3C008D88E9 /* ExperimentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */; };
 		498549041D1C2F59008D88E9 /* Experiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549031D1C2F59008D88E9 /* Experiment.swift */; };
@@ -71,6 +72,7 @@
 		494114CF1D0F3B970000E7EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		494114D11D0F3C840000E7EB /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Light_Power_Meter-afzhatkhcqvhzvcippmuzwwgrnuu/Build/Products/Debug-iphonesimulator/GPUImage/GPUImage.framework"; sourceTree = "<group>"; };
 		49454BEB1D09B24A002C8328 /* LightControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlManager.swift; sourceTree = "<group>"; };
+		4967E7D91D3E728700F6EDD6 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
 		4970A6491D2D985F005629BF /* WirelessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WirelessViewController.swift; sourceTree = "<group>"; };
 		498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentsTableViewController.swift; sourceTree = "<group>"; };
 		498549031D1C2F59008D88E9 /* Experiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experiment.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				49F9BA771D108E19001AD84A /* Shaders */,
 				491468BF1D076E2100440DC3 /* beep.wav */,
+				4967E7D91D3E728700F6EDD6 /* KDCircularProgress.swift */,
 			);
 			name = Resources;
 			path = "Light Power Meter";
@@ -478,6 +481,7 @@
 				498549061D1C2F71008D88E9 /* DataManager.swift in Sources */,
 				491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */,
 				498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */,
+				4967E7DA1D3E728700F6EDD6 /* KDCircularProgress.swift in Sources */,
 				4970A64A1D2D985F005629BF /* WirelessViewController.swift in Sources */,
 				4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */,
 				499791E61D303A4500F317F6 /* ControlViewController.swift in Sources */,

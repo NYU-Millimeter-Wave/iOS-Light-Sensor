@@ -19,7 +19,7 @@ class CalibrationViewController: UIViewController {
     
     // MARK: - Class Properties
     
-    let ip = ImageProcessor.sharedProcessor
+    private let ip = ImageProcessor.sharedProcessor
     
     // MARK: - Initializers
     
@@ -63,7 +63,7 @@ class CalibrationViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        let centerPoint = CGPointMake(self.ip.pixelSize.width / 2, self.ip.pixelSize.height / 2)
+        let centerPoint = CGPointMake(self.ip.PIXEL_SIZE.width / 2, self.ip.PIXEL_SIZE.height / 2)
         let capturedColor: UIColor = self.ip.getColorFromPoint(centerPoint)
         buttons[sender.tag].backgroundColor = capturedColor
         switch sender.tag {

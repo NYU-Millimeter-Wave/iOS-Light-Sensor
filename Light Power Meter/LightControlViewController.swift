@@ -20,12 +20,12 @@ class LightControlViewController: UIViewController {
     @IBOutlet var yellowButtons: [UIButton]!
     @IBOutlet var redButtons: [UIButton]!
     
-    let lightManager = LightControlManager.sharedManager
+    private let lightManager = LightControlManager.sharedManager
     
-    let red =    LightControlManager.red
-    let yellow = LightControlManager.yellow
-    let purple = LightControlManager.purple
-    let saturationConstant = LightControlManager.saturationConstant
+    private let red =    LightControlManager.red
+    private let yellow = LightControlManager.yellow
+    private let purple = LightControlManager.purple
+    private let saturationConstant = LightControlManager.saturationConstant
     
     // MARK: - Initalizers
     
