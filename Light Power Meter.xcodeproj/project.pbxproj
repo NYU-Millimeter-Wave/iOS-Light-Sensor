@@ -159,14 +159,14 @@
 			isa = PBXGroup;
 			children = (
 				4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */,
-				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
-				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
-				49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */,
 				499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */,
+				49E038371D073A67007A4C56 /* CalibrationViewController.swift */,
+				490455BA1D0B0961003E289C /* LightControlViewController.swift */,
+				49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */,
+				499791E51D303A4500F317F6 /* ControlViewController.swift */,
 				498549011D1C2F3C008D88E9 /* ExperimentsTableViewController.swift */,
 				498549071D1C313C008D88E9 /* ExperimentViewController.swift */,
 				4970A6491D2D985F005629BF /* WirelessViewController.swift */,
-				499791E51D303A4500F317F6 /* ControlViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

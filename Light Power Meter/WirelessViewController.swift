@@ -6,8 +6,17 @@
 //  Copyright © 2016 Cole Smith. All rights reserved.
 //
 
-import UIKit
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////                                                       /////
+/////                  CLASS DEPRECATED                     /////
+/////                                                       /////
+/////       -------use ControlViewController--------        /////
+/////                                                       /////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
+import UIKit
 class WirelessViewController: UIViewController {
 
     // MARK: - Outlets
@@ -25,9 +34,10 @@ class WirelessViewController: UIViewController {
     var connectedIcon:    String = "🔵"
 
     // MARK: - Initalizers
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        fatalError("Class Deprecated")
     }
     
     // MARK: - View Handlers
