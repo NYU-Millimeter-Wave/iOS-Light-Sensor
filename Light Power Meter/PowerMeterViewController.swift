@@ -49,7 +49,7 @@ class PowerMeterViewController: UIViewController {
         
         // Power Meter UI
         meterRefresh = NSTimer.scheduledTimerWithTimeInterval(
-            0.5,
+            0.3,
             target: self,
             selector: #selector(PowerMeterViewController.updatePowerMeters),
             userInfo: nil,
@@ -64,11 +64,9 @@ class PowerMeterViewController: UIViewController {
     }
     
     func updatePowerMeters() {
-//        let totalpx = Double(ip.PIXEL_SIZE.width * ip.PIXEL_SIZE.height)
-        let totalpx = 20.0
-        meters[0].angle = Double(ip.getPowerLevelForHue(ip.red,    threshold: ip.colorThreshold)) / totalpx
-        meters[1].angle = Double(ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)) / totalpx
-        meters[2].angle = Double(ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)) / totalpx
+        meters[0].angle = 360 * ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
+        meters[1].angle = 360 * ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
+        meters[2].angle = 360 * ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
     }
     
     // MARK: - Actions

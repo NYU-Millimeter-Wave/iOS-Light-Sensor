@@ -29,22 +29,6 @@ class ImageProcessor: NSObject {
     let MAXIMUM_ALLOWED_COLOR_DISTANCE = 0.5
     
     //
-    // Power Levels
-    //
-    // The Power levels range from 0 - 1.0 where
-    // 0 represents an average color below the minimum
-    // threshold and 1.0 would represent a perfect match
-    
-    /// The current detection amount of red
-    var powerRed:    Double = 0.0
-    
-    /// The current detection amount of yellow
-    var powerYellow: Double = 0.0
-    
-    /// The current detection amount of purple
-    var powerPurple: Double = 0.0
-    
-    //
     // Tunable Target Colors
     //
     // These colors are sampled during calibration and
@@ -66,10 +50,10 @@ class ImageProcessor: NSObject {
     // behave and should be adjusted per circumstance
     
     /// The allowed distance between color hues
-    var colorThreshold: Double = 10.0
+    var colorThreshold: Double = 2.0
     
     /// The divisor for power level calculations
-    var powerLevelMagnification: Double = 20.0
+    var powerLevelMaximum: Double = 1000.0
     
     /// Lume threshold for light intensity detection
     var lumeThreshold: CGFloat? {
@@ -288,10 +272,10 @@ class ImageProcessor: NSObject {
      - Parameter hue: The hue value for distance calculation
      - Parameter threshold: The maximum allowed distance
      
-     - Returns: `Int` The number of matching pixels
+     - Returns: `Double` The ratio of matching pixels on [0,1]
      
      */
-    func getPowerLevelForHue(hue: Double, threshold: Double) -> Int {
+    func getPowerLevelForHue(hue: Double, threshold: Double) -> Double {
         let imgWidth = Int(self.PIXEL_SIZE.width)
         let imgHieight = Int(self.PIXEL_SIZE.height)
         var hit = 0.0
@@ -305,14 +289,17 @@ class ImageProcessor: NSObject {
                 
                 if hueSample != 0 {
                     if abs(hue - Double(hueSample*360)) <= threshold {
-                        print(abs(hue - Double(hueSample*360)))
                         hit += 1
                     }
                 }
             }
         }
         videoCameraRawDataOutput?.unlockFramebufferAfterReading()
-        return Int(hit)
+        if hit > powerLevelMaximum {
+            return 1.0
+        } else {
+            return hit / powerLevelMaximum
+        }
     }
 
     
