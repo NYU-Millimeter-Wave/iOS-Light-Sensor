@@ -21,7 +21,6 @@ class PowerMeterViewController: UIViewController {
     
     private let ip = ImageProcessor.sharedProcessor
     
-    let powerThreshold: Double = 50.0
     var filterInput: Bool = true
     var meterRefresh: NSTimer!
     
@@ -67,9 +66,9 @@ class PowerMeterViewController: UIViewController {
     func updatePowerMeters() {
 //        let totalpx = Double(ip.PIXEL_SIZE.width * ip.PIXEL_SIZE.height)
         let totalpx = 20.0
-        meters[0].angle = Double(ip.getPowerLevelForHue(ip.red,    threshold: powerThreshold)) / totalpx
-        meters[1].angle = Double(ip.getPowerLevelForHue(ip.yellow, threshold: powerThreshold)) / totalpx
-        meters[2].angle = Double(ip.getPowerLevelForHue(ip.purple, threshold: powerThreshold)) / totalpx
+        meters[0].angle = Double(ip.getPowerLevelForHue(ip.red,    threshold: ip.colorThreshold)) / totalpx
+        meters[1].angle = Double(ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)) / totalpx
+        meters[2].angle = Double(ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)) / totalpx
     }
     
     // MARK: - Actions

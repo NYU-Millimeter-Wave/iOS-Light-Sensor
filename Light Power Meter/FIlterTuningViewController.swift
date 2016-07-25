@@ -45,22 +45,22 @@ class FilterTuningViewController: UIViewController {
             label.layer.cornerRadius = label.frame.height
         }
         
-        if let sen = ip.thresholdSensitivity {
-            sliders[0].value = sen
-            labels[1].text = String.localizedStringWithFormat("%.2f", sen)
-        }
+//        if let sen = ip.thresholdSensitivity {
+//            sliders[0].value = sen
+//            labels[1].text = String.localizedStringWithFormat("%.2f", sen)
+//        }
         if let lume = ip.lumeThreshold {
             sliders[1].value = Float(lume)
             labels[2].text = String.localizedStringWithFormat("%.2f", lume)
         }
         if let edge = ip.edgeTolerance {
-            sliders[2].value = edge
+            sliders[2].value = Float(edge)
             labels[3].text = String.localizedStringWithFormat("%.2f", edge)
         }
-        if let rad = ip.closingPixelRadius {
-            stepper.value = Double(rad)
-            labels[0].text = "\(rad)"
-        }
+//        if let rad = ip.closingPixelRadius {
+//            stepper.value = Double(rad)
+//            labels[0].text = "\(rad)"
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,8 +74,8 @@ class FilterTuningViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func stepperChanged(sender: AnyObject) {
-        self.ip.closingPixelRadius = UInt(stepper.value)
-        labels[0].text = "\(UInt(stepper.value))"
+//        self.ip.closingPixelRadius = UInt(stepper.value)
+//        labels[0].text = "\(UInt(stepper.value))"
     }
     
     @IBAction func menuPressed(sender: AnyObject) {
@@ -83,19 +83,19 @@ class FilterTuningViewController: UIViewController {
     }
     
     @IBAction func slilderChanged(sender: AnyObject) {
-        switch sender.tag {
-        case 0:
-            self.ip.thresholdSensitivity = sliders[0].value
-            labels[1].text = String.localizedStringWithFormat("%.2f", sliders[0].value)
-        case 1:
-            self.ip.lumeThreshold = sliders[1].value
-            labels[2].text = String.localizedStringWithFormat("%.2f", sliders[1].value)
-            print(ip.lumeThreshold)
-        case 2:
-            self.ip.edgeTolerance = sliders[2].value
-            labels[3].text = String.localizedStringWithFormat("%.2f", sliders[2].value)
-        default:
-            print("[ ERR ]")
-        }
+//        switch sender.tag {
+//        case 0:
+//            self.ip.thresholdSensitivity = sliders[0].value
+//            labels[1].text = String.localizedStringWithFormat("%.2f", sliders[0].value)
+//        case 1:
+//            self.ip.lumeThreshold = sliders[1].value
+//            labels[2].text = String.localizedStringWithFormat("%.2f", sliders[1].value)
+//            print(ip.lumeThreshold)
+//        case 2:
+//            self.ip.edgeTolerance = sliders[2].value
+//            labels[3].text = String.localizedStringWithFormat("%.2f", sliders[2].value)
+//        default:
+//            print("[ ERR ]")
+//        }
     }
 }

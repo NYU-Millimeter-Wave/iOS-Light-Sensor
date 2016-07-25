@@ -63,18 +63,18 @@ class CalibrationViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        let centerPoint = CGPointMake(self.ip.PIXEL_SIZE.width / 2, self.ip.PIXEL_SIZE.height / 2)
-        let capturedColor: UIColor = self.ip.getColorFromPoint(centerPoint)
-        buttons[sender.tag].backgroundColor = capturedColor
-        switch sender.tag {
-        case 0:
-            self.ip.red = capturedColor
-        case 1:
-            self.ip.yellow = capturedColor
-        case 2:
-            self.ip.purple = capturedColor
-        default:
-            print("[ ERR ]")
-        }
+//        let centerPoint = CGPointMake(self.ip.PIXEL_SIZE.width / 2, self.ip.PIXEL_SIZE.height / 2)
+//        let capturedColor: UIColor = self.ip.getColorFromPoint(centerPoint)
+//        buttons[sender.tag].backgroundColor = capturedColor
+//        switch sender.tag {
+//        case 0:
+//            self.ip.red = capturedColor
+//        case 1:
+//            self.ip.yellow = capturedColor
+//        case 2:
+//            self.ip.purple = capturedColor
+//        default:
+//            print("[ ERR ]")
+//        }
     }
 }
