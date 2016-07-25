@@ -66,14 +66,9 @@ class Experiment: NSObject {
             self.startTime = CFAbsoluteTimeGetCurrent()
             log("[ --- ] Starting experiment with start time \(self.startTime!)")
             
-            self.signalRoombaToStart() { start in
-                if start {
-                    self.log("[ -+- ] Roomba acknowledged experiment begin")
-                    self.experimentMainLoop()
-                } else {
-                    self.log("[ -x- ] Error in signalling Roomba")
-                    self.log("[ === ] NEW EXPERIMENT END")
-                }
+            self.signalRoombaToStart() { _ in
+                self.log("[ -+- ] Roomba acknowledged experiment begin")
+                self.experimentMainLoop()
             }
             
         } else {
@@ -83,19 +78,14 @@ class Experiment: NSObject {
     }
     
     func experimentMainLoop() {
-        self.signalRoombaToRead() { read in
-            if read {
-                self.log("[ -+- ] Roomba in reading mode")
-                self.takeReading() { done in
-                    if done {
-                        self.log("[ -+- ] Reading done")
-                        
-                        // TODO: UPLOAD READING TO SERVER
-                    }
-                }
+        self.signalRoombaToRead() { _ in
+            self.log("[ -+- ] Roomba in reading mode")
+            self.takeReading() { _ in
+                self.log("[ -+- ] Reading done")
+                    
+                // TODO: UPLOAD READING TO SERVER
             }
         }
-        
     }
     
     func endExperiment() {}
@@ -118,30 +108,36 @@ class Experiment: NSObject {
         }
     }
     
-    func signalRoombaToStart(completion: (start: Bool) -> Void) {
+    func signalRoombaToStart(completion: () -> Void) {
         log("[ --- ] Signalling Roomba to begin...")
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            self.dm.socket?.signalStart()
-            dispatch_semaphore_wait(self.dm.socket!.serverSignal!, DISPATCH_TIME_FOREVER)
-            completion(start: true)
+        self.dm.socket?.signalStart() { _ in
+            completion()
         }
+        
+//        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//            self.dm.socket?.signalStart()
+//            dispatch_semaphore_wait(self.dm.socket!.serverSignal!, DISPATCH_TIME_FOREVER)
+//            completion(start: true)
+//        }
     }
     
-    func signalRoombaToRead(completion: (read: Bool) -> Void) {
+    func signalRoombaToRead(completion: () -> Void) {
         log("[ --- ] Singalling Roomba to read...")
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            self.dm.socket?.signalReadingMode()
-            dispatch_semaphore_wait(self.dm.socket!.serverSignal!, DISPATCH_TIME_FOREVER)
-            completion(read: true)
+        self.dm.socket?.signalReadingMode() { _ in
+            completion()
         }
+        
+//        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//            self.dm.socket?.signalReadingMode()
+//            dispatch_semaphore_wait(self.dm.socket!.serverSignal!, DISPATCH_TIME_FOREVER)
+//            completion(read: true)
+//        }
         
     }
     
-    func takeReading(completion: (done: Bool) -> Void) {
+    func takeReading(completion: () -> Void) {
         log("[ --- ] Reading...")
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
@@ -151,22 +147,32 @@ class Experiment: NSObject {
             let currentTime = CFAbsoluteTimeGetCurrent()
             
             // Signal Roomba to spin iPhone
-            self.dm.socket?.signalReadNow()
+            self.dm.socket?.signalReadNow() { _ in
+                
+                // TODO: POLL POWER METER
+
+                let endTime = CFAbsoluteTimeGetCurrent() - currentTime
+                print("Reading completed in: \(endTime)")
+                completion()
+            }
             
             // Wait for signal to verify
             dispatch_semaphore_wait(self.dm.socket!.serverSignal!, DISPATCH_TIME_FOREVER)
             
-            // TODO: POLL POWER METER
-            
-            
-            
-//            for (color, mask) in self.photoBuffer {
-//                
-//            }
+//            // TODO: POLL POWER METER
 //            
-//            let resultTuple = (false, false, false)
-//            self.lightDetectionReadings["\(currentTime)"] = resultTuple
-            completion(done: true)
+//            
+//            
+//            let endTime = CFAbsoluteTimeGetCurrent() - currentTime
+//            print("Reading completed in: \(endTime)")
+//            
+////            for (color, mask) in self.photoBuffer {
+////                
+////            }
+////            
+////            let resultTuple = (false, false, false)
+////            self.lightDetectionReadings["\(currentTime)"] = resultTuple
+//            completion(done: true)
         }
     }
     

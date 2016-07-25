@@ -130,9 +130,14 @@ class SocketListener: NSObject, WebSocketDelegate {
      - Returns: `nil`
      
      */
-    func signalStart() {
-        self.socket.send(text: "START")
-        self.serverSignal = dispatch_semaphore_create(0)
+    func signalStart(completion: () -> Void) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.socket.send(text: "START")
+            self.serverSignal = dispatch_semaphore_create(0)
+            dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
+            completion()
+        }
     }
     
     /**
@@ -143,9 +148,14 @@ class SocketListener: NSObject, WebSocketDelegate {
      - Returns: `nil`
      
      */
-    func signalReadingMode() {
-        self.socket.send(text: "READING")
-        self.serverSignal = dispatch_semaphore_create(0)
+    func signalReadingMode(completion: () -> Void) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.socket.send(text: "READING")
+            self.serverSignal = dispatch_semaphore_create(0)
+            dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
+            completion()
+        }
     }
     
     /**
@@ -155,9 +165,14 @@ class SocketListener: NSObject, WebSocketDelegate {
      - Returns: `nil`
      
      */
-    func signalReadNow() {
-        self.socket.send(text: "READNOW")
-        self.serverSignal = dispatch_semaphore_create(0)
+    func signalReadNow(completion: () -> Void) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.socket.send(text: "READNOW")
+            self.serverSignal = dispatch_semaphore_create(0)
+            dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
+            completion()
+        }
     }
     
     // MARK: - Closure Methods

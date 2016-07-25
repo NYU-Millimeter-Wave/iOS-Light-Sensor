@@ -23,10 +23,11 @@ class ImageProcessor: NSObject {
     //
     
     /// Size of capture frame in pixels
-    let PIXEL_SIZE = CGSizeMake(480.0, 640.0)
+//    let PIXEL_SIZE = CGSizeMake(480.0, 640.0)
+    let PIXEL_SIZE = CGSizeMake(480.0, 360.0)
     
     /// Maximum allowed distance from color
-    let MAXIMUM_ALLOWED_COLOR_DISTANCE = 10.0
+    let MAXIMUM_ALLOWED_COLOR_DISTANCE = 0.5
     
     //
     // Power Levels
@@ -51,14 +52,14 @@ class ImageProcessor: NSObject {
     // represent the benchmark for power level calculation
 
     
-    /// Target color of red
-    var red:    UIColor!
+    /// Target hue of red
+    var red:    Double!
     
-    /// Target color of yellow
-    var yellow: UIColor!
+    /// Target hue of yellow
+    var yellow: Double!
     
-    /// Target color of purple
-    var purple: UIColor!
+    /// Target hue of purple
+    var purple: Double!
     
     //
     // Tuning Parameters
@@ -131,6 +132,10 @@ class ImageProcessor: NSObject {
     // A reference to the current preview layer
     private var previewLayer: GPUImageView?
     
+    // Pointer to the array returned by corner detection algorithm
+    private var interestPointsArray: UnsafeMutablePointer<GLfloat>?
+    private var interestPointsArraySize: UInt?
+    
     // MARK: - Processing Filters
     
     private lazy var filterLume: GPUImageLuminanceThresholdFilter = GPUImageLuminanceThresholdFilter()
@@ -156,34 +161,16 @@ class ImageProcessor: NSObject {
         print("[ INF ] Image Processor Init")
         
         // Default Color Values
-        red    = UIColor(red: 1.0, green: 130 / 255.0, blue: 116 / 255.0, alpha: 1.0)
-        yellow = UIColor(red: 238 / 255.0, green: 1.0, blue: 166.0 / 255.0, alpha: 1.0)
-        purple = UIColor(red: 239 / 255.0, green: 161 / 255.0, blue: 1.0, alpha: 1.0)
         
-        // Default Filter Tweaks
-        lumeThreshold        = 0.99
-        filterLume.threshold = CGFloat(lumeThreshold!)
+        // UIColor(red: 1.0, green: 130 / 255.0, blue: 116 / 255.0, alpha: 1.0)
+        red = 6.0
         
-        // Texel tuning for edge size
-        filterEdgeDetect.texelHeight = 0.002
-        filterEdgeDetect.texelWidth  = 0.002
+        // UIColor(red: 238 / 255.0, green: 1.0, blue: 166.0 / 255.0, alpha: 1.0)
+        yellow = 71.0
         
-        // Crosshair options
-        crosshairs.forceProcessingAtSize(PIXEL_SIZE)
-        crosshairs.crosshairWidth = 5.0
+        // UIColor(red: 239 / 255.0, green: 161 / 255.0, blue: 1.0, alpha: 1.0)
+        purple = 290.0
         
-        // Corner Detection Handler
-        cornerDetect.cornersDetectedBlock = { arrayPointer, count, timestamp in
-            if count > 0 {
-                
-                self.crosshairs.renderCrosshairsFromArray(arrayPointer, count: count, frameTime: timestamp)
-                if let results = self.processPointsForTargetColors(arrayPointer, count: count, frameTime: timestamp) {
-                    self.powerRed = results.red
-                    self.powerYellow = results.yellow
-                    self.powerPurple = results.purple
-                }
-            }
-        }
         
 //        targetColorVector = GPUVector3(one: 1, two: 1, three: 1)
 //        solidWhite.setColorRed(1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -212,11 +199,63 @@ class ImageProcessor: NSObject {
      */
     func filterInputStream(preview: GPUImageView) {
         
+        // Default Filter Tweaks
+        lumeThreshold        = 0.7
+        filterLume.threshold = CGFloat(lumeThreshold!)
+        
+        // Texel tuning for edge size
+        filterEdgeDetect.texelHeight = 0.005
+        filterEdgeDetect.texelWidth  = 0.005
+        
+//        // Crosshair options
+//        crosshairs.forceProcessingAtSize(PIXEL_SIZE)
+//        crosshairs.crosshairWidth = 10.0
+//        
+//        // Corner Detection Handler
+//        cornerDetect.cornersDetectedBlock = { arrayPointer, count, timestamp in
+//            if count > 0 {
+//                self.interestPointsArray = arrayPointer
+//                self.interestPointsArraySize = count
+//                
+//                var points: [GLfloat] = []
+//                for i in 0...(count - 1) {
+//                    
+//                    // Convert point from given array to cgpoint
+//                    let x = CGFloat(arrayPointer[Int(i)]) * self.PIXEL_SIZE.height
+//                    let y = CGFloat(arrayPointer[Int(i+1)]) * self.PIXEL_SIZE.width
+//                    let point = CGPointMake(x, y)
+//                    
+//                    for p in self.getNeighboringPixels(2, point: point) {
+//                        let color = self.getColorFromPoint(p)
+//                        var hue: CGFloat = -1
+//                        color.getHue(&(hue), saturation: nil, brightness: nil, alpha: nil)
+//                        if hue != 0 {
+//                            
+//                            points.append(GLfloat(p.x / self.PIXEL_SIZE.height))
+//                            points.append(GLfloat(p.y / self.PIXEL_SIZE.width))
+//                        }
+//                    }
+//                }
+//                
+//                self.crosshairs.renderCrosshairsFromArray(&points, count: UInt(points.count*2), frameTime: timestamp)
+////                if let results = self.processPointsForTargetColors(arrayPointer, count: count, frameTime: timestamp) {
+////                    self.powerRed    = results.red
+////                    self.powerYellow = results.yellow
+////                    self.powerPurple = results.purple
+////                }
+////                self.getAverageColorFromPoints(arrayPointer, count: count, frameTime: timestamp)
+//            } else {
+//                self.powerRed    = 0
+//                self.powerYellow = 0
+//                self.powerPurple = 0
+//            }
+//        }
+        
         // Set local preview layer
         self.previewLayer = preview
         
         // Invoke Video Camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetMedium, cameraPosition: .Back)
         videoCamera?.outputImageOrientation = .Portrait
         
         // Setup raw output
@@ -224,24 +263,25 @@ class ImageProcessor: NSObject {
         unfilteredVideoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: PIXEL_SIZE, resultsInBGRAFormat: true)
         videoCamera?.addTarget(unfilteredVideoCameraRawDataOutput)
         
-        // Lume Filtering
+        // Lume & Edge Filtering
         videoCamera?.addTarget(filterLume)
         filterLume.addTarget(filterEdgeDetect)
         
         // Lume Masking
         videoCamera?.addTarget(filterMask)
-        
-        // Edge Detection
         filterEdgeDetect.addTarget(filterMask)
         
         // Corner Detection
-        filterMask.addTarget(cornerDetect)
+//        filterMask.addTarget(cornerDetect)
+        filterMask.addTarget(preview)
+        filterMask.addTarget(videoCameraRawDataOutput)
         
         // Overlay Crosshairs
-        let blend = GPUImageAlphaBlendFilter()
-        videoCamera?.addTarget(blend)
-        crosshairs.addTarget(blend)
-        blend.addTarget(preview)
+//        let blend = GPUImageAlphaBlendFilter()
+//        filterMask.addTarget(blend)
+//        crosshairs.addTarget(blend)
+//        blend.addTarget(preview)
+//        blend.addTarget(videoCameraRawDataOutput)
         
         // Color Masking
         
@@ -266,101 +306,64 @@ class ImageProcessor: NSObject {
         videoCamera?.startCameraCapture()
     }
     
-    /**
-     
-     Calculates the distance in 3D RGB color space from each pixel to the three RYP target
-     colors. Where ditance D is defined as:
-     
-        D = [(r2 - r1)^2 + (g2 - g1)^2 + (b2 - b1)^2]^(1/2)
-     
-     Distances below a defined threshold will be added to the target color's respective total
-     distance and a counter will be incremented. The average distnce Dav is defined as:
-     
-        Dav = SUM(D where D <= max_dist) / count_of_D
-     
-     The average is then normalized (range [0,1.0] on the interval [0, max_dist], where 0 is perfect match with target color,
-     for a power level PL defined as:
-     
-        PL = Dav / max_dist
-     
-     - Parameter arrayPointer: Pointer to array of normalized XY points found by edge detection
-     - Parameter count:        Number of points in array
-     - Parameter time:         Timestamp for polled frame
-     
-     - Returns: Named `Tuple` containing the power level for each target color
-     
-     */
-    func processPointsForTargetColors(arrayPointer: UnsafeMutablePointer<GLfloat>, count: UInt, frameTime: CMTime) -> (red: Double, yellow: Double, purple: Double)? {
-        
-        var distanceSumR: Double = 0.0
-        var distanceSumY: Double = 0.0
-        var distanceSumP: Double = 0.0
-        
-        var hitCountR: UInt = 0
-        var hitCountY: UInt = 0
-        var hitCountP: UInt = 0
-        
-        for i in 0...(count - 1) {
-            
-            // Get point info
-            let pointX = CGFloat(arrayPointer[Int(i)]) * PIXEL_SIZE.width
-            let pointY = CGFloat(arrayPointer[Int(i + 1)]) * PIXEL_SIZE.height
-            let denormPoint = CGPointMake(pointX, pointY)
-            
-            print(denormPoint)
-            
-            // Get color channels at point on unfiltered image
-            if let color = unfilteredVideoCameraRawDataOutput?.colorAtLocation(denormPoint) {
-                let distanceFromR = getDistanceFromColors(color, second: self.red)
-                let distanceFromY = getDistanceFromColors(color, second: self.yellow)
-                let distanceFromP = getDistanceFromColors(color, second: self.purple)
-                
-                if distanceFromR <= MAXIMUM_ALLOWED_COLOR_DISTANCE {
-                    distanceSumR += distanceFromR
-                    hitCountR += 1
+    // Get the average hue of an entire image
+    // (hue value, hit Count)
+    func getAverageHue() -> (Double, Int) {
+        let imgWidth = Int(self.PIXEL_SIZE.width)
+        let imgHieight = Int(self.PIXEL_SIZE.height)
+        var avHue = 0.0
+        var hit = 0.0
+        videoCameraRawDataOutput?.lockFramebufferForReading()
+        for x in 0...imgWidth {
+            for y in 0...imgHieight {
+                var hue: CGFloat = 0.0
+                let color = self.getColorFromPoint(CGPointMake(CGFloat(x), CGFloat(y)))
+                color.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+                if hue != 0 {
+                    avHue += Double(hue)
+                    hit += 1
                 }
-                if distanceFromY <= MAXIMUM_ALLOWED_COLOR_DISTANCE {
-                    distanceSumY += distanceFromY
-                    hitCountY += 1
-                }
-                if distanceFromP <= MAXIMUM_ALLOWED_COLOR_DISTANCE {
-                    distanceSumP += distanceFromP
-                    hitCountP += 1
-                }
-                
-            } else {
-                print("[ ERR ] Tried to get color but the raw input stream was empty")
-                return nil
             }
         }
-        
-        // Calculate Power Levels (PL = Dav / MAX)
-        let plR = (distanceSumR / Double(hitCountR)) / MAXIMUM_ALLOWED_COLOR_DISTANCE
-        let plY = (distanceSumR / Double(hitCountY)) / MAXIMUM_ALLOWED_COLOR_DISTANCE
-        let plP = (distanceSumP / Double(hitCountP)) / MAXIMUM_ALLOWED_COLOR_DISTANCE
-        
-        print("Time: \(frameTime)")
-        print("Power R: \(plR) Y: \(plY) P: \(plP)")
-        
-        return (plR, plY, plP)
+        videoCameraRawDataOutput?.unlockFramebufferAfterReading()
+        return ( ((avHue / hit) * 360), Int(hit))
     }
     
-    // Only to be used by the above function
-    private func getDistanceFromColors(first: GPUByteColorVector, second: UIColor) -> Double {
-        
-        // Normalize Byte Vector
-        let normRed   = Double(first.red) / 255.0
-        let normGreen = Double(first.green) / 255.0
-        let normBlue  = Double(first.blue) / 255.0
-        
-        // Convert UIColor to vector
-        let vectorColor = convertUIColorToColorVector(second)
-        
-        let squaredDiffR = pow((normRed   - Double(vectorColor.one)  ), 2)
-        let squaredDiffG = pow((normGreen - Double(vectorColor.two)  ), 2)
-        let squaredDiffB = pow((normBlue  - Double(vectorColor.three)), 2)
-        
-        return abs(sqrt(squaredDiffR + squaredDiffG + squaredDiffB))
+    // Get the average hue a number of times and return the median
+    func multipassHueAverageCalibration(passes: UInt) -> Double {
+        var results: [Double] = []
+        for _ in 0...passes {
+            results.append(self.getAverageHue().0)
+        }
+        results.sortInPlace()
+        return results[results.count / 2]
+    }
+    
+    // Get the distance between each pixel and
+    // provided hue and if difference is less than threshold (0-360)
+    // add to hitCount
+    func getPowerLevelForHue(hue: Double, threshold: Double) -> Int {
+        let imgWidth = Int(self.PIXEL_SIZE.width)
+        let imgHieight = Int(self.PIXEL_SIZE.height)
+        var hit = 0.0
+        videoCameraRawDataOutput?.lockFramebufferForReading()
+        for x in 0...imgWidth {
+            for y in 0...imgHieight {
+                
+                var hueSample: CGFloat = 0.0
+                let color = self.getColorFromPoint(CGPointMake(CGFloat(x), CGFloat(y)))
+                color.getHue(&hueSample, saturation: nil, brightness: nil, alpha: nil)
+                
+                if hueSample != 0 {
+                    if abs(hue - Double(hueSample*360)) <= threshold {
+                        print(abs(hue - Double(hueSample*360)))
+                        hit += 1
+                    }
+                }
+            }
+        }
+        videoCameraRawDataOutput?.unlockFramebufferAfterReading()
+        return Int(hit)
     }
     
     /**
@@ -374,7 +377,7 @@ class ImageProcessor: NSObject {
      */
     func displayRawInputStream(preview: GPUImageView) {
         // Invoke Video Camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetMedium, cameraPosition: .Back)
         videoCamera?.outputImageOrientation = .Portrait
         
         // Setup raw output
@@ -453,7 +456,7 @@ class ImageProcessor: NSObject {
         let gComponent = Float(colorComponents[1])
         let bComponent = Float(colorComponents[2])
         
-        return GPUVector3(one: rComponent / 255.0, two: gComponent / 255.0, three: bComponent / 255.0)
+        return GPUVector3(one: rComponent, two: gComponent, three: bComponent)
     }
     
     // MARK: - Mathematics
@@ -494,6 +497,275 @@ class ImageProcessor: NSObject {
     }
     
     // MARK: - Commented Code
+    
+    //
+    //    // Returns Tuple of distances from each color
+    //    private func getDistanceForPixel(pixel: CGPoint) -> (red: Double, yellow: Double, purple: Double)? {
+    //        // Get color channels at point on unfiltered image
+    //        if let color = videoCameraRawDataOutput?.colorAtLocation(pixel) {
+    //            let distanceFromR = getDistanceFromColors(color, second: self.red)
+    //            let distanceFromY = getDistanceFromColors(color, second: self.yellow)
+    //            let distanceFromP = getDistanceFromColors(color, second: self.purple)
+    //
+    //            return (distanceFromR, distanceFromY, distanceFromP)
+    //        } else {
+    //            print("[ ERR ] Tried to get color but the raw input stream was empty")
+    //            return nil
+    //        }
+    //    }
+    
+    //    // Direction:
+    //    //     1
+    //    //   2   3
+    //    //     4
+    //    // Return: Hit count of found pixels
+    //    private func walk(point: CGPoint, dir: Int) -> (red: UInt, yellow: UInt, purple: UInt) {
+    //        var results: (red: UInt, yellow: UInt, purple: UInt) = (0,0,0)
+    //        var localizedPoint = point
+    //        var i = 0
+    //        while(i < 10) {
+    //
+    //            // Check Edge cases for each direction
+    //            switch dir {
+    //            case 1:
+    //                if (localizedPoint.y - 1) < 0 { return results }
+    //            case 2:
+    //                if (localizedPoint.x - 1) < 0 { return results }
+    //            case 3:
+    //                if (localizedPoint.x + 1) > self.PIXEL_SIZE.width { return results }
+    //            case 4:
+    //                if (localizedPoint.y + 1) > self.PIXEL_SIZE.height { return results }
+    //            default:
+    //                print("Error in walk")
+    //                return results
+    //            }
+    //
+    //            let color = getColorFromPoint(localizedPoint)
+    //            if color == UIColor.clearColor() {
+    //                print("reached black point")
+    //                return results
+    //            }
+    //            let dist = getDistanceForPixel(localizedPoint)
+    //            if dist?.red < MAXIMUM_ALLOWED_COLOR_DISTANCE {
+    //                results.red += 1
+    //            }
+    //            if dist?.yellow < MAXIMUM_ALLOWED_COLOR_DISTANCE {
+    //                results.yellow += 1
+    //            }
+    //            if dist?.purple < MAXIMUM_ALLOWED_COLOR_DISTANCE {
+    //                results.purple += 1
+    //            }
+    //
+    //            switch dir {
+    //            case 1:
+    //                localizedPoint.y -= 1
+    //            case 2:
+    //                localizedPoint.x -= 1
+    //            case 3:
+    //                localizedPoint.x += 1
+    //            case 4:
+    //                localizedPoint.y += 1
+    //            default:
+    //                print("error in walk")
+    //                return results
+    //            }
+    //            i += 1
+    //        }
+    //        return results
+    //    }
+    
+    //    // Only to be used by the above function
+    //    private func getDistanceFromColors(first: GPUByteColorVector, second: UIColor) -> Double {
+    //
+    //        // Normalize Byte Vector
+    //        let normRed   = Double(first.red) / 255.0
+    //        let normGreen = Double(first.green) / 255.0
+    //        let normBlue  = Double(first.blue) / 255.0
+    //
+    //        // Convert UIColor to vector
+    //        let vectorColor = convertUIColorToColorVector(second)
+    //
+    //        let squaredDiffR = pow((normRed   - Double(vectorColor.one)  ), 2)
+    //        let squaredDiffG = pow((normGreen - Double(vectorColor.two)  ), 2)
+    //        let squaredDiffB = pow((normBlue  - Double(vectorColor.three)), 2)
+    //
+    ////        print("Distance: \(abs(sqrt(squaredDiffR + squaredDiffG + squaredDiffB)))")
+    //        return abs(sqrt(squaredDiffR + squaredDiffG + squaredDiffB))
+    //    }
+    //
+    //    // Target Color selection: red(1) yellow(2) purple(3)
+    //    func learnColor(forTargetColor: Int) -> UIColor {
+    //
+    //        if self.previewLayer == nil {
+    //            print("[ ERR ] Cannot calibrate color without preview layer")
+    //            return UIColor.blackColor()
+    //        }
+    //
+    //        // Do a multipass color averaging of interest points
+    //        var foundColors: [UIColor] = []
+    //        if let array = interestPointsArray {
+    //            if let size = interestPointsArraySize {
+    //                for i in 0...(size - 1) {
+    //                    let point = CGPointMake(CGFloat(array[Int(i)]), CGFloat(array[Int(i + 1)]))
+    //                    let colorAtPoint = getColorFromPoint(point)
+    //                    foundColors.append(colorAtPoint)
+    //                }
+    //                
+    //                
+    //            }
+    //        }
+    //        
+    //        return UIColor()
+    //    }
+
+    
+    //    // For every point in the array, average the hue
+    //    func getAverageColorFromPoints(arrayPointer: UnsafeMutablePointer<GLfloat>, count: UInt, frameTime: CMTime) {
+    //        for x in 0...(count - 1) {
+    //            let y = x + 1
+    //            let point = CGPointMake(CGFloat(x), CGFloat(y))
+    //
+    //            for p in self.getNeighboringPixels(30, point: point) {
+    //                let color = self.getColorFromPoint(p)
+    //                var hue: CGFloat = -1
+    //                color.getHue(&(hue), saturation: nil, brightness: nil, alpha: nil)
+    //                if hue != 0 {
+    ////                    print("Hue: \(hue)")
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    func getNeighboringPixels(radius: UInt, point: CGPoint) -> [CGPoint] {
+    //        let x = point.x
+    //        let y = point.y
+    //        var resultArray: [CGPoint] = []
+    //
+    //        if radius == 0 {
+    //            print("[ ERR ] Cannot get neighboring pixels, radius cannot be 0")
+    //            return []
+    //        }
+    //
+    //        for d in 1...radius {
+    //            let dist = CGFloat(d)
+    //            resultArray.append(CGPointMake(x - dist, y - dist))
+    //            resultArray.append(CGPointMake(x       , y - dist))
+    //            resultArray.append(CGPointMake(x + dist, y - dist))
+    //            resultArray.append(CGPointMake(x - dist, y       ))
+    //            resultArray.append(CGPointMake(x + dist, y       ))
+    //            resultArray.append(CGPointMake(x - dist, y + dist))
+    //            resultArray.append(CGPointMake(x       , y + dist))
+    //            resultArray.append(CGPointMake(x + dist, y + dist))
+    //        }
+    //
+    //        return resultArray
+    //    }
+    
+    //    /**
+    //
+    //     Calculates the distance in 3D RGB color space from each pixel to the three RYP target
+    //     colors. Where ditance D is defined as:
+    //
+    //        D = [(r2 - r1)^2 + (g2 - g1)^2 + (b2 - b1)^2]^(1/2)
+    //
+    //     Distances below a defined threshold will be added to the target color's respective total
+    //     distance and a counter will be incremented. The average distnce Dav is defined as:
+    //
+    //        Dav = SUM(D where D <= max_dist) / count_of_D
+    //
+    //     The average is then normalized (range [0,1.0] on the interval [0, max_dist], where 0 is perfect match with target color,
+    //     for a power level PL defined as:
+    //
+    //        PL = Dav / max_dist
+    //
+    //     - Parameter arrayPointer: Pointer to array of normalized XY points found by edge detection
+    //     - Parameter count:        Number of points in array
+    //     - Parameter time:         Timestamp for polled frame
+    //
+    //     - Returns: Named `Tuple` containing the power level for each target color
+    //
+    //     */
+    //    func processPointsForTargetColors(arrayPointer: UnsafeMutablePointer<GLfloat>, count: UInt, frameTime: CMTime) -> (red: Double, yellow: Double, purple: Double)? {
+    //
+    //        var distanceSumR: Double = 0.0
+    //        var distanceSumY: Double = 0.0
+    //        var distanceSumP: Double = 0.0
+    //
+    //        var hitCountR: UInt = 0
+    //        var hitCountY: UInt = 0
+    //        var hitCountP: UInt = 0
+    //
+    //        for i in 0...(count - 1) {
+    //
+    //            // Get point info
+    //            let pointX = CGFloat(arrayPointer[Int(i)]) * PIXEL_SIZE.width
+    //            let pointY = CGFloat(arrayPointer[Int(i + 1)]) * PIXEL_SIZE.height
+    //            let denormPoint = CGPointMake(pointX, pointY)
+    //
+    //
+    //            for i in 1...4 {
+    //                let walker = walk(denormPoint, dir: i)
+    //                hitCountR += walker.red
+    //                hitCountY += walker.yellow
+    //                hitCountP += walker.purple
+    //            }
+    //
+    //
+    ////            let hitCountUP    = walk(denormPoint, dir: 1)
+    ////            let hitCountLEFT  = walk(denormPoint, dir: 2)
+    ////            let hitCountRIGHT = walk(denormPoint, dir: 3)
+    ////            let hitCountDOWN  = walk(denormPoint, dir: 4)
+    ////            print("UP: \(hitCountUP)")
+    ////            print("LEFT: \(hitCountLEFT)")
+    ////            print("RIGHT: \(hitCountRIGHT)")
+    ////            print("DOWN: \(hitCountDOWN)")
+    //
+    ////            // Get color channels at point on unfiltered image
+    ////            if let dist = getDistanceForPixel(denormPoint) {
+    ////                if dist.red <= MAXIMUM_ALLOWED_COLOR_DISTANCE {
+    ////                    distanceSumR += dist.red
+    ////                    hitCountR += 1
+    ////                }
+    ////                if dist.yellow <= MAXIMUM_ALLOWED_COLOR_DISTANCE {
+    ////                    distanceSumY += dist.yellow
+    ////                    hitCountY += 1
+    ////                }
+    ////                if dist.purple <= MAXIMUM_ALLOWED_COLOR_DISTANCE {
+    ////                    distanceSumP += dist.purple
+    ////                    hitCountP += 1
+    ////                }
+    ////            } else {
+    ////                print("[ ERR ] Could not get distance from pixel")
+    ////                return nil
+    ////            }
+    ////
+    //        }
+    //
+    //        var plR: Double = 0.0
+    //        var plY: Double = 0.0
+    //        var plP: Double = 0.0
+    //
+    //        plR = Double(hitCountR * 40) / Double(self.PIXEL_SIZE.height * self.PIXEL_SIZE.width)
+    //        plY = Double(hitCountY * 40) / Double(self.PIXEL_SIZE.height * self.PIXEL_SIZE.width)
+    //        plP = Double(hitCountR * 40) / Double(self.PIXEL_SIZE.height * self.PIXEL_SIZE.width)
+    //        print("\(plR, plY, plP)")
+    //
+    ////        // Calculate Power Levels (PL = Dav / MAX)
+    ////        if hitCountR > 0 {
+    ////            plR = (distanceSumR / Double(hitCountR)) / MAXIMUM_ALLOWED_COLOR_DISTANCE
+    ////        }
+    ////        if hitCountY > 0 {
+    ////            plY = (distanceSumR / Double(hitCountY)) / MAXIMUM_ALLOWED_COLOR_DISTANCE
+    ////        }
+    ////        if hitCountP > 0 {
+    ////            plP = (distanceSumP / Double(hitCountP)) / MAXIMUM_ALLOWED_COLOR_DISTANCE
+    ////        }
+    ////
+    ////        print("Time: \(frameTime.value)")
+    ////        print("Power R: \(plR) Y: \(plY) P: \(plP)")
+    //        
+    //        return (plR, plY, plP)
+    //    }
     
     //    private func calculateCentroidFromRawPixelData() -> CGPoint {
     //        var currentXTotal: CGFloat = 0.0

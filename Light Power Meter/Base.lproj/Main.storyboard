@@ -77,7 +77,7 @@
                                                         <constraint firstAttribute="width" constant="117" id="VEV-Uz-Rl8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.8721452421" green="1" blue="0.5671781602" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -388,7 +388,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yTa-bf-1IJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="373.5"/>
+            <point key="canvasLocation" x="987" y="148.5"/>
         </scene>
         <!--Calibration View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -474,18 +474,18 @@
                                 <exclude reference="tBf-Qs-a8g"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="RDP-f9-zF8"/>
+                                <exclude reference="0wF-bJ-Kw7"/>
+                                <exclude reference="2Vv-0A-HdM"/>
+                                <exclude reference="wRo-iB-PKO"/>
                                 <exclude reference="HBh-Cm-IXZ"/>
                                 <exclude reference="PCK-wu-8Gp"/>
                                 <exclude reference="WPZ-uM-Ruc"/>
                                 <exclude reference="afu-w9-9Fg"/>
+                                <exclude reference="RDP-f9-zF8"/>
                                 <exclude reference="BGL-Oc-Xgi"/>
                                 <exclude reference="bGL-g8-wXC"/>
                                 <exclude reference="cdL-Qk-79A"/>
                                 <exclude reference="lY2-zh-HNE"/>
-                                <exclude reference="0wF-bJ-Kw7"/>
-                                <exclude reference="2Vv-0A-HdM"/>
-                                <exclude reference="wRo-iB-PKO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -495,24 +495,24 @@
                                 <include reference="tBf-Qs-a8g"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="RDP-f9-zF8"/>
+                                <include reference="0wF-bJ-Kw7"/>
+                                <include reference="2Vv-0A-HdM"/>
+                                <include reference="wRo-iB-PKO"/>
                                 <include reference="HBh-Cm-IXZ"/>
                                 <include reference="PCK-wu-8Gp"/>
                                 <include reference="WPZ-uM-Ruc"/>
                                 <include reference="afu-w9-9Fg"/>
+                                <include reference="RDP-f9-zF8"/>
                                 <include reference="BGL-Oc-Xgi"/>
                                 <include reference="bGL-g8-wXC"/>
                                 <include reference="cdL-Qk-79A"/>
                                 <include reference="lY2-zh-HNE"/>
-                                <include reference="0wF-bJ-Kw7"/>
-                                <include reference="2Vv-0A-HdM"/>
-                                <include reference="wRo-iB-PKO"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pTz-L0-Wxn">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="ZNw-0c-QbK">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="leftBarButtonItem" title="•••" id="ZNw-0c-QbK">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuPressed:" destination="BYZ-38-t0r" id="WZU-GX-4O4"/>
                             </connections>
@@ -526,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629.5" y="373.5"/>
+            <point key="canvasLocation" x="2391" y="148.5"/>
         </scene>
         <!--Power Meter View Controller-->
         <scene sceneID="EYj-vJ-rNV">
@@ -666,18 +666,18 @@
                                 <exclude reference="Q7H-Ef-xZF"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7iS-Qv-6U6"/>
+                                <exclude reference="YI0-ET-ASA"/>
+                                <exclude reference="t5a-GO-7Zk"/>
+                                <exclude reference="6lP-KU-B5r"/>
+                                <exclude reference="FHO-ry-Q2Q"/>
+                                <exclude reference="ew0-mq-uSO"/>
+                                <exclude reference="lVu-3I-JhX"/>
                                 <exclude reference="42x-5X-Prd"/>
                                 <exclude reference="Kak-yU-WAX"/>
                                 <exclude reference="P87-bq-EnO"/>
                                 <exclude reference="qJR-Nq-5UA"/>
                                 <exclude reference="vWk-22-EWC"/>
-                                <exclude reference="6lP-KU-B5r"/>
-                                <exclude reference="FHO-ry-Q2Q"/>
-                                <exclude reference="ew0-mq-uSO"/>
-                                <exclude reference="lVu-3I-JhX"/>
-                                <exclude reference="7iS-Qv-6U6"/>
-                                <exclude reference="YI0-ET-ASA"/>
-                                <exclude reference="t5a-GO-7Zk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -687,30 +687,30 @@
                                 <include reference="Q7H-Ef-xZF"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7iS-Qv-6U6"/>
+                                <include reference="YI0-ET-ASA"/>
+                                <include reference="t5a-GO-7Zk"/>
+                                <include reference="6lP-KU-B5r"/>
+                                <include reference="FHO-ry-Q2Q"/>
+                                <include reference="ew0-mq-uSO"/>
+                                <include reference="lVu-3I-JhX"/>
                                 <include reference="42x-5X-Prd"/>
                                 <include reference="Kak-yU-WAX"/>
                                 <include reference="P87-bq-EnO"/>
                                 <include reference="qJR-Nq-5UA"/>
                                 <include reference="vWk-22-EWC"/>
-                                <include reference="6lP-KU-B5r"/>
-                                <include reference="FHO-ry-Q2Q"/>
-                                <include reference="ew0-mq-uSO"/>
-                                <include reference="lVu-3I-JhX"/>
-                                <include reference="7iS-Qv-6U6"/>
-                                <include reference="YI0-ET-ASA"/>
-                                <include reference="t5a-GO-7Zk"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="8EA-BD-zpT">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="b6d-Vz-LiJ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="leftBarButtonItem" title="•••" id="b6d-Vz-LiJ">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuPressed:" destination="Nwp-kd-kwq" id="pZC-TU-qT3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="&lt;-&gt;" id="4rm-Uk-fIo">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="rightBarButtonItem" title="&lt;•&gt;" id="4rm-Uk-fIo">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="filterPressed:" destination="Nwp-kd-kwq" id="40s-CW-nPI"/>
                             </connections>
@@ -724,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEc-KK-vRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="373.5"/>
+            <point key="canvasLocation" x="1680" y="148.5"/>
         </scene>
         <!--Wireless-->
         <scene sceneID="ett-J2-jN6">
@@ -930,7 +930,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPk-Yd-Y4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="1043.25"/>
+            <point key="canvasLocation" x="1680" y="803.25"/>
         </scene>
         <!--Control View Controller-->
         <scene sceneID="Xc6-fC-EZA">
@@ -950,7 +950,7 @@
                                     <constraint firstAttribute="width" constant="174" id="Ezw-TM-OZR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
@@ -1043,10 +1043,10 @@
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚪️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-d0-k0W">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="◎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-d0-k0W">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OA0-uc-Tsn">
@@ -1114,7 +1114,9 @@
                             <constraint firstItem="ggZ-mq-El8" firstAttribute="top" secondItem="BlI-ED-8C7" secondAttribute="bottom" constant="532" id="RtE-e5-Y9s"/>
                             <constraint firstItem="5D2-rn-llV" firstAttribute="top" secondItem="1Ei-39-eeW" secondAttribute="top" id="S0Q-F4-83Z"/>
                             <constraint firstItem="gXd-NW-0oA" firstAttribute="baseline" secondItem="P5R-r7-7LW" secondAttribute="baseline" id="TnR-70-Q0j"/>
-                            <constraint firstItem="2GS-d0-k0W" firstAttribute="centerY" secondItem="Hmn-Ya-HEZ" secondAttribute="centerY" id="WVM-Ex-8uM"/>
+                            <constraint firstItem="2GS-d0-k0W" firstAttribute="centerY" secondItem="Hmn-Ya-HEZ" secondAttribute="centerY" id="WVM-Ex-8uM">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
+                            </constraint>
                             <constraint firstItem="pTO-O3-Lgm" firstAttribute="top" secondItem="Ru5-yI-fCH" secondAttribute="bottom" constant="8" symbolic="YES" id="XgF-xX-6kx"/>
                             <constraint firstItem="5D2-rn-llV" firstAttribute="bottom" secondItem="1Ei-39-eeW" secondAttribute="bottom" id="Y6k-cO-v0j"/>
                             <constraint firstItem="OA0-uc-Tsn" firstAttribute="leading" secondItem="5D2-rn-llV" secondAttribute="leading" id="aDd-c7-v2b"/>
@@ -1245,7 +1247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AvP-IX-9gY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629.5" y="1043.25"/>
+            <point key="canvasLocation" x="2391" y="811.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nbe-Xe-8rn">
@@ -1265,7 +1267,7 @@
                                     <constraint firstAttribute="width" constant="174" id="ZpO-FS-A2r"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
@@ -1298,7 +1300,7 @@
                                     <constraint firstAttribute="height" constant="21" id="O5G-ZB-uxV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1314,13 +1316,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ws://127.0.0.1:9000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTr-4L-CYP">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚪️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bj1-sv-AFq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="◎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bj1-sv-AFq">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xC5-r0-8rq">
@@ -1501,7 +1503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlS-c9-ywz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3379.5" y="1043.25"/>
+            <point key="canvasLocation" x="3094.5" y="811.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cCF-aK-fYp">
@@ -1584,7 +1586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4G-I8-okr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4110" y="1043.25"/>
+            <point key="canvasLocation" x="3810" y="811.5"/>
         </scene>
         <!--Filter Tuning View Controller-->
         <scene sceneID="7th-9Q-msb">
@@ -1604,7 +1606,7 @@
                                     <constraint firstAttribute="width" constant="174" id="7rW-vM-CXq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
@@ -1968,8 +1970,8 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Pz8-BG-Kik">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="ZdJ-ek-cQG">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="leftBarButtonItem" title="•••" id="ZdJ-ek-cQG">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuPressed:" destination="iyw-Q7-8Me" id="wzE-GL-8wn"/>
                             </connections>
@@ -1989,7 +1991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owo-Mu-DQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4110" y="373.5"/>
+            <point key="canvasLocation" x="3810" y="148.5"/>
         </scene>
         <!--Experiments Table View Controller-->
         <scene sceneID="L6Y-D8-3e2">
@@ -2038,7 +2040,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKZ-Yu-9iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5547" y="373.5"/>
+            <point key="canvasLocation" x="4509" y="148.5"/>
         </scene>
         <!--Experiment 1-->
         <scene sceneID="08f-rz-3Ll">
@@ -2148,7 +2150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODI-nk-tZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6273" y="373.5"/>
+            <point key="canvasLocation" x="5235" y="148.5"/>
         </scene>
         <!--Light Control View Controller-->
         <scene sceneID="aiC-wN-MgW">
@@ -2168,7 +2170,7 @@
                                     <constraint firstAttribute="width" constant="174" id="05i-E8-pfO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
@@ -2182,7 +2184,7 @@
                                     <constraint firstAttribute="width" constant="29" id="UEx-cJ-CfZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -2211,21 +2213,27 @@
                             </switch>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjq-X2-2d0">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="❤️"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="UF6-Ny-OvM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRh-KA-q9Y">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="💛"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="0.8721452421" green="1" blue="0.5671781602" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="tG9-lK-QeM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSx-9b-s7J">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="💜"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="0.93563959279999998" green="0.63154619229999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="fYd-Ep-Sd3"/>
                                 </connections>
@@ -2233,7 +2241,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX7-4U-Ecy">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-l2-A6s">
@@ -2252,21 +2260,27 @@
                             </switch>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8c-fI-Hzm">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="❤️"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="gU3-Mr-g4l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqP-PF-0lk">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="💛"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="0.8721452421" green="1" blue="0.5671781602" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="fEO-8G-UpM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6L3-up-hy6">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="💜"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="0.93563959279999998" green="0.63154619229999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="IeZ-FG-s2F"/>
                                 </connections>
@@ -2274,7 +2288,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-4x-iEb">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Cjm-qF-35F">
@@ -2293,27 +2307,34 @@
                             </switch>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fc-wl-pbI">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="❤️"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="Yl9-bo-wQi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-DJ-cT4">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="💛"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="0.8721452421" green="1" blue="0.5671781602" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="y91-Jd-6WX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxN-Eb-SLu">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="💜"/>
+                                <state key="normal" title="◉">
+                                    <color key="titleColor" red="0.93563959279999998" green="0.63154619229999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="YH0-Jg-VUC" eventType="touchUpInside" id="5mo-95-lfg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yG-XA-2QE">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                 <state key="normal" title="RESET">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2562,7 +2583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPD-yA-xow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3379.5" y="373.5"/>
+            <point key="canvasLocation" x="3094.5" y="148.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QXd-iR-LHj">
@@ -2580,7 +2601,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eF6-Hr-p0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4825.5" y="373.5"/>
+            <point key="canvasLocation" x="4509" y="-558"/>
         </scene>
     </scenes>
 </document>

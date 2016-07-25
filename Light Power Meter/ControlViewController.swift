@@ -20,8 +20,8 @@ class ControlViewController: UIViewController {
     private let dm = DataManager.sharedManager
     
     var connected:  Bool = false
-    var disconnectedIcon: String = "⚪️"
-    var connectedIcon:    String = "🔵"
+    var disconnectedIcon: String = "◎"
+    var connectedIcon:    String = "◉"
     
     // MARK: - Initalizers
     

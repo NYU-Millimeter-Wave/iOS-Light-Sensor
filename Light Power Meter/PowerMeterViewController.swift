@@ -21,6 +21,7 @@ class PowerMeterViewController: UIViewController {
     
     private let ip = ImageProcessor.sharedProcessor
     
+    let powerThreshold: Double = 50.0
     var filterInput: Bool = true
     var meterRefresh: NSTimer!
     
@@ -41,33 +42,34 @@ class PowerMeterViewController: UIViewController {
         navBar?.shadowImage = UIImage()
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
-        
-        // Power Meter UI
-        meterRefresh = NSTimer.scheduledTimerWithTimeInterval(
-                       0.1,
-                       target: self,
-                       selector: #selector(PowerMeterViewController.pollPowerMeters),
-                       userInfo: nil,
-                       repeats: true
-        )
     }
     
     override func viewWillAppear(animated: Bool) {
+        print("Starting Capture")
         ip.filterInputStream(self.view as! GPUImageView)
+        
+        // Power Meter UI
+        meterRefresh = NSTimer.scheduledTimerWithTimeInterval(
+            0.5,
+            target: self,
+            selector: #selector(PowerMeterViewController.updatePowerMeters),
+            userInfo: nil,
+            repeats: true
+        )
     }
     
     override func viewWillDisappear(animated: Bool) {
+        print("Stopping Capture")
+        meterRefresh.invalidate()
         ip.stopCapture()
     }
     
-    func pollPowerMeters() {
-        updatePowerMeters(ip.powerRed, yellow: ip.powerYellow, purple: ip.powerPurple)
-    }
-    
-    func updatePowerMeters(red: Double, yellow: Double, purple: Double) {
-        meters[0].angle = red * 360
-        meters[1].angle = yellow * 360
-        meters[2].angle = purple * 360
+    func updatePowerMeters() {
+//        let totalpx = Double(ip.PIXEL_SIZE.width * ip.PIXEL_SIZE.height)
+        let totalpx = 20.0
+        meters[0].angle = Double(ip.getPowerLevelForHue(ip.red,    threshold: powerThreshold)) / totalpx
+        meters[1].angle = Double(ip.getPowerLevelForHue(ip.yellow, threshold: powerThreshold)) / totalpx
+        meters[2].angle = Double(ip.getPowerLevelForHue(ip.purple, threshold: powerThreshold)) / totalpx
     }
     
     // MARK: - Actions
