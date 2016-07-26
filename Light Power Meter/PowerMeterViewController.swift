@@ -15,6 +15,7 @@ class PowerMeterViewController: UIViewController {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var preview: GPUImageView!
     @IBOutlet var meters: [KDCircularProgress]!
     
     // MARK: - Class Properties
@@ -44,8 +45,7 @@ class PowerMeterViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("Starting Capture")
-        ip.filterInputStream(self.view as! GPUImageView)
+        ip.filterInputStream(preview)
         
         // Power Meter UI
         meterRefresh = NSTimer.scheduledTimerWithTimeInterval(
@@ -55,29 +55,44 @@ class PowerMeterViewController: UIViewController {
             userInfo: nil,
             repeats: true
         )
+        refreshMeterColors()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        print("Stopping Capture")
         meterRefresh.invalidate()
         ip.stopCapture()
     }
     
     func updatePowerMeters() {
-        meters[0].angle = 360 * ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
+        meters[0].angle = 360 * ip.getPowerLevelForHue(ip.red,    threshold: ip.colorThreshold)
         meters[1].angle = 360 * ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
         meters[2].angle = 360 * ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
+    }
+    
+    func refreshMeterColors() {
+        meters[0].progressInsideFillColor = UIColor(hue: CGFloat(ip.red) / 360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        meters[1].progressInsideFillColor = UIColor(hue: CGFloat(ip.yellow) / 360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        meters[2].progressInsideFillColor = UIColor(hue: CGFloat(ip.purple) / 360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        
+        meters[0].progressColors[0] = UIColor(hue: CGFloat(ip.red) / 360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        meters[1].progressColors[0] = UIColor(hue: CGFloat(ip.yellow) / 360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        meters[2].progressColors[0] = UIColor(hue: CGFloat(ip.purple) / 360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0)
     }
     
     // MARK: - Actions
     
     @IBAction func filterPressed(sender: AnyObject) {
         filterInput = !filterInput
-        ip.stopCapture()
         if filterInput {
-            ip.filterInputStream(self.view as! GPUImageView)
+            ip.reloadCapture()
+            for m in meters {
+                m.hidden = false
+            }
         } else {
-            ip.displayRawInputStream(self.view as! GPUImageView)
+            ip.reloadUnfilteredCapture()
+            for m in meters {
+                m.hidden = true
+            }
         }
     }
     

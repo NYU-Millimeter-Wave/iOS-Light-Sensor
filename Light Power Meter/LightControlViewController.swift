@@ -46,7 +46,7 @@ class LightControlViewController: UIViewController {
         navBar?.translucent = true
     }
     
-    // MARK: - Event Handlers
+    // MARK: - Actions
     
     @IBAction func switchFlipped(sender: AnyObject) {
         self.lightManager.setLightOn((sender.tag + 1), lightOn: (switches[sender.tag].on))
@@ -73,7 +73,7 @@ class LightControlViewController: UIViewController {
             let lightVal = ((sender.tag / 3) + 1)
             self.lightManager.setLight(lightVal, saturation: saturationConstant, brightness: Int(sliders[lightVal - 1].value), hue: red)
         default:
-            print("[ ERR ] Light Value Not valid")
+            print("[ ERR ] Unexpected error in LightControlViewController")
         }
     }
     

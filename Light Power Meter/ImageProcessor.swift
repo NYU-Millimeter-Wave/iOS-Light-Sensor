@@ -91,8 +91,8 @@ class ImageProcessor: NSObject {
     
     // MARK: - Processing Filters
     
-    private lazy var filterLume: GPUImageLuminanceThresholdFilter = GPUImageLuminanceThresholdFilter()
     private lazy var filterMask: GPUImageMaskFilter = GPUImageMaskFilter()
+    private lazy var filterLume: GPUImageLuminanceThresholdFilter = GPUImageLuminanceThresholdFilter()
     private lazy var filterEdgeDetect: GPUImageThresholdEdgeDetectionFilter = GPUImageThresholdEdgeDetectionFilter()
     
     // MARK: - Initalizers
@@ -105,13 +105,13 @@ class ImageProcessor: NSObject {
         // Default Color Values
         
         // UIColor(red: 1.0, green: 130 / 255.0, blue: 116 / 255.0, alpha: 1.0)
-        red = 6.0
+        red = 14.0
         
         // UIColor(red: 238 / 255.0, green: 1.0, blue: 166.0 / 255.0, alpha: 1.0)
-        yellow = 71.0
+        yellow = 38.0
         
         // UIColor(red: 239 / 255.0, green: 161 / 255.0, blue: 1.0, alpha: 1.0)
-        purple = 290.0
+        purple = 300.0
     }
     
     // MARK: - Cpature Control
@@ -130,7 +130,7 @@ class ImageProcessor: NSObject {
     func filterInputStream(preview: GPUImageView) {
         
         // Default Filter Tweaks
-        lumeThreshold        = 0.7
+        lumeThreshold = 0.7
         filterLume.threshold = CGFloat(lumeThreshold!)
         
         // Texel tuning for edge size
@@ -157,11 +157,12 @@ class ImageProcessor: NSObject {
         videoCamera?.addTarget(filterMask)
         filterEdgeDetect.addTarget(filterMask)
         
-        // Corner Detection
+        // Outlet Linking
         filterMask.addTarget(preview)
         filterMask.addTarget(videoCameraRawDataOutput)
         
         // Begin video capture
+        print("[ CAM ] Starting Capture")
         videoCamera?.startCameraCapture()
     }
     
@@ -181,12 +182,13 @@ class ImageProcessor: NSObject {
         videoCamera?.outputImageOrientation = .Portrait
         
         // Setup raw output
-        videoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: PIXEL_SIZE, resultsInBGRAFormat: true)
+        unfilteredVideoCameraRawDataOutput = GPUImageRawDataOutput(imageSize: PIXEL_SIZE, resultsInBGRAFormat: true)
         
-        videoCamera?.addTarget(videoCameraRawDataOutput)
+        videoCamera?.addTarget(unfilteredVideoCameraRawDataOutput)
         videoCamera?.addTarget(preview)
         
         // Begin video capture
+        print("[ CAM ] Starting Unfiltered Capture")
         videoCamera?.startCameraCapture()
     }
 
@@ -198,6 +200,7 @@ class ImageProcessor: NSObject {
      
      */
     func stopCapture() {
+        print("[ CAM ] Stopping Capture")
         self.videoCamera?.stopCameraCapture()
     }
     
@@ -215,6 +218,20 @@ class ImageProcessor: NSObject {
         }
     }
     
+    /**
+     
+     Reloads the cpaturing operation
+     
+     - Returns: `nil`
+     
+     */
+    func reloadUnfilteredCapture() {
+        self.stopCapture()
+        if let pl = previewLayer {
+            self.displayRawInputStream(pl)
+        }
+    }
+    
     // MARK: - Image Processing Methods
     
     /**
@@ -225,24 +242,29 @@ class ImageProcessor: NSObject {
      
      */
     func getAverageHue() -> (Double, Int) {
-        let imgWidth = Int(self.PIXEL_SIZE.width)
-        let imgHieight = Int(self.PIXEL_SIZE.height)
-        var avHue = 0.0
-        var hit = 0.0
-        videoCameraRawDataOutput?.lockFramebufferForReading()
-        for x in 0...imgWidth {
-            for y in 0...imgHieight {
-                var hue: CGFloat = 0.0
-                let color = self.getColorFromPoint(CGPointMake(CGFloat(x), CGFloat(y)))
-                color.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
-                if hue != 0 {
-                    avHue += Double(hue)
-                    hit += 1
+        if videoCameraRawDataOutput != nil {
+            let imgWidth   = Int(self.PIXEL_SIZE.width)
+            let imgHieight = Int(self.PIXEL_SIZE.height)
+            var avHue = 0.0
+            var hit   = 0.0
+            videoCameraRawDataOutput?.lockFramebufferForReading()
+            for x in 0...imgWidth {
+                for y in 0...imgHieight {
+                    var hue: CGFloat = 0.0
+                    let color = self.getColorFromPoint(CGPointMake(CGFloat(x), CGFloat(y)))
+                    color.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+                    if hue != 0 {
+                        avHue += Double(hue)
+                        hit += 1
+                    }
                 }
             }
+            videoCameraRawDataOutput?.unlockFramebufferAfterReading()
+            return ( ((avHue / hit) * 360), Int(hit))
+        } else {
+            print("[ ERR ] No capture session, cannot get hue")
+            return (-1.0, -1)
         }
-        videoCameraRawDataOutput?.unlockFramebufferAfterReading()
-        return ( ((avHue / hit) * 360), Int(hit))
     }
     
     /**
@@ -256,10 +278,13 @@ class ImageProcessor: NSObject {
      
      */
     func multipassHueAverageCalibration(passes: UInt) -> Double {
+        print("[ IMG ] Calibrating Hue... ", terminator: "")
         var results: [Double] = []
         for _ in 0...passes {
-            results.append(self.getAverageHue().0)
+            let avHue = self.getAverageHue().0
+            results.append(avHue)
         }
+        print("Done")
         results.sortInPlace()
         return results[results.count / 2]
     }
@@ -276,29 +301,34 @@ class ImageProcessor: NSObject {
      
      */
     func getPowerLevelForHue(hue: Double, threshold: Double) -> Double {
-        let imgWidth = Int(self.PIXEL_SIZE.width)
-        let imgHieight = Int(self.PIXEL_SIZE.height)
-        var hit = 0.0
-        videoCameraRawDataOutput?.lockFramebufferForReading()
-        for x in 0...imgWidth {
-            for y in 0...imgHieight {
-                
-                var hueSample: CGFloat = 0.0
-                let color = self.getColorFromPoint(CGPointMake(CGFloat(x), CGFloat(y)))
-                color.getHue(&hueSample, saturation: nil, brightness: nil, alpha: nil)
-                
-                if hueSample != 0 {
-                    if abs(hue - Double(hueSample*360)) <= threshold {
-                        hit += 1
+        if videoCameraRawDataOutput != nil {
+            let imgWidth   = Int(self.PIXEL_SIZE.width)
+            let imgHieight = Int(self.PIXEL_SIZE.height)
+            var hit = 0.0
+            videoCameraRawDataOutput?.lockFramebufferForReading()
+            for x in 0...imgWidth {
+                for y in 0...imgHieight {
+                    
+                    var hueSample: CGFloat = 0.0
+                    let color = self.getColorFromPoint(CGPointMake(CGFloat(x), CGFloat(y)))
+                    color.getHue(&hueSample, saturation: nil, brightness: nil, alpha: nil)
+                    
+                    if hueSample != 0 {
+                        if abs(hue - Double(hueSample*360)) <= threshold {
+                            hit += 1
+                        }
                     }
                 }
             }
-        }
-        videoCameraRawDataOutput?.unlockFramebufferAfterReading()
-        if hit > powerLevelMaximum {
-            return 1.0
+            videoCameraRawDataOutput?.unlockFramebufferAfterReading()
+            if hit > powerLevelMaximum {
+                return 1.0
+            } else {
+                return hit / powerLevelMaximum
+            }
         } else {
-            return hit / powerLevelMaximum
+            print("[ ERR ] No capture session, cannot get power level")
+            return -1.0
         }
     }
 
@@ -318,14 +348,14 @@ class ImageProcessor: NSObject {
      */
     func getColorFromPoint(point: CGPoint) -> UIColor {
         if let color = videoCameraRawDataOutput?.colorAtLocation(point) {
-            let red: CGFloat = CGFloat(color.red)
+            let red:   CGFloat = CGFloat(color.red)
             let green: CGFloat = CGFloat(color.green)
-            let blue: CGFloat = CGFloat(color.blue)
+            let blue:  CGFloat = CGFloat(color.blue)
             let alpha: CGFloat = CGFloat(color.alpha)
             return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: alpha / 255.0)
         } else {
-            print("Video steam not initialized, no color output")
-            return UIColor.blackColor()
+            print("[ ERR ] No capture session, no color output")
+            return UIColor.clearColor()
         }
     }
     
@@ -342,7 +372,7 @@ class ImageProcessor: NSObject {
      
      */
     func generateReticle(previewFrame: CGRect) ->  Reticle {
-        let scale = previewFrame.width * 0.025
+        let scale   = previewFrame.width * 0.025
         let centerX = (previewFrame.width / 2)
         let centerY = (previewFrame.height / 2)
         return Reticle(origin: CGPoint(x:centerX, y: centerY), size: scale)
@@ -362,7 +392,7 @@ class Reticle: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        fatalError("init(coder:) has not been implemented")
+        fatalError("[ FATAL ] init(coder:) has not been implemented")
     }
     
     init(origin: CGPoint, size: CGFloat) {
