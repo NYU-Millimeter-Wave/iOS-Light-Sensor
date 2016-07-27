@@ -14,9 +14,7 @@ class FilterTuningViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var preview: GPUImageView!
-    @IBOutlet weak var stepper: UIStepper!
-    @IBOutlet var labels: [UILabel]!
-    @IBOutlet var sliders: [UISlider]!
+    @IBOutlet var fields: [UITextField]!
     
     // MARK: - Class Properties
     
@@ -39,31 +37,13 @@ class FilterTuningViewController: UIViewController {
         navBar?.shadowImage = UIImage()
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
-        
-        for label in labels {
-            label.layer.masksToBounds = true
-            label.layer.cornerRadius = label.frame.height
-        }
-        
-//        if let sen = ip.thresholdSensitivity {
-//            sliders[0].value = sen
-//            labels[1].text = String.localizedStringWithFormat("%.2f", sen)
-//        }
-        if let lume = ip.lumeThreshold {
-            sliders[1].value = Float(lume)
-            labels[2].text = String.localizedStringWithFormat("%.2f", lume)
-        }
-        if let edge = ip.edgeTolerance {
-            sliders[2].value = Float(edge)
-            labels[3].text = String.localizedStringWithFormat("%.2f", edge)
-        }
-//        if let rad = ip.closingPixelRadius {
-//            stepper.value = Double(rad)
-//            labels[0].text = "\(rad)"
-//        }
     }
     
     override func viewWillAppear(animated: Bool) {
+        fields[0].placeholder = "\(ip.colorThreshold)"
+        fields[1].placeholder = "\(ip.powerLevelMaximum)"
+        fields[2].placeholder = "\(ip.lumeThreshold!)"
+        
         ip.filterInputStream(self.preview)
     }
     
@@ -71,31 +51,27 @@ class FilterTuningViewController: UIViewController {
         ip.stopCapture()
     }
     
-    // MARK: - Actions
-    
-    @IBAction func stepperChanged(sender: AnyObject) {
-//        self.ip.closingPixelRadius = UInt(stepper.value)
-//        labels[0].text = "\(UInt(stepper.value))"
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        self.view.endEditing(true)
     }
+    
+    // MARK: - Actions
     
     @IBAction func menuPressed(sender: AnyObject) {
         self.slideMenuController()?.openLeft()
     }
     
-    @IBAction func slilderChanged(sender: AnyObject) {
-//        switch sender.tag {
-//        case 0:
-//            self.ip.thresholdSensitivity = sliders[0].value
-//            labels[1].text = String.localizedStringWithFormat("%.2f", sliders[0].value)
-//        case 1:
-//            self.ip.lumeThreshold = sliders[1].value
-//            labels[2].text = String.localizedStringWithFormat("%.2f", sliders[1].value)
-//            print(ip.lumeThreshold)
-//        case 2:
-//            self.ip.edgeTolerance = sliders[2].value
-//            labels[3].text = String.localizedStringWithFormat("%.2f", sliders[2].value)
-//        default:
-//            print("[ ERR ]")
-//        }
+    @IBAction func fieldDidChange(sender: AnyObject) {
+        switch sender.tag {
+        case 0:
+            ip.colorThreshold = Double(fields[0].text!)!
+        case 1:
+            ip.powerLevelMaximum = Double(fields[1].text!)!
+        case 2:
+            ip.lumeThreshold = CGFloat(Double(fields[2].text!)!)
+        default:
+            break
+        }
     }
 }

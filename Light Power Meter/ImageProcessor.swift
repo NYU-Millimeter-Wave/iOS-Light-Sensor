@@ -25,8 +25,8 @@ class ImageProcessor: NSObject {
     /// Size of capture frame in pixels
     let PIXEL_SIZE = CGSizeMake(480.0, 360.0)
     
-    /// Maximum allowed distance from color
-    let MAXIMUM_ALLOWED_COLOR_DISTANCE = 0.5
+//    /// Maximum allowed distance from color
+//    let MAXIMUM_ALLOWED_COLOR_DISTANCE = 1.0
     
     //
     // Tunable Target Colors
@@ -112,6 +112,14 @@ class ImageProcessor: NSObject {
         
         // UIColor(red: 239 / 255.0, green: 161 / 255.0, blue: 1.0, alpha: 1.0)
         purple = 300.0
+        
+        // Default Filter Tweaks
+        lumeThreshold = 0.7
+        filterLume.threshold = CGFloat(lumeThreshold!)
+        
+        // Texel tuning for edge size
+        filterEdgeDetect.texelHeight = 0.005
+        filterEdgeDetect.texelWidth  = 0.005
     }
     
     // MARK: - Cpature Control
@@ -128,14 +136,6 @@ class ImageProcessor: NSObject {
      
      */
     func filterInputStream(preview: GPUImageView) {
-        
-        // Default Filter Tweaks
-        lumeThreshold = 0.7
-        filterLume.threshold = CGFloat(lumeThreshold!)
-        
-        // Texel tuning for edge size
-        filterEdgeDetect.texelHeight = 0.005
-        filterEdgeDetect.texelWidth  = 0.005
         
         // Set local preview layer
         self.previewLayer = preview
