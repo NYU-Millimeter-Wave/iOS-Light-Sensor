@@ -14,10 +14,12 @@ class ControlViewController: UIViewController {
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var connectionIndicator: UILabel!
     @IBOutlet weak var ipField: UITextField!
+    @IBOutlet var colorLabels: [UIButton]!
     
     // MARK: - Class Properties
     
     private let dm = DataManager.sharedManager
+    private let ip = ImageProcessor.sharedProcessor
     
     var connected:  Bool = false
     var disconnectedIcon: String = "◎"
@@ -41,9 +43,19 @@ class ControlViewController: UIViewController {
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
         
+        // Label Styling
+        for l in colorLabels {
+            l.layer.masksToBounds = true
+            l.layer.cornerRadius = 15.0
+        }
+        
+        colorLabels[0].backgroundColor = UIColor(hue: CGFloat(ip.red / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        colorLabels[1].backgroundColor = UIColor(hue: CGFloat(ip.yellow / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        colorLabels[2].backgroundColor = UIColor(hue: CGFloat(ip.purple / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        
         // Check connection every 3 seconds
         self.checkConnected()
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(WirelessViewController.checkConnected), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -59,7 +71,6 @@ class ControlViewController: UIViewController {
                 self.connected = false
             }
         } else {
-            print("[ ERR ] Accessed uninitialized socket")
             self.connected = false
         }
         
