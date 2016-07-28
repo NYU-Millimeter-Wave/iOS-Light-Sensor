@@ -15,9 +15,6 @@ class Experiment: NSObject {
     /// The title of the experiment
     var title: String?
     
-    /// Dictionary to store timestamp and detection results (R, Y, P)
-    lazy var lightDetectionReadings: Dictionary<String, (Bool, Bool, Bool)> = [:]
-    
     /// Optional Text View to log output
     var logOutput: UITextView?
     
@@ -38,14 +35,14 @@ class Experiment: NSObject {
     
     // Photo Processing Properties
     
-    // Count of taken photos for timer
-    private var photoCount: Int = 0
+    // Count of readings taken for timer
+    private var readingCount: Int = 0
     
-    // Timer to trigger photo capture
-    private var photoTimer: NSTimer?
+    // Timer to trigger reading
+    private var readingTimer: NSTimer?
     
-    // Array to store images to process (color, mask)
-    private lazy var photoBuffer: [(UIImage, UIImage)] = []
+    // Array to store power levels
+    private var readingsArray: [(red: Double, yellow: Double, purple: Double)]?
     
     // MARK: - Initalizers
     
@@ -68,7 +65,7 @@ class Experiment: NSObject {
             
             self.signalRoombaToStart() { _ in
                 self.log("[ -+- ] Roomba acknowledged experiment begin")
-                self.experimentMainLoop()
+                self.performReadingOperations()
             }
             
         } else {
@@ -77,13 +74,18 @@ class Experiment: NSObject {
         }
     }
     
-    func experimentMainLoop() {
+    func performReadingOperations() {
         self.signalRoombaToRead() { _ in
             self.log("[ -+- ] Roomba in reading mode")
-            self.takeReading() { _ in
-                self.log("[ -+- ] Reading done")
+            self.takeReading() { success in
+                
+                if success == true {
+                    self.log("[ -+- ] Reading done")
+                    self.log("[ --- ] Uploading Resutls to server...")
+                    // TODO: UPLOAD READING TO SERVER PURGE READING ARRAY
                     
-                // TODO: UPLOAD READING TO SERVER
+                    self.log(" [ -+- ] Success")
+                }
             }
         }
     }
@@ -108,7 +110,7 @@ class Experiment: NSObject {
         }
     }
     
-    func signalRoombaToStart(completion: () -> Void) {
+    private func signalRoombaToStart(completion: () -> Void) {
         log("[ --- ] Signalling Roomba to begin...")
         self.dm.socket?.signalStart() { _ in
             completion()
@@ -122,7 +124,7 @@ class Experiment: NSObject {
 //        }
     }
     
-    func signalRoombaToRead(completion: () -> Void) {
+    private func signalRoombaToRead(completion: () -> Void) {
         log("[ --- ] Singalling Roomba to read...")
         self.dm.socket?.signalReadingMode() { _ in
             completion()
@@ -137,56 +139,47 @@ class Experiment: NSObject {
         
     }
     
-    func takeReading(completion: () -> Void) {
-        log("[ --- ] Reading...")
+    private func signalRoombaExperimentEnd(completion: (success: Bool) -> Void) {
+        log("[ ---] Signalling end of experiment")
         
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            
-            // Get current time for timestamp
-            let currentTime = CFAbsoluteTimeGetCurrent()
-            
-            // Signal Roomba to spin iPhone
-            self.dm.socket?.signalReadNow() { _ in
-                
-                // TODO: POLL POWER METER
-
-                let endTime = CFAbsoluteTimeGetCurrent() - currentTime
-                print("Reading completed in: \(endTime)")
-                completion()
-            }
-            
-            // Wait for signal to verify
-            dispatch_semaphore_wait(self.dm.socket!.serverSignal!, DISPATCH_TIME_FOREVER)
-            
-//            // TODO: POLL POWER METER
-//            
-//            
-//            
-//            let endTime = CFAbsoluteTimeGetCurrent() - currentTime
-//            print("Reading completed in: \(endTime)")
-//            
-////            for (color, mask) in self.photoBuffer {
-////                
-////            }
-////            
-////            let resultTuple = (false, false, false)
-////            self.lightDetectionReadings["\(currentTime)"] = resultTuple
-//            completion(done: true)
+        self.dm.socket?.signalEndOfExperiment() { _ in
+            self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
+            self.log("[ === ] Experiment ended successfully")
         }
     }
     
-    private func takePhotoForTimer() {
-        if self.photoCount >= 6 {
-            self.photoTimer?.invalidate()
-            self.photoTimer = nil
+    private func takeReading(completion: (success: Bool) -> Void) {
+        log("[ --- ] Reading...")
+        // Get current time for timestamp
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        
+        // Signal Roomba to spin iPhone
+        self.dm.socket?.signalReadNow() { _ in
+            
+            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(Experiment.getPowerLevels), userInfo: nil, repeats: true)
+            
+            let endTime = CFAbsoluteTimeGetCurrent() - currentTime
+            print("Reading completed in: \(endTime)")
+            completion(success: true)
+        }
+    }
+    
+    @objc private func getPowerLevels() {
+        if readingCount < 6 {
+            let redPL    = ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
+            let yellowPL = ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
+            let purplePL = ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
+            
+            readingsArray?.append((red: redPL, yellow: yellowPL, purple: purplePL))
+            readingCount += 1
         } else {
-//            self.photoBuffer[photoCount] = ip.takeStillImage()
+            readingTimer?.invalidate()
         }
     }
     
     // MARK: - Utility Methods
     
+    // TODO: Implement
     func serializeSelfToJSON() -> String {return ""}
     
     private func log(line: String) {

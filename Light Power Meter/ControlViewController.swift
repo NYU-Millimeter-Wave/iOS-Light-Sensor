@@ -11,6 +11,8 @@ import UIKit
 class ControlViewController: UIViewController {
 
     // MARK: - Outlets
+    
+    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var connectionIndicator: UILabel!
     @IBOutlet weak var ipField: UITextField!
@@ -20,6 +22,8 @@ class ControlViewController: UIViewController {
     
     private let dm = DataManager.sharedManager
     private let ip = ImageProcessor.sharedProcessor
+    
+    var experiment: Experiment!
     
     var connected:  Bool = false
     var disconnectedIcon: String = "◎"
@@ -49,13 +53,13 @@ class ControlViewController: UIViewController {
             l.layer.cornerRadius = 15.0
         }
         
-        colorLabels[0].backgroundColor = UIColor(hue: CGFloat(ip.red / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        colorLabels[0].backgroundColor = UIColor(hue: CGFloat(ip.red    / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         colorLabels[1].backgroundColor = UIColor(hue: CGFloat(ip.yellow / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         colorLabels[2].backgroundColor = UIColor(hue: CGFloat(ip.purple / 360.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         
         // Check connection every 3 seconds
-        self.checkConnected()
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
+         self.checkConnected()
+         NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -83,6 +87,12 @@ class ControlViewController: UIViewController {
         }
     }
     
+    func throwErrorMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Actions
     
     @IBAction func connectPressed(sender: AnyObject) {
@@ -91,18 +101,41 @@ class ControlViewController: UIViewController {
         }
     }
     
+    func finalizeExperiment() {
+        self.experiment = Experiment(title: self.nameField.text!)
+        self.navigationController?.performSegueWithIdentifier("finalize", sender: nil)
+    }
+    
     @IBAction func menuPressed(sender: AnyObject) {
         self.slideMenuController()?.openLeft()
     }
 
-    /*
+    @IBAction func finalizePressed(sender: AnyObject) {
+        if nameField.text == "" || ipField.text == "" {
+            throwErrorMessage("Cannot Finalize", message: "All fields are required")
+        } else if self.connected == false {
+            if let txt = self.ipField.text {
+                self.dm.socket = SocketListener(url: txt)
+            }
+            checkConnected()
+            if self.connected == false {
+                throwErrorMessage("Cannot Finalize", message: "Could not conect to server")
+            } else {
+                finalizeExperiment()
+            }
+        } else {
+            finalizeExperiment()
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "finalize" {
+            let vc = segue.destinationViewController as! ControlConfirmViewController
+            vc.experiment = self.experiment
+            vc.tcpAddress.text = self.ipField.text!
+        }
     }
-    */
-
 }

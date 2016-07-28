@@ -42,6 +42,10 @@ class PowerMeterViewController: UIViewController {
         navBar?.shadowImage = UIImage()
         navBar?.backgroundColor = UIColor.clearColor()
         navBar?.translucent = true
+        
+        let logo = UIImage(named: "logo")
+        let imgView = UIImageView(image: logo)
+        self.navigationController?.navigationItem.titleView = imgView
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gDX-Jg-dXf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gDX-Jg-dXf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -915,7 +915,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="jdD-LR-hnE" kind="show" id="S9f-Sc-UdZ"/>
+                                    <action selector="finalizePressed:" destination="5CB-XN-7Bl" eventType="touchUpInside" id="8r1-hv-InS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5R-r7-7LW">
@@ -1039,23 +1039,23 @@
                                 <exclude reference="3Rh-CE-C8x"/>
                                 <exclude reference="u0M-59-gVT"/>
                                 <exclude reference="vPB-K2-1x5"/>
-                                <exclude reference="Zdc-h3-Trd"/>
-                                <exclude reference="c9F-s4-66M"/>
-                                <exclude reference="BvL-c2-FkD"/>
-                                <exclude reference="zfJ-q3-qbn"/>
-                                <exclude reference="DF9-ai-Doz"/>
-                                <exclude reference="rID-NJ-4gE"/>
                                 <exclude reference="5tG-bX-CLp"/>
                                 <exclude reference="BID-tn-Lbh"/>
                                 <exclude reference="DQR-x5-vYo"/>
                                 <exclude reference="26a-fs-jhS"/>
                                 <exclude reference="FE4-R7-RjI"/>
                                 <exclude reference="t7I-7p-veo"/>
+                                <exclude reference="BvL-c2-FkD"/>
+                                <exclude reference="zfJ-q3-qbn"/>
+                                <exclude reference="INJ-lp-wIm"/>
+                                <exclude reference="Vki-sU-HG9"/>
                                 <exclude reference="AwL-dE-6TZ"/>
                                 <exclude reference="L1g-AO-aEk"/>
                                 <exclude reference="Qbs-ex-bzz"/>
-                                <exclude reference="INJ-lp-wIm"/>
-                                <exclude reference="Vki-sU-HG9"/>
+                                <exclude reference="DF9-ai-Doz"/>
+                                <exclude reference="rID-NJ-4gE"/>
+                                <exclude reference="Zdc-h3-Trd"/>
+                                <exclude reference="c9F-s4-66M"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1074,29 +1074,29 @@
                                 <include reference="3Rh-CE-C8x"/>
                                 <include reference="u0M-59-gVT"/>
                                 <include reference="vPB-K2-1x5"/>
-                                <include reference="Zdc-h3-Trd"/>
-                                <include reference="c9F-s4-66M"/>
-                                <include reference="BvL-c2-FkD"/>
-                                <include reference="zfJ-q3-qbn"/>
-                                <include reference="DF9-ai-Doz"/>
-                                <include reference="rID-NJ-4gE"/>
                                 <include reference="5tG-bX-CLp"/>
                                 <include reference="BID-tn-Lbh"/>
                                 <include reference="DQR-x5-vYo"/>
                                 <include reference="26a-fs-jhS"/>
                                 <include reference="FE4-R7-RjI"/>
                                 <include reference="t7I-7p-veo"/>
+                                <include reference="BvL-c2-FkD"/>
+                                <include reference="zfJ-q3-qbn"/>
+                                <include reference="INJ-lp-wIm"/>
+                                <include reference="Vki-sU-HG9"/>
                                 <include reference="AwL-dE-6TZ"/>
                                 <include reference="L1g-AO-aEk"/>
                                 <include reference="Qbs-ex-bzz"/>
-                                <include reference="INJ-lp-wIm"/>
-                                <include reference="Vki-sU-HG9"/>
+                                <include reference="DF9-ai-Doz"/>
+                                <include reference="rID-NJ-4gE"/>
+                                <include reference="Zdc-h3-Trd"/>
+                                <include reference="c9F-s4-66M"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="t2w-PV-qnB">
                         <barButtonItem key="leftBarButtonItem" title="•••" id="YJK-59-abn">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuPressed:" destination="5CB-XN-7Bl" id="1pA-9y-rm7"/>
                             </connections>
@@ -1106,19 +1106,21 @@
                         <outlet property="connectButton" destination="OA0-uc-Tsn" id="bFs-57-ysm"/>
                         <outlet property="connectionIndicator" destination="2GS-d0-k0W" id="Cqt-Vz-rR4"/>
                         <outlet property="ipField" destination="Hmn-Ya-HEZ" id="tpn-zh-inX"/>
+                        <outlet property="nameField" destination="6KT-JZ-Gyb" id="BOS-Q9-ANE"/>
                         <outletCollection property="colorLabels" destination="1Ei-39-eeW" collectionClass="NSMutableArray" id="haS-0v-CqS"/>
                         <outletCollection property="colorLabels" destination="gXd-NW-0oA" collectionClass="NSMutableArray" id="A2K-6E-RHe"/>
                         <outletCollection property="colorLabels" destination="P5R-r7-7LW" collectionClass="NSMutableArray" id="cR7-t4-XAl"/>
+                        <segue destination="jdD-LR-hnE" kind="show" identifier="finalize" id="2OW-YT-E52"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AvP-IX-9gY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2391" y="811.5"/>
+            <point key="canvasLocation" x="2391" y="1012"/>
         </scene>
-        <!--View Controller-->
+        <!--Control Confirm View Controller-->
         <scene sceneID="nbe-Xe-8rn">
             <objects>
-                <viewController id="jdD-LR-hnE" sceneMemberID="viewController">
+                <viewController id="jdD-LR-hnE" customClass="ControlConfirmViewController" customModule="LPM" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l8i-PO-GYQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Rfe-vw-hrW"/>
@@ -1127,20 +1129,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ control ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Op-ej-exa">
-                                <rect key="frame" x="213" y="48" width="174" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="174" id="ZpO-FS-A2r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="ZpO-FS-A2r"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Begin Experiment with these options?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwF-tQ-LMV">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -1244,9 +1232,24 @@
                                     <color key="titleColor" red="1" green="0.51120389470000005" blue="0.45607003229999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="startPressed:" destination="jdD-LR-hnE" eventType="touchUpInside" id="bxv-tN-hao"/>
                                     <segue destination="Ree-AY-Kye" kind="show" id="KCk-Mx-xan"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ control ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Op-ej-exa">
+                                <rect key="frame" x="213" y="48" width="174" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="174" id="ZpO-FS-A2r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="ZpO-FS-A2r"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1281,7 +1284,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="0Op-ej-exa"/>
                                 <exclude reference="mwF-tQ-LMV"/>
                                 <exclude reference="rIL-SW-ANX"/>
                                 <exclude reference="qTr-4L-CYP"/>
@@ -1290,6 +1292,7 @@
                                 <exclude reference="xNl-ef-7E5"/>
                                 <exclude reference="ARc-u2-S5e"/>
                                 <exclude reference="od9-9B-D9R"/>
+                                <exclude reference="0Op-ej-exa"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Qvp-vb-6hs"/>
@@ -1324,7 +1327,6 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="0Op-ej-exa"/>
                                 <include reference="mwF-tQ-LMV"/>
                                 <include reference="rIL-SW-ANX"/>
                                 <include reference="qTr-4L-CYP"/>
@@ -1333,6 +1335,7 @@
                                 <include reference="xNl-ef-7E5"/>
                                 <include reference="ARc-u2-S5e"/>
                                 <include reference="od9-9B-D9R"/>
+                                <include reference="0Op-ej-exa"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Qvp-vb-6hs"/>
@@ -1366,10 +1369,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="connected" destination="Bj1-sv-AFq" id="Y8s-pq-c7t"/>
+                        <outlet property="nameField" destination="rIL-SW-ANX" id="Dqe-Lj-77u"/>
+                        <outlet property="tcpAddress" destination="qTr-4L-CYP" id="kuW-kY-NrS"/>
+                        <outletCollection property="colorLabels" destination="ARc-u2-S5e" collectionClass="NSMutableArray" id="AIE-t1-kHW"/>
+                        <outletCollection property="colorLabels" destination="xNl-ef-7E5" collectionClass="NSMutableArray" id="hFy-cV-LoU"/>
+                        <outletCollection property="colorLabels" destination="xC5-r0-8rq" collectionClass="NSMutableArray" id="Dof-bx-gVH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlS-c9-ywz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094.5" y="811.5"/>
+            <point key="canvasLocation" x="3094" y="1012"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cCF-aK-fYp">
@@ -1452,7 +1463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4G-I8-okr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3810" y="811.5"/>
+            <point key="canvasLocation" x="3810" y="1012"/>
         </scene>
         <!--Filter Tuning View Controller-->
         <scene sceneID="7th-9Q-msb">
@@ -1750,7 +1761,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Qxi-iV-4uv">
                         <barButtonItem key="leftBarButtonItem" title="•••" id="9ol-WG-MRg">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuPressed:" destination="cfa-w1-J6k" id="Uhb-V1-zL1"/>
                             </connections>
@@ -2276,7 +2287,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="T6k-Bb-adz">
                         <barButtonItem key="leftBarButtonItem" title="•••" id="v4M-1F-swC">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuPressed:" destination="YH0-Jg-VUC" id="hMt-9c-Qfk"/>
                             </connections>

@@ -17,89 +17,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☀︎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fA-Xm-ngc">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="qKr-7u-0C2">
+                                <rect key="frame" x="260" y="162" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="IyE-DC-wpp"/>
-                                    <constraint firstAttribute="width" constant="50" id="wX7-2I-Bx4"/>
+                                    <constraint firstAttribute="height" constant="80" id="Hix-xS-soa"/>
+                                    <constraint firstAttribute="width" constant="80" id="mjD-GW-kcT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" red="0.42214768759999999" green="0.42214768759999999" blue="0.42214768759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="IyE-DC-wpp"/>
-                                        <exclude reference="wX7-2I-Bx4"/>
+                                        <exclude reference="Hix-xS-soa"/>
+                                        <exclude reference="mjD-GW-kcT"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="IyE-DC-wpp"/>
-                                        <include reference="wX7-2I-Bx4"/>
+                                        <include reference="Hix-xS-soa"/>
+                                        <include reference="mjD-GW-kcT"/>
                                     </mask>
                                 </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LPM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-Gr-i2Q">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="ZjV-wS-nmP"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="cLC-1C-RAH"/>
-                                    <constraint firstAttribute="width" constant="34" id="tsc-NU-W3c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
-                                <color key="textColor" red="0.42214768759999999" green="0.42214768759999999" blue="0.42214768759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZjV-wS-nmP"/>
-                                        <exclude reference="cLC-1C-RAH"/>
-                                        <exclude reference="tsc-NU-W3c"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="ZjV-wS-nmP"/>
-                                        <include reference="cLC-1C-RAH"/>
-                                        <include reference="tsc-NU-W3c"/>
-                                    </mask>
-                                </variation>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8fA-Xm-ngc" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="349" id="HDV-T9-1bp"/>
-                            <constraint firstItem="8fA-Xm-ngc" firstAttribute="centerX" secondItem="zeQ-Gr-i2Q" secondAttribute="centerX" id="JFk-sR-7Lu"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="zeQ-Gr-i2Q" secondAttribute="bottom" constant="341" id="U18-bR-iqJ"/>
-                            <constraint firstItem="8fA-Xm-ngc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xa0-1O-wdF"/>
-                            <constraint firstItem="zeQ-Gr-i2Q" firstAttribute="top" secondItem="8fA-Xm-ngc" secondAttribute="bottom" constant="8" symbolic="YES" id="hdp-r3-ise"/>
-                            <constraint firstItem="8fA-Xm-ngc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kEB-Kj-uLs"/>
+                            <constraint firstItem="qKr-7u-0C2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="BwO-Pj-6jf"/>
+                            <constraint firstItem="qKr-7u-0C2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Y3c-J4-6Hi"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="8fA-Xm-ngc"/>
-                                <exclude reference="zeQ-Gr-i2Q"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="U18-bR-iqJ"/>
-                                <exclude reference="HDV-T9-1bp"/>
-                                <exclude reference="JFk-sR-7Lu"/>
-                                <exclude reference="Xa0-1O-wdF"/>
-                                <exclude reference="kEB-Kj-uLs"/>
-                                <exclude reference="hdp-r3-ise"/>
+                                <exclude reference="BwO-Pj-6jf"/>
+                                <exclude reference="Y3c-J4-6Hi"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="8fA-Xm-ngc"/>
-                                <include reference="zeQ-Gr-i2Q"/>
-                            </mask>
                             <mask key="constraints">
-                                <include reference="U18-bR-iqJ"/>
-                                <include reference="HDV-T9-1bp"/>
-                                <include reference="JFk-sR-7Lu"/>
-                                <include reference="Xa0-1O-wdF"/>
-                                <include reference="kEB-Kj-uLs"/>
-                                <include reference="hdp-r3-ise"/>
+                                <include reference="BwO-Pj-6jf"/>
+                                <include reference="Y3c-J4-6Hi"/>
                             </mask>
                         </variation>
                     </view>
@@ -109,4 +61,7 @@
             <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="276" height="276"/>
+    </resources>
 </document>

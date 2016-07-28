@@ -175,6 +175,23 @@ class SocketListener: NSObject, WebSocketDelegate {
         }
     }
     
+    /**
+     
+     Signals the server to end the experiment and perform
+     cleanup operations
+     
+     - Returns: `nil`
+     
+     */
+    func signalEndOfExperiment(completion: () -> Void) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.socket.send(text: "ENDEXP")
+            self.serverSignal = dispatch_semaphore_create(0)
+            dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
+            completion()
+        }
+    }
     // MARK: - Closure Methods
     
     /**
