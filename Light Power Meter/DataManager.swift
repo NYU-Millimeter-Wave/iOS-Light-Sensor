@@ -19,7 +19,6 @@ class DataManager: NSObject {
     
     // Experiments
     lazy var experiments: [Experiment] = []
-    var currentExperiment: Experiment?
     
     // Device Info
     var deviceID: Int!
@@ -69,7 +68,7 @@ class DataManager: NSObject {
         }
     }
     
-    func syncronizeCurrentExperiment() {}
+    func uploadExperiment(experimentAsDictionary: [String: AnyObject]) {}
     
-    func syncronizeAllExperiments() {}
+    func pullAllExperimentsFromServer() {}
 }

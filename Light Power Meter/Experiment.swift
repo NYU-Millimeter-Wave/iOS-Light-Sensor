@@ -18,13 +18,17 @@ class Experiment: NSObject {
     /// Optional Text View to log output
     var logOutput: UITextView?
     
-    // Here will go our experiment variables ----------------------------
+    /// Array to store power levels
+    var readingsArray: [(red: Double, yellow: Double, purple: Double, time: CFAbsoluteTime)]?
     
     /// Exact time of start of experiment
     var startTime: CFAbsoluteTime?
     
     /// Exact time of end of experiment
     var stopTime:  CFAbsoluteTime?
+    
+    /// Evals to true if the experiement didn't encounter issues
+    var endedCleanly: Bool?
     
     // MARK: - Private Class Properties
     
@@ -33,7 +37,7 @@ class Experiment: NSObject {
     private let dm = DataManager.sharedManager
     private let ip = ImageProcessor.sharedProcessor
     
-    // Photo Processing Properties
+    // Power Level Reading Properties
     
     // Count of readings taken for timer
     private var readingCount: Int = 0
@@ -41,8 +45,10 @@ class Experiment: NSObject {
     // Timer to trigger reading
     private var readingTimer: NSTimer?
     
-    // Array to store power levels
-    private var readingsArray: [(red: Double, yellow: Double, purple: Double)]?
+    // Color buffers for reading
+    private var maxR: Double!
+    private var maxY: Double!
+    private var maxP: Double!
     
     // MARK: - Initalizers
     
@@ -54,7 +60,7 @@ class Experiment: NSObject {
     // MARK: - Experiment Control Flow
     
     func beginExperiment() {
-        log("[ === ] NEW EXPERIMENT START")
+        log("[ === ] Starting New Experiment: \(title)")
         log("[ --- ] Checking time sync...")
         
         if self.checkTimeSync() {
@@ -65,12 +71,14 @@ class Experiment: NSObject {
             
             self.signalRoombaToStart() { _ in
                 self.log("[ -+- ] Roomba acknowledged experiment begin")
+                
+                self.log("[ TST ] Testing read operations...")
                 self.performReadingOperations()
             }
             
         } else {
-            log("[ -x- ] Could not verify time sync, stopping...")
-            log("[ === ] NEW EXPERIMENT END")
+            log("[ === ] Could not verify time sync, stopping...")
+            endedCleanly = false
         }
     }
     
@@ -80,17 +88,35 @@ class Experiment: NSObject {
             self.takeReading() { success in
                 
                 if success == true {
-                    self.log("[ -+- ] Reading done")
-                    self.log("[ --- ] Uploading Resutls to server...")
-                    // TODO: UPLOAD READING TO SERVER PURGE READING ARRAY
-                    
-                    self.log(" [ -+- ] Success")
+                    self.log("[ -+- ] Reading done, Success")
                 }
             }
         }
     }
     
-    func endExperiment() {}
+    func endExperiment() {
+        self.signalRoombaExperimentEnd() { success in
+            if success {
+                self.log("[ -+- ] Roomba aknowledged end of experiment")
+                self.log("[ --- ] Uploading experiment to server")
+                self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
+                self.endedCleanly = true
+            } else {
+                self.log("[ -x- ] Roomba did not aknowledge end of experiment")
+                self.log("[ --- ] Attempting upload to server anyways...")
+                self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
+                self.endedCleanly = false
+            }
+            
+            // At this point, the experiment object has all reading data
+            // Upload experiment to server
+            self.dm.uploadExperiment(self.serializeSelfToJSONDict())
+            
+            print("[ -+- ] Upload successful")
+            print("[ === ] Experiment ended cleanly")
+            
+        }
+    }
     
     // MARK: - Experiment Operations
     
@@ -140,26 +166,29 @@ class Experiment: NSObject {
     }
     
     private func signalRoombaExperimentEnd(completion: (success: Bool) -> Void) {
-        log("[ ---] Signalling end of experiment")
+        log("[ --- ] Signalling end of experiment...")
         
         self.dm.socket?.signalEndOfExperiment() { _ in
-            self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
-            self.log("[ === ] Experiment ended successfully")
+            completion(success: true)
         }
     }
     
     private func takeReading(completion: (success: Bool) -> Void) {
         log("[ --- ] Reading...")
-        // Get current time for timestamp
-        let currentTime = CFAbsoluteTimeGetCurrent()
         
         // Signal Roomba to spin iPhone
         self.dm.socket?.signalReadNow() { _ in
             
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(Experiment.getPowerLevels), userInfo: nil, repeats: true)
-            
-            let endTime = CFAbsoluteTimeGetCurrent() - currentTime
-            print("Reading completed in: \(endTime)")
+            self.maxR = 0.0; self.maxY = 0.0; self.maxP = 0.0
+            NSTimer.scheduledTimerWithTimeInterval(
+                1.0,
+                target   : self,
+                selector : #selector(Experiment.getPowerLevels),
+                userInfo : nil,
+                repeats  : true
+            )
+
+            print("[ -+- ] Reading Done")
             completion(success: true)
         }
     }
@@ -170,9 +199,14 @@ class Experiment: NSObject {
             let yellowPL = ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
             let purplePL = ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
             
-            readingsArray?.append((red: redPL, yellow: yellowPL, purple: purplePL))
+            if  redPL    > maxR { maxR = redPL }
+            if  yellowPL > maxY { maxY = yellowPL }
+            if  purplePL > maxP { maxP = purplePL }
+            
             readingCount += 1
         } else {
+            let currentTime = CFAbsoluteTimeGetCurrent()
+            readingsArray?.append((red: maxR!, yellow: maxY!, purple: maxP!, time: currentTime))
             readingTimer?.invalidate()
         }
     }
@@ -180,7 +214,35 @@ class Experiment: NSObject {
     // MARK: - Utility Methods
     
     // TODO: Implement
-    func serializeSelfToJSON() -> String {return ""}
+    func serializeSelfToJSONDict() -> [String: AnyObject] {
+        var selfAsDictionary: [String: AnyObject] = [:]
+        
+        selfAsDictionary["title"] = self.title
+        selfAsDictionary["startTime"] = self.startTime
+        selfAsDictionary["stopTime"] = self.stopTime
+        
+        var arrayOfReadingDictionaries: [[String: Double]] = []
+        for r in self.readingsArray! {
+            var readingsAsDictionary: [String: Double] = [:]
+            readingsAsDictionary["timestamp"] = r.time
+            readingsAsDictionary["LightRPL"]  = r.red
+            readingsAsDictionary["LightYPL"]  = r.yellow
+            readingsAsDictionary["LightPPL"]  = r.purple
+            arrayOfReadingDictionaries.append(readingsAsDictionary)
+        }
+        selfAsDictionary["readings"] = arrayOfReadingDictionaries
+        
+        if NSJSONSerialization.isValidJSONObject(selfAsDictionary) {
+            let data = NSKeyedArchiver.archivedDataWithRootObject(selfAsDictionary)
+            let json = try! NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            print(json)
+            print("[ EXP ] Experiment successfully converted to JSON")
+            return selfAsDictionary
+        } else {
+            print(" [ ERR ] Could not serialize Experiment object to JSON")
+            return ["":""]
+        }
+    }
     
     private func log(line: String) {
         if let lo = self.logOutput {
