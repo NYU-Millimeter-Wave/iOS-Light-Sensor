@@ -46,8 +46,9 @@ class SocketListener: NSObject, WebSocketDelegate {
     func webSocketMessageText(text: String) {
         print("[ DAT ] Received: \(text)")
         
+        // Sense the echo and release the semaphore
         switch text {
-        case "VSTART", "VREADING", "VREADNOW":
+        case "VSTART", "VREADING", "VREADNOW", "VENDEXP":
             dispatch_semaphore_signal(self.serverSignal!)
         default:
             break
