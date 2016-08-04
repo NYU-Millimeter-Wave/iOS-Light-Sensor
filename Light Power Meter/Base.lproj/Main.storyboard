@@ -1110,7 +1110,7 @@
                         <outletCollection property="colorLabels" destination="1Ei-39-eeW" collectionClass="NSMutableArray" id="haS-0v-CqS"/>
                         <outletCollection property="colorLabels" destination="gXd-NW-0oA" collectionClass="NSMutableArray" id="A2K-6E-RHe"/>
                         <outletCollection property="colorLabels" destination="P5R-r7-7LW" collectionClass="NSMutableArray" id="cR7-t4-XAl"/>
-                        <segue destination="jdD-LR-hnE" kind="show" identifier="finalize" id="2OW-YT-E52"/>
+                        <segue destination="jdD-LR-hnE" kind="show" identifier="final" id="hAI-IN-IVc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AvP-IX-9gY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1233,7 +1233,6 @@
                                 </state>
                                 <connections>
                                     <action selector="startPressed:" destination="jdD-LR-hnE" eventType="touchUpInside" id="bxv-tN-hao"/>
-                                    <segue destination="Ree-AY-Kye" kind="show" id="KCk-Mx-xan"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ control ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Op-ej-exa">
@@ -1376,16 +1375,17 @@
                         <outletCollection property="colorLabels" destination="ARc-u2-S5e" collectionClass="NSMutableArray" id="AIE-t1-kHW"/>
                         <outletCollection property="colorLabels" destination="xNl-ef-7E5" collectionClass="NSMutableArray" id="hFy-cV-LoU"/>
                         <outletCollection property="colorLabels" destination="xC5-r0-8rq" collectionClass="NSMutableArray" id="Dof-bx-gVH"/>
+                        <segue destination="Ree-AY-Kye" kind="showDetail" identifier="start" action="showViewController:sender:" id="MwL-i5-7Su"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlS-c9-ywz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3094" y="1012"/>
         </scene>
-        <!--View Controller-->
+        <!--Monitor View Controller-->
         <scene sceneID="cCF-aK-fYp">
             <objects>
-                <viewController id="Ree-AY-Kye" sceneMemberID="viewController">
+                <viewController id="Ree-AY-Kye" customClass="MonitorViewController" customModule="LPM" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="min-ck-yf6"/>
                         <viewControllerLayoutGuide type="bottom" id="Lr1-Ba-sSI"/>
@@ -1413,8 +1413,11 @@
                                         <include reference="VXf-yf-zOd"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="forceEndPressed:" destination="Ree-AY-Kye" eventType="touchUpInside" id="Sfg-el-Xl4"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Signalling Start ...." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeO-Kq-Vmp">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeO-Kq-Vmp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1460,6 +1463,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="logOut" destination="IeO-Kq-Vmp" id="Rer-cb-6Ke"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4G-I8-okr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

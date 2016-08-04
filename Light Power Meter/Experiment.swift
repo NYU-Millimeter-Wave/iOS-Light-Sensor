@@ -74,7 +74,7 @@ class Experiment: NSObject {
      
      */
     func beginExperiment() {
-        log("[ === ] Starting New Experiment: \(title)")
+        log("[ === ] Starting New Experiment: \(title!)")
         log("[ --- ] Checking time sync...")
         
         if self.checkTimeSync() {
@@ -123,7 +123,6 @@ class Experiment: NSObject {
         self.signalRoombaToRead() { _ in
             self.log("[ -+- ] Roomba in reading mode")
             self.takeReading() { success in
-                
                 if success == true {
                     self.log("[ -+- ] Reading done, Success")
                 }
@@ -161,7 +160,7 @@ class Experiment: NSObject {
             
             // At this point, the experiment object has all reading data
             // Upload experiment to server
-            self.dm.uploadExperiment(self.serializeSelfToJSONDict())
+//            self.dm.uploadExperiment(self.serializeSelfToJSONDict())
             
             print("[ -+- ] Upload successful")
             print("[ === ] Experiment ended cleanly")

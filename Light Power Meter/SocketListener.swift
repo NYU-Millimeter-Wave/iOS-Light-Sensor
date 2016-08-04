@@ -51,6 +51,7 @@ class SocketListener: NSObject, WebSocketDelegate {
         case "VSTART", "VREADING", "VREADNOW", "VENDEXP":
             dispatch_semaphore_signal(self.serverSignal!)
         default:
+            print("bip")
             break
         }
     }
@@ -73,7 +74,7 @@ class SocketListener: NSObject, WebSocketDelegate {
         if wasClean {
             print("[ DAT ] Socket Closed Cleanly")
         } else {
-            print("[ ERR ] Socket Closed Uncleanly: \(reason)")
+            print("[ ERR ] Socket Closed Uncleanly: \(code)")
         }
         
         self.isConnected = false
@@ -137,7 +138,9 @@ class SocketListener: NSObject, WebSocketDelegate {
             self.socket.send(text: "START")
             self.serverSignal = dispatch_semaphore_create(0)
             dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
-            completion()
+            dispatch_async(dispatch_get_main_queue()) {
+                completion()
+            }
         }
     }
     
@@ -155,7 +158,9 @@ class SocketListener: NSObject, WebSocketDelegate {
             self.socket.send(text: "READING")
             self.serverSignal = dispatch_semaphore_create(0)
             dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
-            completion()
+            dispatch_async(dispatch_get_main_queue()) {
+                completion()
+            }
         }
     }
     
@@ -172,7 +177,9 @@ class SocketListener: NSObject, WebSocketDelegate {
             self.socket.send(text: "READNOW")
             self.serverSignal = dispatch_semaphore_create(0)
             dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
-            completion()
+            dispatch_async(dispatch_get_main_queue()) {
+                completion()
+            }
         }
     }
     
@@ -190,7 +197,9 @@ class SocketListener: NSObject, WebSocketDelegate {
             self.socket.send(text: "ENDEXP")
             self.serverSignal = dispatch_semaphore_create(0)
             dispatch_semaphore_wait(self.serverSignal!, DISPATCH_TIME_FOREVER)
-            completion()
+            dispatch_async(dispatch_get_main_queue()) {
+                completion()
+            }
         }
     }
     // MARK: - Closure Methods

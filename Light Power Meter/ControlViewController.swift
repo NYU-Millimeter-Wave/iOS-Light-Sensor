@@ -60,6 +60,10 @@ class ControlViewController: UIViewController {
         // Check connection every 3 seconds
          self.checkConnected()
          NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
+        
+        // test
+        self.ipField.text = "ws://172.16.28.45:9000"
+        self.nameField.text = "test"
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -103,7 +107,7 @@ class ControlViewController: UIViewController {
     
     func finalizeExperiment() {
         self.experiment = Experiment(title: self.nameField.text!)
-        self.navigationController?.performSegueWithIdentifier("finalize", sender: nil)
+        performSegueWithIdentifier("final", sender: nil)
     }
     
     @IBAction func menuPressed(sender: AnyObject) {
@@ -130,12 +134,11 @@ class ControlViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "finalize" {
+        if segue.identifier == "final" {
             let vc = segue.destinationViewController as! ControlConfirmViewController
             vc.experiment = self.experiment
-            vc.tcpAddress.text = self.ipField.text!
+            vc.tcpText = self.ipField.text
         }
     }
 }

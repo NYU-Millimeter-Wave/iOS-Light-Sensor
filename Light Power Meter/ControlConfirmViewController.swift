@@ -23,6 +23,7 @@ class ControlConfirmViewController: UIViewController {
     private let dm = DataManager.sharedManager
     
     var experiment: Experiment!
+    var tcpText: String!
     
     var isConnected:  Bool = false
     var disconnectedIcon: String = "◎"
@@ -41,7 +42,8 @@ class ControlConfirmViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor = UIColor.lightGrayColor()
         
-        nameField.text = experiment.title
+        nameField.text  = experiment.title
+        tcpAddress.text = tcpText
         
         for l in colorLabels {
             l.layer.masksToBounds = true
@@ -75,20 +77,29 @@ class ControlConfirmViewController: UIViewController {
         }
     }
     
+    func throwErrorMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Actions
     
     @IBAction func startPressed(sender: AnyObject) {
-        
+        if isConnected {
+            performSegueWithIdentifier("start", sender: nil)
+        } else {
+            throwErrorMessage("Not Connected", message: "You need to be connected over TCP to start")
+        }
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "start" {
+            let vc = segue.destinationViewController as! MonitorViewController
+            vc.experiment = self.experiment
+        }
     }
-    */
-
 }
