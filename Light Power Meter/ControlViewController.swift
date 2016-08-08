@@ -101,7 +101,9 @@ class ControlViewController: UIViewController {
     
     @IBAction func connectPressed(sender: AnyObject) {
         if let txt = self.ipField.text {
-            self.dm.socket = SocketListener(url: txt)
+            self.dm.connectionIP = txt
+            let formattedForSocket = "ws://\(txt):9000"
+            self.dm.socket = SocketListener(url: formattedForSocket)
         }
     }
     

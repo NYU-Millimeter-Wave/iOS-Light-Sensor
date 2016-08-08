@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490455BA1D0B0961003E289C /* LightControlViewController.swift */; };
 		491468C21D076E2100440DC3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 491468BF1D076E2100440DC3 /* beep.wav */; };
-		491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C01D076E2100440DC3 /* CameraCapture.swift */; };
 		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
 		491ACFC81D492AA300FF991C /* ControlConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ACFC71D492AA300FF991C /* ControlConfirmViewController.swift */; };
 		4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */; };
@@ -63,7 +62,6 @@
 /* Begin PBXFileReference section */
 		490455BA1D0B0961003E289C /* LightControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlViewController.swift; sourceTree = "<group>"; };
 		491468BF1D076E2100440DC3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
-		491468C01D076E2100440DC3 /* CameraCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
 		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		491ACFC71D492AA300FF991C /* ControlConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlConfirmViewController.swift; sourceTree = "<group>"; };
 		4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -178,9 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				49454BEB1D09B24A002C8328 /* LightControlManager.swift */,
-				491468C01D076E2100440DC3 /* CameraCapture.swift */,
-				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
 				498549051D1C2F71008D88E9 /* DataManager.swift */,
+				491468C11D076E2100440DC3 /* ImageProcessor.swift */,
 				49CB50401D26CF7500C27551 /* SocketListener.swift */,
 			);
 			name = Controllers;
@@ -490,7 +487,6 @@
 				493B42791D5282F200D44EA8 /* MonitorViewController.swift in Sources */,
 				490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */,
 				498549021D1C2F3C008D88E9 /* ExperimentsTableViewController.swift in Sources */,
-				491468C31D076E2100440DC3 /* CameraCapture.swift in Sources */,
 				491ACFC81D492AA300FF991C /* ControlConfirmViewController.swift in Sources */,
 				49454BEC1D09B24A002C8328 /* LightControlManager.swift in Sources */,
 				498549041D1C2F59008D88E9 /* Experiment.swift in Sources */,

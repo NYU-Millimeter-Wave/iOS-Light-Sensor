@@ -136,10 +136,10 @@ class Experiment: NSObject {
      the experiment will then be uploaded to server and the Roomba will
      perform its teardown operations.
      
-     - Returns: `nil`
+     - Returns: `Bool` Success of closure
      
      */
-    func endExperiment() {
+    func endExperiment(completion: (clean: Bool) -> Void) {
         // Invalidate Timers
         self.readingOperationsTimer?.invalidate()
         self.experimentTimer?.invalidate()
@@ -151,6 +151,7 @@ class Experiment: NSObject {
                 self.log("[ --- ] Uploading experiment to server")
                 self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
                 self.endedCleanly = true
+                
             } else {
                 self.log("[ -x- ] Roomba did not aknowledge end of experiment")
                 self.log("[ --- ] Attempting upload to server anyways...")
@@ -160,11 +161,17 @@ class Experiment: NSObject {
             
             // At this point, the experiment object has all reading data
             // Upload experiment to server
-//            self.dm.uploadExperiment(self.serializeSelfToJSONDict())
+            self.dm.uploadExperiment(self.serializeSelfToJSONDict()) { success in
+                self.endedCleanly = success
+            }
             
-            print("[ -+- ] Upload successful")
-            print("[ === ] Experiment ended cleanly")
+            if self.endedCleanly! {
+                self.log("[ === ] Experiment ended cleanly")
+            } else {
+                self.log("[ -x- ] Experiment did not end cleanly")
+            }
             
+            completion(clean: self.endedCleanly!)
         }
     }
     

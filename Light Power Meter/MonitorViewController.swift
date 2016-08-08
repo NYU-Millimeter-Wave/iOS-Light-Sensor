@@ -28,6 +28,7 @@ class MonitorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logOut.editable = false
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -42,11 +43,15 @@ class MonitorViewController: UIViewController {
         alert.addAction(UIAlertAction(
             title: "YES",
             style: .Destructive,
-            handler: {alert in self.experiment.endExperiment()}
+            handler: {alert in self.endExperiment()}
         ))
         presentViewController(alert, animated: true, completion: nil)
     }
 
+    func endExperiment() {
+        self.experiment.endExperiment() { _ in }
+    }
+    
     // MARK: - Actions
     
     @IBAction func forceEndPressed(sender: AnyObject) {
