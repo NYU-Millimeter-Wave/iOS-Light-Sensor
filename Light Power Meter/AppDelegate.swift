@@ -34,12 +34,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
         
-        // Start Socket Listener
-//        let dm = DataManager.sharedManager
-//        dm.initalizeSocketConnection("ws://172.16.23.148:9000")
         
+        // Testing
+        let newExp = Experiment.generateTestObject()
+        let dm = DataManager.sharedManager
+        
+//        let j = newExp.serializeSelfToJSONDict()
+//        do {
+//            let jsonData = try NSJSONSerialization.dataWithJSONObject(j, options: .PrettyPrinted)
+//            let jsonString = String(data: jsonData, encoding: NSASCIIStringEncoding)
+//            print(jsonString)
+//        } catch let error as NSError {
+//            print(error)
+//        }
+        
+        dm.uploadExperiment(newExp, completion: { success in
+            if success {
+                print("Test passed")
+            } else {
+                print("Test failed")
+            }
+        })
+
         return true
     }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

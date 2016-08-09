@@ -70,16 +70,38 @@ class DataManager: NSObject {
         }
     }
     
-    func uploadExperiment(experimentAsDictionary: [String: AnyObject], completion: (success: Bool) -> Void) {
-        let url = "http://\(connectionIP):8000/"
-        Alamofire.request(.POST, url, parameters: experimentAsDictionary, encoding: .JSON).response {
-            _, _, _, error in
-            if let err = error {
-                print("[ ERR ] Experiment upload failed: \(err)")
-                completion(success: false)
+    func uploadExperiment(experiment: Experiment, completion: (success: Bool) -> Void) {
+        // Add experiment to array (so most recent on top)
+        experiments.append(experiment)
+        
+        // Add in all the other experiments
+        parseInExperimentsFromServer() { success in
+            if success {
+                // Properly fetched the experiment set from server
+                let url = "http://\(self.connectionIP):8000/"
+                
+                // Convert the experiment array to JSON
+                var transmissionDict = [String: AnyObject]()
+                var jsonExpArray = [[String: AnyObject]]()
+                for exp in self.experiments {
+                    jsonExpArray.append(exp.serializeSelfToJSONDict())
+                }
+                transmissionDict["experiments"] = jsonExpArray
+                
+                // Fire off request
+                Alamofire.request(.POST, url, parameters: transmissionDict, encoding: .JSON).response {
+                    _, _, _, error in
+                    if let err = error {
+                        print("[ ERR ] Experiment upload failed: \(err)")
+                        completion(success: false)
+                    } else {
+                        print("[ COM ] Upload Complete")
+                        completion(success: true)
+                    }
+                }
             } else {
-                print("[ COM ] Upload Complete")
-                completion(success: true)
+                print("[ ERR ] Could not upload experiment")
+                completion(success: false)
             }
         }
     }
@@ -131,14 +153,4 @@ class DataManager: NSObject {
             }
         }
     }
-    
-//    func pullAllExperimentsFromServer() {
-//        let url = "http://\(connectionIP):8000/"
-//        Alamofire.request(.GET, url, parameters: nil, encoding: .JSON).responseJSON { response in
-//            if let json = response.result.value {
-//                print("JSON: \(json)")
-//            }
-//        }
-//    }
-
 }

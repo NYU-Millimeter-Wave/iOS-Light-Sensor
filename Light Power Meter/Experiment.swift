@@ -61,6 +61,7 @@ class Experiment: NSObject {
     init(title: String) {
         super.init()
         self.title = title
+        self.readingsArray = []
     }
     
     // MARK: - Experiment Control Flow
@@ -161,7 +162,7 @@ class Experiment: NSObject {
             
             // At this point, the experiment object has all reading data
             // Upload experiment to server
-            self.dm.uploadExperiment(self.serializeSelfToJSONDict()) { success in
+            self.dm.uploadExperiment(self) { success in
                 self.endedCleanly = success
             }
             
@@ -306,6 +307,21 @@ class Experiment: NSObject {
     
     // MARK: - Utility Methods
     
+    static func generateTestObject() -> Experiment {
+        let newExp = Experiment(title: "Test Run 1")
+        newExp.startTime = CFAbsoluteTimeGetCurrent()
+        newExp.stopTime  = CFAbsoluteTimeGetCurrent() + (30000)
+        for _ in 0...10 {
+            let newTuple = (red: getRando(), yellow: getRando(), purple: getRando(), time: Double(CFAbsoluteTimeGetCurrent()))
+            newExp.readingsArray?.append(newTuple)
+        }
+        newExp.endedCleanly = true
+        return newExp
+    }
+    private static func getRando() -> Double {
+        return Double(Float(arc4random()) / Float(UINT32_MAX))
+    }
+    
     /**
      
      Converts self into a Dictionary object that is fit
@@ -316,15 +332,15 @@ class Experiment: NSObject {
      
      */
     func serializeSelfToJSONDict() -> [String: AnyObject] {
-        var selfAsDictionary: [String: AnyObject] = [:]
+        var selfAsDictionary = [String: AnyObject]()
         
         selfAsDictionary["title"] = self.title
         selfAsDictionary["startTime"] = self.startTime
         selfAsDictionary["stopTime"] = self.stopTime
         
-        var arrayOfReadingDictionaries: [[String: Double]] = []
+        var arrayOfReadingDictionaries = [[String: Double]]()
         for r in self.readingsArray! {
-            var readingsAsDictionary: [String: Double] = [:]
+            var readingsAsDictionary = [String: Double]()
             readingsAsDictionary["timestamp"] = r.time
             readingsAsDictionary["LightRPL"]  = r.red
             readingsAsDictionary["LightYPL"]  = r.yellow
@@ -334,9 +350,6 @@ class Experiment: NSObject {
         selfAsDictionary["readings"] = arrayOfReadingDictionaries
         
         if NSJSONSerialization.isValidJSONObject(selfAsDictionary) {
-            let data = NSKeyedArchiver.archivedDataWithRootObject(selfAsDictionary)
-            let json = try! NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-            print(json)
             print("[ EXP ] Experiment successfully converted to JSON")
             return selfAsDictionary
         } else {
