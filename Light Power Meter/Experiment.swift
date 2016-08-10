@@ -19,7 +19,10 @@ class Experiment: NSObject {
     var logOutput: UITextView?
     
     /// Total number of seconds to run an experiment
-    var maxExperimentDuration: Double = 30
+    var maxExperimentDuration: Double = 60.0
+    
+    /// The number of seconds between each reading
+    var readingInterval: Double = 10.0  // (Each reading is ~ 5.0)
     
     /// Array to store power levels
     var readingsArray: [(red: Double, yellow: Double, purple: Double, time: CFAbsoluteTime)]?
@@ -98,7 +101,7 @@ class Experiment: NSObject {
                 
                 // Start Reading Operations Timer
                 self.readingOperationsTimer = NSTimer.scheduledTimerWithTimeInterval(
-                    5.0,
+                    self.readingInterval,
                     target: self,
                     selector: #selector(self.performReadingOperations),
                     userInfo: nil,
@@ -126,6 +129,9 @@ class Experiment: NSObject {
             self.takeReading() { success in
                 if success == true {
                     self.log("[ -+- ] Reading done, Success")
+                } else {
+                    self.log("[ ERR ] Error in reading operation")
+                    self.forceEnd()
                 }
             }
         }
@@ -174,6 +180,25 @@ class Experiment: NSObject {
             
             completion(clean: self.endedCleanly!)
         }
+    }
+    
+    /**
+     
+     Forcefully end an experiment from continuing due
+     to error.
+     
+     - Returns: `nil`
+     
+     */
+    func forceEnd() {
+        
+        self.log("[ ERR ] Experiment ending forcefully")
+        
+        // Signal socket directly to stop motors, ignore result
+        self.dm.socket?.signalEndOfExperiment({ _ in })
+        
+        // Set to unclean
+        self.endedCleanly = false
     }
     
     // MARK: - Experiment Operations
@@ -284,6 +309,9 @@ class Experiment: NSObject {
             let redPL    = ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
             let yellowPL = ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
             let purplePL = ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
+            
+            // Debug print
+            print("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
             
             // Compare them to max power levels found in this reading operation
             if  redPL    > maxR { maxR = redPL }
