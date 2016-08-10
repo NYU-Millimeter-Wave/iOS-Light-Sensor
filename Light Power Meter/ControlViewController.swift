@@ -62,8 +62,8 @@ class ControlViewController: UIViewController {
          NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
         
         // test
-        self.ipField.text = "ws://172.16.28.45:9000"
-        self.nameField.text = "test"
+        self.ipField.text = "172.16.26.179"
+        self.nameField.text = "Test Run"
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
