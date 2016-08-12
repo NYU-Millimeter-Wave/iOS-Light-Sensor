@@ -78,7 +78,11 @@ class DataManager: NSObject {
         parseInExperimentsFromServer() { success in
             if success {
                 // Properly fetched the experiment set from server
-                let url = "http://\(self.connectionIP):8000/"
+                
+                // This is safe to call dirctly in this context
+                let url = "http://\(self.connectionIP!):8000/"
+                
+                print("URL: \(url)")
                 
                 // Convert the experiment array to JSON
                 var transmissionDict = [String: AnyObject]()
@@ -107,7 +111,13 @@ class DataManager: NSObject {
     }
     
     func parseInExperimentsFromServer(completion: (success: Bool) -> Void) {
-        let url = "http://\(connectionIP):8000/"
+        var url = ""
+        if let ip = self.connectionIP {
+            url = "http://\(ip):8000"
+        } else {
+            print("[ ERR ] Transmission Failed, URL nil")
+            completion(success: false)
+        }
         Alamofire.request(.GET, url, parameters: nil, encoding: .JSON).responseJSON { response in
             if let dict = response.result.value as? [String: AnyObject] {
                 self.pulledJSON = dict
