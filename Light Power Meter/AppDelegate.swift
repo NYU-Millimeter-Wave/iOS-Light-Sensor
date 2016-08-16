@@ -33,29 +33,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
-        
-        
-        // Testing
-        let newExp = Experiment.generateTestObject()
-        let dm = DataManager.sharedManager
-        dm.connectionIP = "172.16.20.146"
-        
-        let j = newExp.serializeSelfToJSONDict()
-        do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(j, options: .PrettyPrinted)
-            let jsonString = String(data: jsonData, encoding: NSASCIIStringEncoding)
-            print(jsonString!)
-        } catch let error as NSError {
-            print(error)
-        }
-        
-        dm.uploadExperiment(newExp, completion: { success in
-            if success {
-                print("Test passed")
-            } else {
-                print("Test failed")
-            }
-        })
+
+//        // Testing
+//        let newExp = Experiment.generateTestObject()
+//        let dm = DataManager.sharedManager
+//        dm.connectionIP = "172.16.22.182"
+//        
+//        let j = newExp.serializeSelfToJSONDict()
+//        do {
+//            let jsonData = try NSJSONSerialization.dataWithJSONObject(j, options: .PrettyPrinted)
+//            let jsonString = String(data: jsonData, encoding: NSASCIIStringEncoding)
+//            print(jsonString!)
+//        } catch let error as NSError {
+//            print(error)
+//        }
+//        
+//        dm.uploadExperiment(newExp, completion: { success in
+//            if success {
+//                print("Test passed")
+//            } else {
+//                print("Test failed")
+//            }
+//        })
 
         return true
     }

@@ -17,6 +17,9 @@ class ControlViewController: UIViewController {
     @IBOutlet weak var connectionIndicator: UILabel!
     @IBOutlet weak var ipField: UITextField!
     @IBOutlet var colorLabels: [UIButton]!
+    @IBOutlet weak var experimentDuration: UITextField!
+    @IBOutlet weak var readingCount: UITextField!
+    
     
     // MARK: - Class Properties
     
@@ -60,10 +63,8 @@ class ControlViewController: UIViewController {
         // Check connection every 3 seconds
          self.checkConnected()
          NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
-        
-        // test
-        self.ipField.text = "172.16.26.179"
-        self.nameField.text = "Test Run"
+
+        self.ipField.text = "192.168.0.1"
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -108,7 +109,9 @@ class ControlViewController: UIViewController {
     }
     
     func finalizeExperiment() {
-        self.experiment = Experiment(title: self.nameField.text!)
+        experiment = Experiment(title: nameField.text!)
+        experiment.maxExperimentDuration = Double(experimentDuration.text!)!
+        experiment.readingInterval = Double(readingCount.text!)!
         performSegueWithIdentifier("final", sender: nil)
     }
     
@@ -117,7 +120,7 @@ class ControlViewController: UIViewController {
     }
 
     @IBAction func finalizePressed(sender: AnyObject) {
-        if nameField.text == "" || ipField.text == "" {
+        if nameField.text == "" || ipField.text == "" || experimentDuration.text == "" || readingCount.text == ""{
             throwErrorMessage("Cannot Finalize", message: "All fields are required")
         } else if self.connected == false {
             if let txt = self.ipField.text {

@@ -19,8 +19,8 @@ class MenuTableViewController: UITableViewController {
     var calibrationVC: UIViewController!
     var lightsVC: UIViewController!
     var filterTuningVC: UIViewController!
-    var experimentsTableVC: UIViewController!
     var controlVC: UIViewController!
+    // var experimentsTableVC: UIViewController!
     
     // MARK: - Initializers
     
@@ -40,12 +40,13 @@ class MenuTableViewController: UITableViewController {
         
         self.filterTuningVC = storyboard.instantiateViewControllerWithIdentifier("FilterTuning") as! FilterTuningViewController
         self.filterTuningVC = UINavigationController(rootViewController: filterTuningVC)
-        
-        self.experimentsTableVC = storyboard.instantiateViewControllerWithIdentifier("experimentsVC") as! ExperimentsTableViewController
-        self.experimentsTableVC = UINavigationController(rootViewController: experimentsTableVC)
-        
+
         self.controlVC = storyboard.instantiateViewControllerWithIdentifier("controlVC") as! ControlViewController
         self.controlVC = UINavigationController(rootViewController: controlVC)
+        
+        // self.experimentsTableVC = storyboard.instantiateViewControllerWithIdentifier("experimentsVC") as! ExperimentsTableViewController
+        // self.experimentsTableVC = UINavigationController(rootViewController: experimentsTableVC)
+
     }
 
     // MARK: - View Handlers
@@ -67,8 +68,6 @@ class MenuTableViewController: UITableViewController {
         case 4:
             self.slideMenuController()?.changeMainViewController(self.filterTuningVC, close: true)
         case 5:
-            self.slideMenuController()?.changeMainViewController(self.experimentsTableVC, close: true)
-        case 6:
             self.slideMenuController()?.changeMainViewController(self.controlVC, close: true)
         default:
             print("[ ERR ] Unexpected error in SideMenuController")
