@@ -107,6 +107,7 @@ class ControlViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func connectPressed(sender: AnyObject) {
         if let txt = self.ipField.text {
             self.dm.connectionIP = txt
