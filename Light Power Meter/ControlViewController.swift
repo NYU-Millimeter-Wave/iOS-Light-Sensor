@@ -18,7 +18,7 @@ class ControlViewController: UIViewController {
     @IBOutlet weak var ipField: UITextField!
     @IBOutlet var colorLabels: [UIButton]!
     @IBOutlet weak var experimentDuration: UITextField!
-    @IBOutlet weak var readingCount: UITextField!
+    @IBOutlet weak var readingInterval: UITextField!
     
     
     // MARK: - Class Properties
@@ -64,7 +64,7 @@ class ControlViewController: UIViewController {
          self.checkConnected()
          NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ControlViewController.checkConnected), userInfo: nil, repeats: true)
 
-        self.ipField.text = "192.168.0.1"
+        self.ipField.text = "192.168.1.1"
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -100,6 +100,13 @@ class ControlViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func readingIntervalChanged(sender: AnyObject) {
+        if let inter = readingInterval.text {
+            if Double(inter) <= 5.0 {
+                throwErrorMessage("Reading Interval less than 5.0", message: "A reading interval must be > 5.0")
+            }
+        }
+    }
     @IBAction func connectPressed(sender: AnyObject) {
         if let txt = self.ipField.text {
             self.dm.connectionIP = txt
@@ -111,7 +118,7 @@ class ControlViewController: UIViewController {
     func finalizeExperiment() {
         experiment = Experiment(title: nameField.text!)
         experiment.maxExperimentDuration = Double(experimentDuration.text!)!
-        experiment.readingInterval = Double(readingCount.text!)!
+        experiment.readingInterval = Double(readingInterval.text!)!
         performSegueWithIdentifier("final", sender: nil)
     }
     
@@ -120,7 +127,7 @@ class ControlViewController: UIViewController {
     }
 
     @IBAction func finalizePressed(sender: AnyObject) {
-        if nameField.text == "" || ipField.text == "" || experimentDuration.text == "" || readingCount.text == ""{
+        if nameField.text == "" || ipField.text == "" || experimentDuration.text == "" || readingInterval.text == ""{
             throwErrorMessage("Cannot Finalize", message: "All fields are required")
         } else if self.connected == false {
             if let txt = self.ipField.text {

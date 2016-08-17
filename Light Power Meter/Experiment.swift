@@ -130,6 +130,7 @@ class Experiment: NSObject {
                 if success == true {
                     self.log("[ -+- ] Reading done, Success")
                 } else {
+                    // Currently, this will never run
                     self.log("[ ERR ] Error in reading operation")
                     self.forceEnd()
                 }
@@ -170,15 +171,14 @@ class Experiment: NSObject {
             // Upload experiment to server
             self.dm.uploadExperiment(self) { success in
                 self.endedCleanly = success
+                if self.endedCleanly! {
+                    self.log("[ === ] Experiment ended cleanly")
+                } else {
+                    self.log("[ -x- ] Experiment did not end cleanly")
+                }
+                
+                completion(clean: self.endedCleanly!)
             }
-            
-            if self.endedCleanly! {
-                self.log("[ === ] Experiment ended cleanly")
-            } else {
-                self.log("[ -x- ] Experiment did not end cleanly")
-            }
-            
-            completion(clean: self.endedCleanly!)
         }
     }
     
@@ -277,61 +277,89 @@ class Experiment: NSObject {
         // Signal Roomba to spin iPhone
         self.dm.socket?.signalReadNow() { _ in
             
+            // Reset max levels
             self.maxR = 0.0; self.maxY = 0.0; self.maxP = 0.0
+            
+            // Get reading timestamp
             self.readingTime = CFAbsoluteTimeGetCurrent()
-            NSTimer.scheduledTimerWithTimeInterval(
-                1.0,
-                target   : self,
-                selector : #selector(self.getPowerLevels),
-                userInfo : nil,
-                repeats  : true
-            )
-
+            
+            // TODO: THIS IS ASYNC SHOULD BE SYNC
+//            NSTimer.scheduledTimerWithTimeInterval(
+//                1.0,
+//                target   : self,
+//                selector : #selector(self.getPowerLevels),
+//                userInfo : nil,
+//                repeats  : true
+//            )
+            
+            var i: Int = 5
+            while(i > 0) {
+                // Get observed power levels
+                let redPL    = self.ip.getPowerLevelForHue(self.ip.red, threshold: self.ip.colorThreshold)
+                let yellowPL = self.ip.getPowerLevelForHue(self.ip.yellow, threshold: self.ip.colorThreshold)
+                let purplePL = self.ip.getPowerLevelForHue(self.ip.purple, threshold: self.ip.colorThreshold)
+                
+                // Debug print
+                print("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
+                
+                // Compare them to max power levels found in this reading operation
+                if  redPL    > self.maxR { self.maxR = redPL }
+                if  yellowPL > self.maxY { self.maxY = yellowPL }
+                if  purplePL > self.maxP { self.maxP = purplePL }
+                
+                sleep(1)
+                
+                i -= 1
+            }
+            
+            // Append to readingsArray
+            self.readingsArray?.append((red: self.maxR!, yellow: self.maxY!, purple: self.maxP!, time: self.readingTime))
+            
             print("[ -+- ] Reading Done")
             completion(success: true)
         }
     }
     
-    /**
-     
-     Finds the max power levels for consecutive readings in one
-     reading operation and updates the max levels. Once the readings are
-     over, the max power levels are added to the reading array along with
-     a timestamp.
-     
-     - Returns: `nil`
-     
-     */
-    @objc private func getPowerLevels() {
-        if readingCount < 6 {
-            
-            // Get observed power levels
-            let redPL    = ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
-            let yellowPL = ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
-            let purplePL = ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
-            
-            // Debug print
-            print("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
-            
-            // Compare them to max power levels found in this reading operation
-            if  redPL    > maxR { maxR = redPL }
-            if  yellowPL > maxY { maxY = yellowPL }
-            if  purplePL > maxP { maxP = purplePL }
-            
-            readingCount += 1
-        } else {
-            // Append
-            readingsArray?.append((red: maxR!, yellow: maxY!, purple: maxP!, time: self.readingTime))
-            
-            // Reset max levels
-            maxR = 0
-            maxY = 0
-            maxP = 0
-            
-            // Stop timer
-            readingTimer?.invalidate()
-        }
-    }
+//    /**
+//     
+//     Finds the max power levels for consecutive readings in one
+//     reading operation and updates the max levels. Once the readings are
+//     over, the max power levels are added to the reading array along with
+//     a timestamp.
+//     
+//     - Returns: `nil`
+//     
+//     */
+//    @objc private func getPowerLevels() {
+//        if readingCount < 6 {
+//            
+//            // Get observed power levels
+//            let redPL    = ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
+//            let yellowPL = ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
+//            let purplePL = ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
+//            
+//            // Debug print
+//            print("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
+//            
+//            // Compare them to max power levels found in this reading operation
+//            if  redPL    > maxR { maxR = redPL }
+//            if  yellowPL > maxY { maxY = yellowPL }
+//            if  purplePL > maxP { maxP = purplePL }
+//            
+//            readingCount += 1
+//        } else {
+//            // Append
+//            readingsArray?.append((red: maxR!, yellow: maxY!, purple: maxP!, time: self.readingTime))
+//            
+//            // Reset max levels
+//            maxR = 0
+//            maxY = 0
+//            maxP = 0
+//            
+//            // Stop timer
+//            readingTimer?.invalidate()
+//        }
+//    }
     
     // MARK: - Utility Methods
     

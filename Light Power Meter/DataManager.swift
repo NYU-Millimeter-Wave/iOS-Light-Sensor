@@ -17,8 +17,9 @@ class DataManager: NSObject {
     
     // MARK: - Class Properties
     
+    
     // Experiments
-    lazy var experiments: [Experiment] = []
+    var experiments: [Experiment] = []
     
     // Device Info
     var deviceID: Int!
@@ -111,6 +112,7 @@ class DataManager: NSObject {
     }
     
     func parseInExperimentsFromServer(completion: (success: Bool) -> Void) {
+        var failed = false
         var url = ""
         if let ip = self.connectionIP {
             url = "http://\(ip):8000"
@@ -121,46 +123,30 @@ class DataManager: NSObject {
         Alamofire.request(.GET, url, parameters: nil, encoding: .JSON).responseJSON { response in
             if let dict = response.result.value as? [String: AnyObject] {
                 self.pulledJSON = dict
-                
-                for (key, value) in self.pulledJSON! {
-                    let newExp = Experiment(title: "NONE")
-                    if key == "title" {
-                        newExp.title = value as? String
-                    }
-                    else if key == "startTime" {
-                        newExp.startTime = value as? Double
-                    }
-                    else if key == "stopTime" {
-                        newExp.stopTime = value as? Double
-                    }
-                    else if key == "readings" {
-                        if let readingDict = value as? [String: AnyObject] {
-                            for (rkey, rvalue) in readingDict {
-                                var red    = 0.0
-                                var yellow = 0.0
-                                var purple = 0.0
-                                var time   = 0.0
-                                if rkey == "Light1Detected"      { red    = rvalue as! Double }
-                                else if rkey == "Light1Detected" { yellow = rvalue as! Double }
-                                else if rkey == "Light1Detected" { purple = rvalue as! Double }
-                                else if rkey == "timestamp"      { time   = rvalue as! Double }
-                                else if rkey == "direction"      { /* TODO: Implement */ }
-                                else { break }
-                                newExp.readingsArray?.append((red: red, yellow: yellow, purple: purple, time: time))
-                            }
+                if let experiments = dict["experiments"] as? [[String: AnyObject]] {
+                    for experiment in experiments {
+                        let newExperiment = Experiment(title: "NULL")
+                        newExperiment.title = experiment["title"] as? String
+                        newExperiment.startTime = experiment["startTime"] as? Double
+                        newExperiment.stopTime = experiment["endTime"] as? Double
+                        
+                        for reading in (experiment["readings"] as! [[String: AnyObject]]) {
+                            let time   = reading["timestamp"] as! Double
+                            let red    = reading["LightRPL"]  as! Double
+                            let yellow = reading["LightYPL"]  as! Double
+                            let purple = reading["LightPPL"]  as! Double
+                            newExperiment.readingsArray?.append((red: red, yellow: yellow, purple: purple, time: time))
                         }
-                    } else {
-                        print("[ ERR ] Unexpected token in JSON parsing")
-                        completion(success: false)
+                        
+                        self.experiments.append(newExperiment)
                     }
-                    self.experiments.append(newExp)
+                } else {
+                    print("[ ERR ] JSON Parse Error")
+                    failed = true
                 }
-                print("[ COM ] Parsing JSON complete")
-                completion(success: true)
-            } else {
-                print("[ ERR ] Could not parse JSON into dict")
-                completion(success: false)
             }
+            print("[ COM ] Parsing JSON complete")
+            completion(success: !(failed))
         }
     }
 }
