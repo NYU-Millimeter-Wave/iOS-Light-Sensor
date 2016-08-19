@@ -83,8 +83,6 @@ class DataManager: NSObject {
                 // This is safe to call dirctly in this context
                 let url = "http://\(self.connectionIP!):8000/"
                 
-                print("URL: \(url)")
-                
                 // Convert the experiment array to JSON
                 var transmissionDict = [String: AnyObject]()
                 var jsonExpArray = [[String: AnyObject]]()

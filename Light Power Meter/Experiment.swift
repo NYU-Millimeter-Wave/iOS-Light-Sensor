@@ -207,7 +207,7 @@ class Experiment: NSObject {
         self.dm.socket?.signalEndOfExperiment({
             self.log("[ -+- ] Roomba aknowledged end of experiment")
             self.stopTime = CFAbsoluteTimeGetCurrent()
-            self.log("[ === ] Experiment ened with stop time: \(self.stopTime)")
+            self.log("[ === ] Experiment ened with stop time: \(self.stopTime!)")
             self.log("[ --- ] Uploading experiment to server...")
             self.endedCleanly = true
             

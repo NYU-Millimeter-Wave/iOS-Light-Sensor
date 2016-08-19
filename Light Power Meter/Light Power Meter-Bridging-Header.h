@@ -3,4 +3,4 @@
 //
 
 // Bridge the Philips Hue Library
-#import <HueSDK_iOS/HueSDK.h>
+//#import <HueSDK_iOS/HueSDK.h>
