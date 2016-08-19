@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		490455BB1D0B0961003E289C /* LightControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490455BA1D0B0961003E289C /* LightControlViewController.swift */; };
-		491468C21D076E2100440DC3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 491468BF1D076E2100440DC3 /* beep.wav */; };
 		491468C41D076E2100440DC3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491468C11D076E2100440DC3 /* ImageProcessor.swift */; };
 		491ACFC81D492AA300FF991C /* ControlConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ACFC71D492AA300FF991C /* ControlConfirmViewController.swift */; };
 		4926FF861D0F0D86007DC2E2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */; };
@@ -25,7 +24,6 @@
 		498549041D1C2F59008D88E9 /* Experiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549031D1C2F59008D88E9 /* Experiment.swift */; };
 		498549061D1C2F71008D88E9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549051D1C2F71008D88E9 /* DataManager.swift */; };
 		498549081D1C313C008D88E9 /* ExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498549071D1C313C008D88E9 /* ExperimentViewController.swift */; };
-		4986DB201D073C63004F2893 /* Lumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 4986DB1F1D073C63004F2893 /* Lumberjack */; };
 		499698DD1D119F2C00B17E89 /* PowerMeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */; };
 		499791E61D303A4500F317F6 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499791E51D303A4500F317F6 /* ControlViewController.swift */; };
 		49CB50411D26CF7500C27551 /* SocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB50401D26CF7500C27551 /* SocketListener.swift */; };
@@ -34,34 +32,12 @@
 		49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E038391D073A67007A4C56 /* Main.storyboard */; };
 		49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383C1D073A67007A4C56 /* Assets.xcassets */; };
 		49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E0383E1D073A67007A4C56 /* LaunchScreen.storyboard */; };
-		49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */; };
-		49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */; };
-		49F9BA751D108E05001AD84A /* PositionColor.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA731D108E05001AD84A /* PositionColor.fsh */; };
-		49F9BA761D108E05001AD84A /* Threshold.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 49F9BA741D108E05001AD84A /* Threshold.fsh */; };
 		49F9BA7B1D10A31E001AD84A /* FilterTuningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */; };
 		7C2351D5B3F681EBD438B19F /* Pods_Light_Power_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C2B36FE9FDD5AA95408EBD /* Pods_Light_Power_Meter.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		49E038471D073A67007A4C56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49E0382A1D073A67007A4C56 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49E038311D073A67007A4C56;
-			remoteInfo = "Light Power Meter";
-		};
-		49E038521D073A67007A4C56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49E0382A1D073A67007A4C56 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49E038311D073A67007A4C56;
-			remoteInfo = "Light Power Meter";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		490455BA1D0B0961003E289C /* LightControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightControlViewController.swift; sourceTree = "<group>"; };
-		491468BF1D076E2100440DC3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		491468C11D076E2100440DC3 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		491ACFC71D492AA300FF991C /* ControlConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlConfirmViewController.swift; sourceTree = "<group>"; };
 		4926FF851D0F0D86007DC2E2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -78,19 +54,10 @@
 		498549031D1C2F59008D88E9 /* Experiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experiment.swift; sourceTree = "<group>"; };
 		498549051D1C2F71008D88E9 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		498549071D1C313C008D88E9 /* ExperimentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentViewController.swift; sourceTree = "<group>"; };
-		4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
-		4986DB1F1D073C63004F2893 /* Lumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lumberjack; sourceTree = "<group>"; };
-		4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Light Power Meter-Bridging-Header.h"; sourceTree = "<group>"; };
-		4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Lumberjack/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		4986DB291D075D87004F2893 /* DDASLLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Lumberjack/DDASLLogger.m; sourceTree = "<group>"; };
-		4986DB2A1D075D87004F2893 /* DDFileLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Lumberjack/DDFileLogger.m; sourceTree = "<group>"; };
-		4986DB2B1D075D87004F2893 /* DDLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Lumberjack/DDLog.m; sourceTree = "<group>"; };
-		4986DB2C1D075D87004F2893 /* DDTTYLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
-		4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ContextFilterLogFormatter.m; path = Lumberjack/Extensions/ContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DispatchQueueLogFormatter.m; path = Lumberjack/Extensions/DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		499698DC1D119F2C00B17E89 /* PowerMeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerMeterViewController.swift; sourceTree = "<group>"; };
 		499791E51D303A4500F317F6 /* ControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		49CB50401D26CF7500C27551 /* SocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketListener.swift; sourceTree = "<group>"; };
+		49D988241D6770D500030F34 /* Light Power Meter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Light Power Meter-Bridging-Header.h"; sourceTree = "<group>"; };
 		49E038321D073A67007A4C56 /* LPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E038351D073A67007A4C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E038371D073A67007A4C56 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
@@ -98,14 +65,6 @@
 		49E0383C1D073A67007A4C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E0383F1D073A67007A4C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49E038411D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterTests.swift; sourceTree = "<group>"; };
-		49E0384C1D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Power MeterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_Power_MeterUITests.swift; sourceTree = "<group>"; };
-		49E038571D073A67007A4C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49F9BA731D108E05001AD84A /* PositionColor.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PositionColor.fsh; sourceTree = "<group>"; };
-		49F9BA741D108E05001AD84A /* Threshold.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Threshold.fsh; sourceTree = "<group>"; };
 		49F9BA7A1D10A31E001AD84A /* FilterTuningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTuningViewController.swift; sourceTree = "<group>"; };
 		5B920BE5FB430165CFBF82BB /* Pods-Light Power Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		6A64EEFBB7E1EF7929405FBB /* Pods-Light Power Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Light Power Meter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Light Power Meter/Pods-Light Power Meter.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,28 +86,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49E038431D073A67007A4C56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49E0384E1D073A67007A4C56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		491468C51D076E4E00440DC3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				49F9BA771D108E19001AD84A /* Shaders */,
-				491468BF1D076E2100440DC3 /* beep.wav */,
 				4967E7D91D3E728700F6EDD6 /* KDCircularProgress.swift */,
 			);
 			name = Resources;
@@ -183,31 +126,11 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		4986DB211D073C6A004F2893 /* HueSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4986DB321D075DAD004F2893 /* ContextFilterLogFormatter.m */,
-				4986DB331D075DAD004F2893 /* DispatchQueueLogFormatter.m */,
-				4986DB281D075D87004F2893 /* DDAbstractDatabaseLogger.m */,
-				4986DB291D075D87004F2893 /* DDASLLogger.m */,
-				4986DB2A1D075D87004F2893 /* DDFileLogger.m */,
-				4986DB2B1D075D87004F2893 /* DDLog.m */,
-				4986DB2C1D075D87004F2893 /* DDTTYLogger.m */,
-				4986DB1F1D073C63004F2893 /* Lumberjack */,
-				4986DB1D1D073C51004F2893 /* HueSDK_iOS.framework */,
-			);
-			name = HueSDK;
-			path = "Light Power Meter";
-			sourceTree = "<group>";
-		};
 		49E038291D073A67007A4C56 = {
 			isa = PBXGroup;
 			children = (
 				49E038341D073A67007A4C56 /* Light Power Meter */,
 				491468C51D076E4E00440DC3 /* Resources */,
-				4986DB211D073C6A004F2893 /* HueSDK */,
-				49E038491D073A67007A4C56 /* Light Power MeterTests */,
-				49E038541D073A67007A4C56 /* Light Power MeterUITests */,
 				49E038331D073A67007A4C56 /* Products */,
 				A1C137333A6BF3F5D747D70E /* Pods */,
 				4D0FE30D51509D9CF24A45B4 /* Frameworks */,
@@ -218,8 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				49E038321D073A67007A4C56 /* LPM.app */,
-				49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */,
-				49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,7 +148,7 @@
 		49E038341D073A67007A4C56 /* Light Power Meter */ = {
 			isa = PBXGroup;
 			children = (
-				4986DB221D073C9B004F2893 /* Light Power Meter-Bridging-Header.h */,
+				49D988241D6770D500030F34 /* Light Power Meter-Bridging-Header.h */,
 				49E038351D073A67007A4C56 /* AppDelegate.swift */,
 				498549031D1C2F59008D88E9 /* Experiment.swift */,
 				4926FF881D0F1CF7007DC2E2 /* Controllers */,
@@ -238,33 +159,6 @@
 				49E038411D073A67007A4C56 /* Info.plist */,
 			);
 			path = "Light Power Meter";
-			sourceTree = "<group>";
-		};
-		49E038491D073A67007A4C56 /* Light Power MeterTests */ = {
-			isa = PBXGroup;
-			children = (
-				49E0384A1D073A67007A4C56 /* Light_Power_MeterTests.swift */,
-				49E0384C1D073A67007A4C56 /* Info.plist */,
-			);
-			path = "Light Power MeterTests";
-			sourceTree = "<group>";
-		};
-		49E038541D073A67007A4C56 /* Light Power MeterUITests */ = {
-			isa = PBXGroup;
-			children = (
-				49E038551D073A67007A4C56 /* Light_Power_MeterUITests.swift */,
-				49E038571D073A67007A4C56 /* Info.plist */,
-			);
-			path = "Light Power MeterUITests";
-			sourceTree = "<group>";
-		};
-		49F9BA771D108E19001AD84A /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				49F9BA731D108E05001AD84A /* PositionColor.fsh */,
-				49F9BA741D108E05001AD84A /* Threshold.fsh */,
-			);
-			name = Shaders;
 			sourceTree = "<group>";
 		};
 		4D0FE30D51509D9CF24A45B4 /* Frameworks */ = {
@@ -313,42 +207,6 @@
 			productReference = 49E038321D073A67007A4C56 /* LPM.app */;
 			productType = "com.apple.product-type.application";
 		};
-		49E038451D073A67007A4C56 /* Light Power MeterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49E0385D1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterTests" */;
-			buildPhases = (
-				49E038421D073A67007A4C56 /* Sources */,
-				49E038431D073A67007A4C56 /* Frameworks */,
-				49E038441D073A67007A4C56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49E038481D073A67007A4C56 /* PBXTargetDependency */,
-			);
-			name = "Light Power MeterTests";
-			productName = "Light Power MeterTests";
-			productReference = 49E038461D073A67007A4C56 /* Light Power MeterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		49E038501D073A67007A4C56 /* Light Power MeterUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49E038601D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterUITests" */;
-			buildPhases = (
-				49E0384D1D073A67007A4C56 /* Sources */,
-				49E0384E1D073A67007A4C56 /* Frameworks */,
-				49E0384F1D073A67007A4C56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49E038531D073A67007A4C56 /* PBXTargetDependency */,
-			);
-			name = "Light Power MeterUITests";
-			productName = "Light Power MeterUITests";
-			productReference = 49E038511D073A67007A4C56 /* Light Power MeterUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -362,14 +220,6 @@
 					49E038311D073A67007A4C56 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 626TEZTB77;
-					};
-					49E038451D073A67007A4C56 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 49E038311D073A67007A4C56;
-					};
-					49E038501D073A67007A4C56 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 49E038311D073A67007A4C56;
 					};
 				};
 			};
@@ -387,8 +237,6 @@
 			projectRoot = "";
 			targets = (
 				49E038311D073A67007A4C56 /* Light Power Meter */,
-				49E038451D073A67007A4C56 /* Light Power MeterTests */,
-				49E038501D073A67007A4C56 /* Light Power MeterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -398,27 +246,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				491468C21D076E2100440DC3 /* beep.wav in Resources */,
 				49E038401D073A67007A4C56 /* LaunchScreen.storyboard in Resources */,
-				49F9BA761D108E05001AD84A /* Threshold.fsh in Resources */,
-				49F9BA751D108E05001AD84A /* PositionColor.fsh in Resources */,
 				49E0383D1D073A67007A4C56 /* Assets.xcassets in Resources */,
-				4986DB201D073C63004F2893 /* Lumberjack in Resources */,
 				49E0383B1D073A67007A4C56 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49E038441D073A67007A4C56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49E0384F1D073A67007A4C56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,36 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49E038421D073A67007A4C56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49E0384B1D073A67007A4C56 /* Light_Power_MeterTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49E0384D1D073A67007A4C56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49E038561D073A67007A4C56 /* Light_Power_MeterUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		49E038481D073A67007A4C56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49E038311D073A67007A4C56 /* Light Power Meter */;
-			targetProxy = 49E038471D073A67007A4C56 /* PBXContainerItemProxy */;
-		};
-		49E038531D073A67007A4C56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49E038311D073A67007A4C56 /* Light Power Meter */;
-			targetProxy = 49E038521D073A67007A4C56 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		49E038391D073A67007A4C56 /* Main.storyboard */ = {
@@ -680,52 +481,6 @@
 			};
 			name = Release;
 		};
-		49E0385E1D073A67007A4C56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "Light Power MeterTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Light Power Meter.app/Light Power Meter";
-			};
-			name = Debug;
-		};
-		49E0385F1D073A67007A4C56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "Light Power MeterTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Light Power Meter.app/Light Power Meter";
-			};
-			name = Release;
-		};
-		49E038611D073A67007A4C56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Light Power MeterUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = "Light Power Meter";
-			};
-			name = Debug;
-		};
-		49E038621D073A67007A4C56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Light Power MeterUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "colesmith.Light-Power-MeterUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = "Light Power Meter";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -743,24 +498,6 @@
 			buildConfigurations = (
 				49E0385B1D073A67007A4C56 /* Debug */,
 				49E0385C1D073A67007A4C56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49E0385D1D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49E0385E1D073A67007A4C56 /* Debug */,
-				49E0385F1D073A67007A4C56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49E038601D073A67007A4C56 /* Build configuration list for PBXNativeTarget "Light Power MeterUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49E038611D073A67007A4C56 /* Debug */,
-				49E038621D073A67007A4C56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
