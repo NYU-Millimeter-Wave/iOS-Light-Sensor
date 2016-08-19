@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GPUImage
 
 class Experiment: NSObject {
     
@@ -79,18 +80,24 @@ class Experiment: NSObject {
      */
     func beginExperiment() {
         log("[ === ] Starting New Experiment: \(title!)")
-        log("[ --- ] Checking time sync...")
+        log("[ --- ] Checking Time Sync")
         
+        // Check time sync
         if self.checkTimeSync() {
+            
+            // Latency is good
             log("[ -+- ] Time sync complete")
             
-            self.signalRoombaToStart() { _ in
+            // Signalling start of experiment
+            self.dm.socket?.signalStart({
+                //            self.dm.socket?.socket.send(text: "START")
                 self.log("[ -+- ] Roomba acknowledged experiment begin")
                 
+                // Get start time
                 self.startTime = CFAbsoluteTimeGetCurrent()
                 self.log("[ --- ] Starting experiment with start time \(self.startTime!)")
                 
-                // Start Experiment timer
+                // Begin the experiment timer
                 self.experimentTimer =  NSTimer.scheduledTimerWithTimeInterval(
                     self.maxExperimentDuration,
                     target   : self,
@@ -99,7 +106,8 @@ class Experiment: NSObject {
                     repeats  : false
                 )
                 
-                // Start Reading Operations Timer
+                // Begin Reading Operations Timer
+                // (+5, a reading is ~5 seconds)
                 self.readingOperationsTimer = NSTimer.scheduledTimerWithTimeInterval(
                     self.readingInterval,
                     target: self,
@@ -107,11 +115,26 @@ class Experiment: NSObject {
                     userInfo: nil,
                     repeats: true
                 )
-            }
-            
+            })
         } else {
-            log("[ === ] Could not verify time sync, stopping...")
+            log("[ -x- ] Bad time sync ending...")
             endedCleanly = false
+        }
+    }
+    
+    /**
+     
+     Checks the latency of the connection. If the latency is above a certain
+     thesold, the method returns false
+     
+     - Returns: `Bool`
+     
+     */
+    func checkTimeSync() -> Bool {
+        if let td = dm.timeDelta {
+            return (td < 1.00)
+        } else {
+            return false
         }
     }
     
@@ -124,20 +147,48 @@ class Experiment: NSObject {
      
      */
     func performReadingOperations() {
-        self.signalRoombaToRead() { _ in
-            self.log("[ -+- ] Roomba in reading mode")
-            self.takeReading() { success in
-                if success == true {
-                    self.log("[ -+- ] Reading done, Success")
-                } else {
-                    // Currently, this will never run
-                    self.log("[ ERR ] Error in reading operation")
-                    self.forceEnd()
-                }
-            }
+        self.dm.socket?.signalReadingMode({})
+        
+        self.log("[ -+- ] Roomba in reading mode")
+        self.log("[ --- ] Reading now...")
+        
+        // Reset max levels
+        self.maxR = 0.0; self.maxY = 0.0; self.maxP = 0.0
+        
+        // Get reading timestamp
+        self.readingTime = CFAbsoluteTimeGetCurrent()
+        
+        // Synconous, blocking
+        var i: Int = 5
+        while(i > 0) {
+            // Get observed power levels
+            let redPL    = self.ip.getPowerLevelForHue(self.ip.red, threshold: self.ip.colorThreshold)
+            let yellowPL = self.ip.getPowerLevelForHue(self.ip.yellow, threshold: self.ip.colorThreshold)
+            let purplePL = self.ip.getPowerLevelForHue(self.ip.purple, threshold: self.ip.colorThreshold)
+            
+            // Log PLs
+            self.log("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
+            
+            // Compare them to max power levels found in this reading operation
+            if  redPL    > self.maxR { self.maxR = redPL }
+            if  yellowPL > self.maxY { self.maxY = yellowPL }
+            if  purplePL > self.maxP { self.maxP = purplePL }
+            
+            // Wait 1 second, blocking
+            sleep(1)
+            
+            i -= 1
         }
+        
+        // Append to readingsArray
+        self.readingsArray?.append((red: self.maxR!, yellow: self.maxY!, purple: self.maxP!, time: self.readingTime))
+        
+        self.log("[ -+- ] Reading Done")
+        
+        // Block thread while roomba finishes
+        sleep(7)
     }
-    
+
     /**
      
      Signals the end of the experiment to the Roomba. The results of 
@@ -147,39 +198,29 @@ class Experiment: NSObject {
      - Returns: `Bool` Success of closure
      
      */
-    func endExperiment(completion: (clean: Bool) -> Void) {
-        // Invalidate Timers
+    func endExperiment() {
+        
+        // Invalidate Timer
         self.readingOperationsTimer?.invalidate()
-        self.experimentTimer?.invalidate()
         
         // Send end signal
-        self.signalRoombaExperimentEnd() { success in
-            if success {
-                self.log("[ -+- ] Roomba aknowledged end of experiment")
-                self.log("[ --- ] Uploading experiment to server")
-                self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
-                self.endedCleanly = true
-                
-            } else {
-                self.log("[ -x- ] Roomba did not aknowledge end of experiment")
-                self.log("[ --- ] Attempting upload to server anyways...")
-                self.stopTime = CFAbsoluteTimeGetCurrent() - self.startTime!
-                self.endedCleanly = false
-            }
+        self.dm.socket?.signalEndOfExperiment({
+            self.log("[ -+- ] Roomba aknowledged end of experiment")
+            self.stopTime = CFAbsoluteTimeGetCurrent()
+            self.log("[ === ] Experiment ened with stop time: \(self.stopTime)")
+            self.log("[ --- ] Uploading experiment to server...")
+            self.endedCleanly = true
             
-            // At this point, the experiment object has all reading data
-            // Upload experiment to server
-            self.dm.uploadExperiment(self) { success in
-                self.endedCleanly = success
-                if self.endedCleanly! {
-                    self.log("[ === ] Experiment ended cleanly")
+            self.dm.uploadExperiment(self, completion: { success in
+                if success {
+                    self.log("[ -+- ] Experiment uploaded successfully")
+                    self.log("[ --- ] Exiting...")
                 } else {
-                    self.log("[ -x- ] Experiment did not end cleanly")
+                    self.log("[ -x- ] Upload failed")
+                    self.log("[ --- ] Exiting...")
                 }
-                
-                completion(clean: self.endedCleanly!)
-            }
-        }
+            })
+        })
     }
     
     /**
@@ -200,167 +241,7 @@ class Experiment: NSObject {
         // Set to unclean
         self.endedCleanly = false
     }
-    
-    // MARK: - Experiment Operations
-    
-    /**
-     
-     Checks the latency of the connection. If the latency is above a certain
-     thesold, the method returns false
-     
-     - Returns: `Bool`
-     
-     */
-    func checkTimeSync() -> Bool {
-        if let td = dm.timeDelta {
-            return (td < 1.00)
-        } else {
-            return false
-        }
-    }
-    
-    /**
-     
-     Wrapper function to invoke the Roomba to start (move forward)
-     
-     - Returns: `nil`
-     
-     */
-    private func signalRoombaToStart(completion: () -> Void) {
-        log("[ --- ] Signalling Roomba to begin...")
-        self.dm.socket?.signalStart() { _ in
-            completion()
-        }
-    }
-    
-    /**
-     
-     Wrapper function to invoke the Roomba to read (stop motors)
-     
-     - Returns: `nil`
-     
-     */
-    private func signalRoombaToRead(completion: () -> Void) {
-        log("[ --- ] Singalling Roomba to read...")
-        self.dm.socket?.signalReadingMode() { _ in
-            completion()
-        }
-    }
-    
-    /**
-     
-     Wrapper function to invoke the Roomba to end experiment and
-     start teardown operations
-     
-     - Returns: `nil`
-     
-     */
-    private func signalRoombaExperimentEnd(completion: (success: Bool) -> Void) {
-        log("[ --- ] Signalling end of experiment...")
-        
-        self.dm.socket?.signalEndOfExperiment() { _ in
-            completion(success: true)
-        }
-    }
-    
-    /**
-     
-     Invokes the iPhone mount motor to turn and initializes
-     timer to take power level readings at interval
-     
-     - Returns: `nil`
-     
-     */
-    private func takeReading(completion: (success: Bool) -> Void) {
-        log("[ --- ] Reading...")
-        
-        // Signal Roomba to spin iPhone
-        self.dm.socket?.signalReadNow() { _ in
-            
-            // Reset max levels
-            self.maxR = 0.0; self.maxY = 0.0; self.maxP = 0.0
-            
-            // Get reading timestamp
-            self.readingTime = CFAbsoluteTimeGetCurrent()
-            
-            // TODO: THIS IS ASYNC SHOULD BE SYNC
-//            NSTimer.scheduledTimerWithTimeInterval(
-//                1.0,
-//                target   : self,
-//                selector : #selector(self.getPowerLevels),
-//                userInfo : nil,
-//                repeats  : true
-//            )
-            
-            var i: Int = 5
-            while(i > 0) {
-                // Get observed power levels
-                let redPL    = self.ip.getPowerLevelForHue(self.ip.red, threshold: self.ip.colorThreshold)
-                let yellowPL = self.ip.getPowerLevelForHue(self.ip.yellow, threshold: self.ip.colorThreshold)
-                let purplePL = self.ip.getPowerLevelForHue(self.ip.purple, threshold: self.ip.colorThreshold)
-                
-                // Debug print
-                print("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
-                
-                // Compare them to max power levels found in this reading operation
-                if  redPL    > self.maxR { self.maxR = redPL }
-                if  yellowPL > self.maxY { self.maxY = yellowPL }
-                if  purplePL > self.maxP { self.maxP = purplePL }
-                
-                sleep(1)
-                
-                i -= 1
-            }
-            
-            // Append to readingsArray
-            self.readingsArray?.append((red: self.maxR!, yellow: self.maxY!, purple: self.maxP!, time: self.readingTime))
-            
-            print("[ -+- ] Reading Done")
-            completion(success: true)
-        }
-    }
-    
-//    /**
-//     
-//     Finds the max power levels for consecutive readings in one
-//     reading operation and updates the max levels. Once the readings are
-//     over, the max power levels are added to the reading array along with
-//     a timestamp.
-//     
-//     - Returns: `nil`
-//     
-//     */
-//    @objc private func getPowerLevels() {
-//        if readingCount < 6 {
-//            
-//            // Get observed power levels
-//            let redPL    = ip.getPowerLevelForHue(ip.red, threshold: ip.colorThreshold)
-//            let yellowPL = ip.getPowerLevelForHue(ip.yellow, threshold: ip.colorThreshold)
-//            let purplePL = ip.getPowerLevelForHue(ip.purple, threshold: ip.colorThreshold)
-//            
-//            // Debug print
-//            print("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
-//            
-//            // Compare them to max power levels found in this reading operation
-//            if  redPL    > maxR { maxR = redPL }
-//            if  yellowPL > maxY { maxY = yellowPL }
-//            if  purplePL > maxP { maxP = purplePL }
-//            
-//            readingCount += 1
-//        } else {
-//            // Append
-//            readingsArray?.append((red: maxR!, yellow: maxY!, purple: maxP!, time: self.readingTime))
-//            
-//            // Reset max levels
-//            maxR = 0
-//            maxY = 0
-//            maxP = 0
-//            
-//            // Stop timer
-//            readingTimer?.invalidate()
-//        }
-//    }
-    
+
     // MARK: - Utility Methods
     
     static func generateTestObject() -> Experiment {

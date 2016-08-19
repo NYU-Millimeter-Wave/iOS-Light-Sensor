@@ -960,29 +960,6 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reading Interval" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMR-VN-rt9">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <color key="backgroundColor" red="0.50690581369999999" green="0.50690581369999999" blue="0.50690581369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="9ty-0f-OtZ"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="9ty-0f-OtZ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="9ty-0f-OtZ"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="readingIntervalChanged:" destination="5CB-XN-7Bl" eventType="editingDidEnd" id="hVc-tB-51G"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="◎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-d0-k0W">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -1031,6 +1008,29 @@
                                     <action selector="connectPressed:" destination="5CB-XN-7Bl" eventType="touchUpInside" id="nvU-Q5-PQQ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reading Interval" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMR-VN-rt9">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.50690581369999999" green="0.50690581369999999" blue="0.50690581369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9ty-0f-OtZ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9ty-0f-OtZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9ty-0f-OtZ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="readingIntervalChanged:" destination="5CB-XN-7Bl" eventType="editingDidEnd" id="cI4-bq-glt"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1073,9 +1073,9 @@
                                 <exclude reference="gXd-NW-0oA"/>
                                 <exclude reference="1Ei-39-eeW"/>
                                 <exclude reference="gxu-hY-gAr"/>
-                                <exclude reference="cMR-VN-rt9"/>
                                 <exclude reference="2GS-d0-k0W"/>
                                 <exclude reference="OA0-uc-Tsn"/>
+                                <exclude reference="cMR-VN-rt9"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="9qW-UH-1Pl"/>
@@ -1118,9 +1118,9 @@
                                 <include reference="gXd-NW-0oA"/>
                                 <include reference="1Ei-39-eeW"/>
                                 <include reference="gxu-hY-gAr"/>
-                                <include reference="cMR-VN-rt9"/>
                                 <include reference="2GS-d0-k0W"/>
                                 <include reference="OA0-uc-Tsn"/>
+                                <include reference="cMR-VN-rt9"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="9qW-UH-1Pl"/>
@@ -1168,7 +1168,7 @@
                         <outlet property="experimentDuration" destination="gxu-hY-gAr" id="DYj-LZ-qA9"/>
                         <outlet property="ipField" destination="Hmn-Ya-HEZ" id="tpn-zh-inX"/>
                         <outlet property="nameField" destination="6KT-JZ-Gyb" id="BOS-Q9-ANE"/>
-                        <outlet property="readingCount" destination="cMR-VN-rt9" id="UgO-kc-ggL"/>
+                        <outlet property="readingInterval" destination="cMR-VN-rt9" id="EOm-Ic-qzV"/>
                         <outletCollection property="colorLabels" destination="1Ei-39-eeW" collectionClass="NSMutableArray" id="haS-0v-CqS"/>
                         <outletCollection property="colorLabels" destination="gXd-NW-0oA" collectionClass="NSMutableArray" id="A2K-6E-RHe"/>
                         <outletCollection property="colorLabels" destination="P5R-r7-7LW" collectionClass="NSMutableArray" id="cR7-t4-XAl"/>

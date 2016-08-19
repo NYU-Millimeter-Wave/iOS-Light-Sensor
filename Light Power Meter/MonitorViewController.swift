@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GPUImage
 
 class MonitorViewController: UIViewController {
     
@@ -49,7 +50,7 @@ class MonitorViewController: UIViewController {
     }
 
     func endExperiment() {
-        self.experiment.endExperiment() { _ in }
+        self.experiment.endExperiment()
     }
     
     // MARK: - Actions

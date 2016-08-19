@@ -135,10 +135,12 @@ class ImageProcessor: NSObject {
      - Returns: `nil`
      
      */
-    func filterInputStream(preview: GPUImageView) {
+    func filterInputStream(preview: GPUImageView?) {
         
-        // Set local preview layer
-        self.previewLayer = preview
+        if let prev = preview {
+            // Set local preview layer
+            self.previewLayer = prev
+        }
         
         // Invoke Video Camera
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPresetMedium, cameraPosition: .Back)
@@ -158,7 +160,9 @@ class ImageProcessor: NSObject {
         filterEdgeDetect.addTarget(filterMask)
         
         // Outlet Linking
-        filterMask.addTarget(preview)
+        if let prev = preview {
+            filterMask.addTarget(prev)
+        }
         filterMask.addTarget(videoCameraRawDataOutput)
         
         // Begin video capture
@@ -215,6 +219,8 @@ class ImageProcessor: NSObject {
         self.stopCapture()
         if let pl = previewLayer {
             self.filterInputStream(pl)
+        } else {
+            self.filterInputStream(nil)
         }
     }
     

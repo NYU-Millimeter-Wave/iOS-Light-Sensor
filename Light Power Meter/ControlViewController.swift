@@ -101,11 +101,11 @@ class ControlViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func readingIntervalChanged(sender: AnyObject) {
-        if let inter = readingInterval.text {
-            if Double(inter) <= 5.0 {
-                throwErrorMessage("Reading Interval less than 5.0", message: "A reading interval must be > 5.0")
-            }
-        }
+//        if let inter = readingInterval.text {
+//            if Double(inter) <= 10.0 {
+//                throwErrorMessage("Reading Interval less than 5.0", message: "A reading interval must be > 10.0")
+//            }
+//        }
     }
     
     @IBAction func connectPressed(sender: AnyObject) {
@@ -128,9 +128,17 @@ class ControlViewController: UIViewController {
     }
 
     @IBAction func finalizePressed(sender: AnyObject) {
-        if nameField.text == "" || ipField.text == "" || experimentDuration.text == "" || readingInterval.text == ""{
+
+        if nameField.text == "" || ipField.text == "" || experimentDuration.text == "" || readingInterval.text == "" {
+            
             throwErrorMessage("Cannot Finalize", message: "All fields are required")
+            
+        } else if Double(readingInterval.text!) < 10.0 {
+            
+            throwErrorMessage("Cannot Finalize", message: "A reading interval must be > 10.0")
+            
         } else if self.connected == false {
+            
             if let txt = self.ipField.text {
                 self.dm.socket = SocketListener(url: txt)
             }

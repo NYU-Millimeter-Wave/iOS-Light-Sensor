@@ -21,7 +21,7 @@ class SocketListener: NSObject, WebSocketDelegate {
     /// General-use semaphore for server waiting
     var serverSignal: dispatch_semaphore_t?
     
-    private var socket: WebSocket!
+    var socket: WebSocket!
     
     // MARK: - Initializers
     
@@ -124,6 +124,12 @@ class SocketListener: NSObject, WebSocketDelegate {
     }
     
     // MARK: - Control Flow Signal Methods
+    
+    /*
+    The following signal methods are ASYNCRONOUS, but are
+    controlled through semaphores. They can be used in syncronous
+    contexts for this reason.
+    */
     
     /**
      
