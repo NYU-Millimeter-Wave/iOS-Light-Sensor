@@ -3,7 +3,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'Light Power Meter' do
-    pod 'Alamofire', '~> 3.4'
+    pod 'Alamofire'
 	pod 'SlideMenuControllerSwift'
 	pod 'GPUImage'
     pod 'SwiftWebSocket'
