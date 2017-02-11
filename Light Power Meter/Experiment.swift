@@ -26,7 +26,7 @@ class Experiment: NSObject {
     var readingInterval: Double = 10.0  // (Each reading is ~ 5.0)
     
     /// Array to store power levels
-    var readingsArray: [(red: Double, yellow: Double, purple: Double, time: CFAbsoluteTime)]?
+    var readingsArray: [(red: Double, yellow: Double, purple: Double, time: CFAbsoluteTime, bump: Int)]?
     
     /// Exact time of start of experiment
     var startTime: CFAbsoluteTime?
@@ -88,6 +88,9 @@ class Experiment: NSObject {
             // Latency is good
             log("[ -+- ] Time sync complete")
             
+            // Attach to DM
+            self.dm.currentExperiment = self
+            
             // Signalling start of experiment
             self.dm.socket?.signalStart({
                 //            self.dm.socket?.socket.send(text: "START")
@@ -111,7 +114,7 @@ class Experiment: NSObject {
                 self.readingOperationsTimer = NSTimer.scheduledTimerWithTimeInterval(
                     self.readingInterval,
                     target: self,
-                    selector: #selector(self.performReadingOperations),
+                    selector: #selector(self.nstimerPerformReadingOperations),
                     userInfo: nil,
                     repeats: true
                 )
@@ -146,49 +149,62 @@ class Experiment: NSObject {
      - Returns: `nil`
      
      */
-    func performReadingOperations() {
+    func performReadingOperations(forBump: Int) {
         self.dm.socket?.signalReadingMode({})
         
-        self.log("[ -+- ] Roomba in reading mode")
-        self.log("[ --- ] Reading now...")
-        
-        // Reset max levels
-        self.maxR = 0.0; self.maxY = 0.0; self.maxP = 0.0
-        
-        // Get reading timestamp
-        self.readingTime = CFAbsoluteTimeGetCurrent()
-        
-        // Synconous, blocking
-        var i: Int = 5
-        while(i > 0) {
-            // Get observed power levels
-            let redPL    = self.ip.getPowerLevelForHue(self.ip.red, threshold: self.ip.colorThreshold)
-            let yellowPL = self.ip.getPowerLevelForHue(self.ip.yellow, threshold: self.ip.colorThreshold)
-            let purplePL = self.ip.getPowerLevelForHue(self.ip.purple, threshold: self.ip.colorThreshold)
+        if forBump != 0 {
             
-            // Log PLs
-            self.log("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
+            self.log("[ --- ] Bumped, recording...")
+            self.readingTime = CFAbsoluteTimeGetCurrent()
+            self.readingsArray?.append((red: 0.0, yellow: 0.0, purple: 0.0, time: self.readingTime, bump: forBump))
             
-            // Compare them to max power levels found in this reading operation
-            if  redPL    > self.maxR { self.maxR = redPL }
-            if  yellowPL > self.maxY { self.maxY = yellowPL }
-            if  purplePL > self.maxP { self.maxP = purplePL }
+        } else {
             
-            // Wait 1 second, blocking
-            sleep(1)
+            self.log("[ -+- ] Roomba in reading mode")
+            self.log("[ --- ] Reading now...")
             
-            i -= 1
+            // Reset max levels
+            self.maxR = 0.0; self.maxY = 0.0; self.maxP = 0.0
+            
+            // Get reading timestamp
+            self.readingTime = CFAbsoluteTimeGetCurrent()
+            
+            // Synconous, blocking
+            var i: Int = 5
+            while(i > 0) {
+                // Get observed power levels
+                let redPL    = self.ip.getPowerLevelForHue(self.ip.red, threshold: self.ip.colorThreshold)
+                let yellowPL = self.ip.getPowerLevelForHue(self.ip.yellow, threshold: self.ip.colorThreshold)
+                let purplePL = self.ip.getPowerLevelForHue(self.ip.purple, threshold: self.ip.colorThreshold)
+                
+                // Log PLs
+                self.log("Power levels R: \(redPL) Y: \(yellowPL) P: \(purplePL)")
+                
+                // Compare them to max power levels found in this reading operation
+                if  redPL    > self.maxR { self.maxR = redPL }
+                if  yellowPL > self.maxY { self.maxY = yellowPL }
+                if  purplePL > self.maxP { self.maxP = purplePL }
+                
+                // Wait 1 second, blocking
+                sleep(1)
+                
+                i -= 1
+            }
+            
+            // Append to readingsArray
+            self.readingsArray?.append((red: self.maxR!, yellow: self.maxY!, purple: self.maxP!, time: self.readingTime, bump: forBump))
+            
+            self.log("[ -+- ] Reading Done")
+            
+            // Block thread while roomba finishes
+            sleep(7)
         }
-        
-        // Append to readingsArray
-        self.readingsArray?.append((red: self.maxR!, yellow: self.maxY!, purple: self.maxP!, time: self.readingTime))
-        
-        self.log("[ -+- ] Reading Done")
-        
-        // Block thread while roomba finishes
-        sleep(7)
     }
-
+    
+    @objc private func nstimerPerformReadingOperations() {
+        self.performReadingOperations(0)
+    }
+    
     /**
      
      Signals the end of the experiment to the Roomba. The results of 
@@ -249,7 +265,7 @@ class Experiment: NSObject {
         newExp.startTime = CFAbsoluteTimeGetCurrent()
         newExp.stopTime  = CFAbsoluteTimeGetCurrent() + (30000)
         for _ in 0...10 {
-            let newTuple = (red: getRando(), yellow: getRando(), purple: getRando(), time: Double(CFAbsoluteTimeGetCurrent()))
+            let newTuple = (red: getRando(), yellow: getRando(), purple: getRando(), time: Double(CFAbsoluteTimeGetCurrent()), bump: 0)
             newExp.readingsArray?.append(newTuple)
         }
         newExp.endedCleanly = true
@@ -275,13 +291,14 @@ class Experiment: NSObject {
         selfAsDictionary["startTime"] = self.startTime
         selfAsDictionary["stopTime"] = self.stopTime
         
-        var arrayOfReadingDictionaries = [[String: Double]]()
+        var arrayOfReadingDictionaries = [[String: AnyObject]]()
         for r in self.readingsArray! {
-            var readingsAsDictionary = [String: Double]()
-            readingsAsDictionary["timestamp"] = r.time
-            readingsAsDictionary["LightRPL"]  = r.red
-            readingsAsDictionary["LightYPL"]  = r.yellow
-            readingsAsDictionary["LightPPL"]  = r.purple
+            var readingsAsDictionary = [String: AnyObject]()
+            readingsAsDictionary["bump"]      = Int(r.bump)
+            readingsAsDictionary["timestamp"] = Double(r.time)
+            readingsAsDictionary["LightRPL"]  = Double(r.red)
+            readingsAsDictionary["LightYPL"]  = Double(r.yellow)
+            readingsAsDictionary["LightPPL"]  = Double(r.purple)
             arrayOfReadingDictionaries.append(readingsAsDictionary)
         }
         selfAsDictionary["readings"] = arrayOfReadingDictionaries

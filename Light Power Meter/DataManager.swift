@@ -17,8 +17,8 @@ class DataManager: NSObject {
     
     // MARK: - Class Properties
     
-    
     // Experiments
+    var currentExperiment: Experiment?
     var experiments: [Experiment] = []
     
     // Device Info
@@ -129,18 +129,19 @@ class DataManager: NSObject {
                         newExperiment.stopTime = experiment["endTime"] as? Double
                         
                         for reading in (experiment["readings"] as! [[String: AnyObject]]) {
+                            let bump   = reading["bump"]      as! Int
                             let time   = reading["timestamp"] as! Double
                             let red    = reading["LightRPL"]  as! Double
                             let yellow = reading["LightYPL"]  as! Double
                             let purple = reading["LightPPL"]  as! Double
-                            newExperiment.readingsArray?.append((red: red, yellow: yellow, purple: purple, time: time))
+                            newExperiment.readingsArray?.append((red: red, yellow: yellow, purple: purple, time: time, bump: bump))
                         }
                         
                         self.experiments.append(newExperiment)
                     }
                 } else {
-                    print("[ ERR ] JSON Parse Error")
-                    failed = true
+                    print("[ INF ] Empty JSON")
+                    failed = false
                 }
             }
             print("[ COM ] Parsing JSON complete")

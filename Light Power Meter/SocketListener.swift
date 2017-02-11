@@ -50,6 +50,12 @@ class SocketListener: NSObject, WebSocketDelegate {
         switch text {
         case "VSTART", "VREADING", "VREADNOW", "VENDEXP":
             dispatch_semaphore_signal(self.serverSignal!)
+        case "B1":
+            // Bump Left
+            self.dm.currentExperiment?.performReadingOperations(1)
+        case "B2":
+            // Bump Right
+            self.dm.currentExperiment?.performReadingOperations(2)
         default:
             print("bip")
             break
